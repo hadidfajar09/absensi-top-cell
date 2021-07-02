@@ -17,10 +17,17 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/font-awesome.min.css') }}">
 	<!-- Lineawesome CSS -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/line-awesome.min.css') }}">
+	<!-- Datatable CSS -->
+	<link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}">
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="{{ URL::to('assets/css/select2.min.css') }}">
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap-datetimepicker.min.css') }}">
 	<!-- Chart CSS -->
 	<link rel="stylesheet" href="{{ URL::to('ssets/plugins/morris/morris.css') }}">
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
+
 	{{-- message toastr --}}
 	<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 	<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
@@ -243,17 +250,27 @@
 		<!-- /Page Wrapper -->
 	</div>
 	<!-- /Main Wrapper -->
+
 	<!-- jQuery -->
 	<script src="{{ URL::to('assets/js/jquery-3.5.1.min.js') }}"></script>
 	<!-- Bootstrap Core JS -->
 	<script src="{{ URL::to('assets/js/popper.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>
-	<!-- Slimscroll JS -->
-	<script src="{{ URL::to('assets/js/jquery.slimscroll.min.js') }}"></script>
+
 	<!-- Chart JS -->
 	<script src="{{ URL::to('assets/plugins/morris/morris.min.js') }}"></script>
 	<script src="{{ URL::to('assets/plugins/raphael/raphael.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/chart.js') }}"></script>
+	<!-- Slimscroll JS -->
+	<script src="{{ URL::to('assets/js/jquery.slimscroll.min.js') }}"></script>
+	<!-- Select2 JS -->
+	<script src="{{ URL::to('assets/js/select2.min.js') }}"></script>
+	<!-- Datetimepicker JS -->
+	<script src="{{ URL::to('assets/js/moment.min.js') }}"></script>
+	<script src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<!-- Datatable JS -->
+	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>		
 	<!-- Custom JS -->
 	<script src="{{ URL::to('assets/js/app.js') }}"></script>
 </body>
