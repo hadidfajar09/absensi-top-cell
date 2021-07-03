@@ -20,6 +20,15 @@
                             <li><a class="active" href="{{ route('em/dashboard') }}">Employee Dashboard</a></li>
                         </ul>
                     </li>
+                    <li class="menu-title"> <span>Authentication</span> </li>
+                    <li class="submenu">
+                        <a href="#">
+                            <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
+                        </a>
+                        <ul style="display: none;">
+                            <li><a href="{{ route('userManagement') }}">All User</a></li>
+                        </ul>
+                    </li>
                     <li class="menu-title"> <span>Employees</span> </li>
                     <li class="submenu">
                         <a href="#" class="noti-dot">

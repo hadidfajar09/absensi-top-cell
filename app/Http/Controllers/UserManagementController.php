@@ -20,8 +20,8 @@ class UserManagementController extends Controller
     {
         if (Auth::user()->role_name=='Admin')
         {
-            $data = DB::table('users')->get();
-            return view('usermanagement.user_control',compact('data'));
+            $users = DB::table('users')->get();
+            return view('usermanagement.user_control',compact('users'));
         }
         else
         {

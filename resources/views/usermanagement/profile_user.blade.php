@@ -160,7 +160,6 @@
     </div>
 	<!-- /Sidebar -->
 
-
     <div class="page-wrapper">
         <!-- Page Content -->
         <div class="content container-fluid">
@@ -195,8 +194,8 @@
                                                 <h3 class="user-name m-t-0 mb-0">{{ Auth::user()->name }}</h3>
                                                 <h6 class="text-muted">UI/UX Design Team</h6>
                                                 <small class="text-muted">Web Designer</small>
-                                                <div class="staff-id">Employee ID : FT-0001</div>
-                                                <div class="small doj text-muted">Date of Join : 1st Jan 2013</div>
+                                                <div class="staff-id">Employee ID : {{ Auth::user()->rec_id }}</div>
+                                                <div class="small doj text-muted">Date of Join : {{ Auth::user()->join_date }}</div>
                                                 <div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
                                             </div>
                                         </div>

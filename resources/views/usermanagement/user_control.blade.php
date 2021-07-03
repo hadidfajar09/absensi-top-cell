@@ -216,7 +216,7 @@
                             <option> Inactive </option>
                             <option> Disable </option>
                         </select>
-                        <label class="focus-label">Role Status</label>
+                        <label class="focus-label">Status</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
@@ -249,41 +249,78 @@
                                     <th>Name</th>
                                     <th>User ID</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
                                     <th>Join Date</th>
                                     <th>Role</th>
-                                    <th>Role Status</th>
+                                    <th>Status</th>
                                     <th>Departement</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $key=>$user )
                                 <tr>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
-                                            <a href="profile.html">John Doe <span>Web Designer</span></a>
+                                            <a href="profile.html" class="avatar"><img src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}"></a>
+                                            <a href="profile.html">{{ $user->name }}<span>{{ $user->position }}</span></a>
                                         </h2>
                                     </td>
-                                    <td>FT-0001</td>
-                                    <td>johndoe@example.com</td>
-                                    <td>1 Jan 2013</td>
+                                    <td>{{ $user->rec_id }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone_number }}</td>
+                                    <td>{{ $user->join_date }}</td>
                                     <td>
-                                        <span class="badge bg-inverse-info">Client</span>
+                                        @if ($user->role_name=='Admin')
+                                            <span class="badge bg-inverse-danger">{{ $user->role_name }}</span>
+                                            @elseif ($user->role_name=='Super Admin')
+                                            <span class="badge bg-inverse-warning">{{ $user->role_name }}</span>
+                                            @elseif ($user->role_name=='Normal User')
+                                            <span class="badge bg-inverse-info">{{ $user->role_name }}</span>
+                                            @elseif ($user->role_name=='Client')
+                                            <span class="badge bg-inverse-success">{{ $user->role_name }}</span>
+                                            @elseif ($user->role_name=='Employee')
+                                            <span class="badge bg-inverse-dark">{{ $user->role_name }}</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            @if ($user->status=='Active')
+                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-dot-circle-o text-success"></i>
+                                                   {{ $user->status }} 
+                                                </a>
+                                                @elseif ($user->status=='Inactive')
+                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-dot-circle-o text-info"></i>
+                                                    {{ $user->status }}
+                                                </a>
+                                                @elseif ($user->status=='Disable')
+                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i>
+                                                 {{ $user->status }} 
+                                                </a>
+                                                @elseif ($user->status=='')
+                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-dot-circle-o text-dark"></i>
+                                                    N/A   
+                                                </a>
+                                            @endif
+                                            
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#">
                                                     <i class="fa fa-dot-circle-o text-success"></i> Active
                                                 </a>
                                                 <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                    <i class="fa fa-dot-circle-o text-warning"></i> Inactive
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Disable
                                                 </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>IT Management</td>
+                                    <td>{{ $user->department }}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -294,154 +331,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-01.jpg" alt=""></a>
-                                            <a href="profile.html">Lesley Grauer <span>Team Leader</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>FT-0008</td>
-                                    <td>lesleygrauer@example.com</td>
-                                    <td>1 Jun 2015</td>
-                                    <td>
-                                        <span class="badge bg-inverse-info">Client</span>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>Application Development</td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-16.jpg" alt=""></a>
-                                            <a href="profile.html">Jeffery Lalor <span>Team Leader</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>FT-0009</td>
-                                    <td>jefferylalor@example.com</td>
-                                    <td>1 Jan 2013</td>
-                                    <td>
-                                        <span class="badge bg-inverse-danger">Admin</span>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>Support Management</td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-04.jpg" alt=""></a>
-                                            <a href="profile.html">Loren Gatlin <span>Android Developer</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>FT-0010</td>
-                                    <td>lorengatlin@example.com</td>
-                                    <td>1 Jan 2013</td>
-                                    <td>
-                                        <span class="badge bg-inverse-success">Employee</span>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>IT Management</td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-03.jpg" alt=""></a>
-                                            <a href="profile.html">Tarah Shropshire <span>Android Developer</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>FT-0011</td>
-                                    <td>tarahshropshire@example.com</td>
-                                    <td>1 Jan 2013</td>
-                                    <td>
-                                        <span class="badge bg-inverse-info">Client</span>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>Accounts Management</td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -455,7 +345,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Staff Salary</h5>
+                        <h5 class="modal-title">Add New User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -465,86 +355,37 @@
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
-                                        <label>Select Staff</label>
-                                        <select class="select"> 
-                                            <option>John Doe</option>
-                                            <option>Richard Miles</option>
-                                        </select>
+                                        <label>Full Name</label>
+                                        <input class="form-control" type="text" id="" name="name">
                                     </div>
                                 </div>
                                 <div class="col-sm-6"> 
-                                    <label>Net Salary</label>
-                                    <input class="form-control" type="text">
+                                    <label>Emaill Address</label>
+                                    <input class="form-control" type="email" id="" name="email">
                                 </div>
                             </div>
                             <div class="row"> 
                                 <div class="col-sm-6"> 
-                                    <h4 class="text-primary">Earnings</h4>
-                                    <div class="form-group">
-                                        <label>Basic</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>DA(40%)</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>HRA(15%)</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Conveyance</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Allowance</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Medical  Allowance</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="add-more">
-                                        <a href="#"><i class="fa fa-plus-circle"></i> Add More</a>
-                                    </div>
+                                    <label>Role Name</label>
+                                    <select class="select" name="role_name" id="role_name">
+                                        <option selected disabled> --Select --</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Super Admin">Super Admin</option>
+                                        <option value="Normal User">Normal User</option>
+                                        <option value="Client">Client</option>
+                                        <option value="Employee">Employee</option>
+                                    </select>
                                 </div>
-                                <div class="col-sm-6">  
-                                    <h4 class="text-primary">Deductions</h4>
-                                    <div class="form-group">
-                                        <label>TDS</label>
-                                        <input class="form-control" type="text">
-                                    </div> 
-                                    <div class="form-group">
-                                        <label>ESI</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>PF</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Leave</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Prof. Tax</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Labour Welfare</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="add-more">
-                                        <a href="#"><i class="fa fa-plus-circle"></i> Add More</a>
-                                    </div>
+                                <div class="col-sm-6"> 
+                                    <label>Position</label>
+                                    <select class="select" name="position" id="position">
+                                        <option selected disabled> --Select --</option>
+                                        <option value="Web Designer">Web Designer</option>
+                                        <option value="Web Developer">Web Developer</option>
+                                        <option value="Android Developer">Android Developer</option>
+                                        <option value="IOS Developer">IOS Developer</option>
+                                        <option value="Team Leader">Team Leader</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="submit-section">
@@ -611,10 +452,7 @@
                                         <label>Medical  Allowance</label>
                                         <input class="form-control" type="text" value="$20">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>  
+                                   
                                 </div>
                                 <div class="col-sm-6">  
                                     <h4 class="text-primary">Deductions</h4>
@@ -645,10 +483,6 @@
                                     <div class="form-group">
                                         <label>Fund</label>
                                         <input class="form-control" type="text" value="$40">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text" value="$15">
                                     </div>
                                 </div>
                             </div>
