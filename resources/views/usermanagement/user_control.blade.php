@@ -268,18 +268,22 @@
                                     <td>johndoe@example.com</td>
                                     <td>1 Jan 2013</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Designer </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                        <span class="badge bg-inverse-info">Client</span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>$59698</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td>IT Management</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -301,18 +305,22 @@
                                     <td>lesleygrauer@example.com</td>
                                     <td>1 Jun 2015</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Team Leader </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                        <span class="badge bg-inverse-info">Client</span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>$75500</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td>Application Development</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -334,18 +342,22 @@
                                     <td>jefferylalor@example.com</td>
                                     <td>1 Jan 2013</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Team Leader </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                        <span class="badge bg-inverse-danger">Admin</span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>$73550</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td>Support Management</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -367,18 +379,22 @@
                                     <td>lorengatlin@example.com</td>
                                     <td>1 Jan 2013</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Android Developer </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                        <span class="badge bg-inverse-success">Employee</span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>$55000</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td>IT Management</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -400,18 +416,22 @@
                                     <td>tarahshropshire@example.com</td>
                                     <td>1 Jan 2013</td>
                                     <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Android Developer </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                        <span class="badge bg-inverse-info">Client</span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>$92400</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td>Accounts Management</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
