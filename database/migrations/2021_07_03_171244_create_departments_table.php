@@ -15,12 +15,13 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            $table->string('department')->nullable();
             $table->timestamps();
         });
         DB::table('departments')->insert([
-            ['role_type' => 'Web Department'],
-            ['role_type' => 'IT Management'],
-            ['role_type' => 'Marketing'],
+            ['department' => 'Web Department'],
+            ['department' => 'IT Management'],
+            ['department' => 'Marketing'],
         ]);
     }
 

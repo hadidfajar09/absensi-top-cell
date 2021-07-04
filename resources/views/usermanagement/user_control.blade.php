@@ -20,15 +20,17 @@
                             <li><a href="{{ route('em/dashboard') }}">Employee Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="menu-title"> <span>Authentication</span> </li>
-                    <li class="submenu">
-                        <a href="#">
-                            <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
-                        </a>
-                        <ul style="display: none;">
-                            <li><a class="active" href="{{ route('userManagement') }}">All User</a></li>
-                        </ul>
-                    </li>
+                    @if (Auth::user()->role_name=='Admin')
+                        <li class="menu-title"> <span>Authentication</span> </li>
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a class="active" href="{{ route('userManagement') }}">All User</a></li>
+                            </ul>
+                        </li>
+                    @endif
                     <li class="menu-title"> <span>Employees</span> </li>
                     <li class="submenu">
                         <a href="#" class="noti-dot">
@@ -190,56 +192,59 @@
 			<!-- /Page Header -->
 
             <!-- Search Filter -->
-            <div class="row filter-row">
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+            <form action="">
+                <div class="row filter-row">
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating">
+                            <input type="text" class="form-control floating" id="name" name="name">
                             <label class="focus-label">User Name</label>
                         </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                    <div class="form-group form-focus select-focus">
-                        <select class="select floating"> 
-                            <option value=""> -- Select -- </option>
-                            <option value="1">Admin</option>
-                            <option value="2">Super Admin</option>
-                            <option value="3">Normal User</option>
-                        </select>
-                        <label class="focus-label">Role Name</label>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"> 
-                    <div class="form-group form-focus select-focus">
-                        <select class="select floating"> 
-                            <option> -- Select -- </option>
-                            <option> Active </option>
-                            <option> Inactive </option>
-                            <option> Disable </option>
-                        </select>
-                        <label class="focus-label">Status</label>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                    <div class="form-group form-focus">
-                        <div class="cal-icon">
-                            <input class="form-control floating datetimepicker" type="text">
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                        <div class="form-group form-focus select-focus">
+                            <select class="select floating" id="" name="role_name"> 
+                                <option> -- Select -- </option>
+                                <option value="1">Admin</option>
+                                <option value="2">Super Admin</option>
+                                <option value="3">Normal User</option>
+                            </select>
+                            <label class="focus-label">Role Name</label>
                         </div>
-                        <label class="focus-label">From</label>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                    <div class="form-group form-focus">
-                        <div class="cal-icon">
-                            <input class="form-control floating datetimepicker" type="text">
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"> 
+                        <div class="form-group form-focus select-focus">
+                            <select class="select floating" id="" name="status"> 
+                                <option> -- Select -- </option>
+                                <option> Active </option>
+                                <option> Inactive </option>
+                                <option> Disable </option>
+                            </select>
+                            <label class="focus-label">Status</label>
                         </div>
-                        <label class="focus-label">To</label>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                        <div class="form-group form-focus">
+                            <div class="cal-icon">
+                                <input class="form-control floating datetimepicker" type="text" id="" name="from">
+                            </div>
+                            <label class="focus-label">From</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                        <div class="form-group form-focus">
+                            <div class="cal-icon">
+                                <input class="form-control floating datetimepicker" type="text" id="" name="to">
+                            </div>
+                            <label class="focus-label">To</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                        <button type="sumit" class="btn btn-success btn-block"> Search </button>  
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                    <a href="#" class="btn btn-success btn-block"> Search </a>  
-                </div>     
-            </div>
-            <!-- /Search Filter -->  
+            </form>     
+            <!-- /Search Filter -->
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -340,7 +345,7 @@
         </div>
         <!-- /Page Content -->
 
-        <!-- Add Salary Modal -->
+        <!-- Add User Modal -->
         <div id="add_salary" class="modal custom-modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
@@ -389,21 +394,21 @@
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /Add Salary Modal -->
+        <!-- /Add User Modal -->
 				
-        <!-- Edit Salary Modal -->
+        <!-- Edit User Modal -->
         <div id="edit_salary" class="modal custom-modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Staff Salary</h5>
+                        <h5 class="modal-title">Edit User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -413,81 +418,17 @@
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
-                                        <label>Select Staff</label>
-                                        <select class="select"> 
-                                            <option>John Doe</option>
-                                            <option>Richard Miles</option>
-                                        </select>
+                                        <label>Name</label>
+                                        <input class="form-control" type="text" value="Soeng Souy">
                                     </div>
                                 </div>
                                 <div class="col-sm-6"> 
-                                    <label>Net Salary</label>
-                                    <input class="form-control" type="text" value="$4000">
-                                </div>
-                            </div>
-                            <div class="row"> 
-                                <div class="col-sm-6"> 
-                                    <h4 class="text-primary">Earnings</h4>
-                                    <div class="form-group">
-                                        <label>Basic</label>
-                                        <input class="form-control" type="text" value="$6500">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>DA(40%)</label>
-                                        <input class="form-control" type="text" value="$2000">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>HRA(15%)</label>
-                                        <input class="form-control" type="text" value="$700">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Conveyance</label>
-                                        <input class="form-control" type="text" value="$70">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Allowance</label>
-                                        <input class="form-control" type="text" value="$30">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Medical  Allowance</label>
-                                        <input class="form-control" type="text" value="$20">
-                                    </div>
-                                   
-                                </div>
-                                <div class="col-sm-6">  
-                                    <h4 class="text-primary">Deductions</h4>
-                                    <div class="form-group">
-                                        <label>TDS</label>
-                                        <input class="form-control" type="text" value="$300">
-                                    </div> 
-                                    <div class="form-group">
-                                        <label>ESI</label>
-                                        <input class="form-control" type="text" value="$20">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>PF</label>
-                                        <input class="form-control" type="text" value="$20">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Leave</label>
-                                        <input class="form-control" type="text" value="$250">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Prof. Tax</label>
-                                        <input class="form-control" type="text" value="$110">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Labour Welfare</label>
-                                        <input class="form-control" type="text" value="$10">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Fund</label>
-                                        <input class="form-control" type="text" value="$40">
-                                    </div>
+                                    <label>Email</label>
+                                    <input class="form-control" type="email" value="soengsouy@gmail.com">
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Update</button>
                             </div>
                         </form>
                     </div>
@@ -496,13 +437,13 @@
         </div>
         <!-- /Edit Salary Modal -->
 				
-        <!-- Delete Salary Modal -->
+        <!-- Delete User Modal -->
         <div class="modal custom-modal fade" id="delete_salary" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="form-header">
-                            <h3>Delete Salary</h3>
+                            <h3>Delete User</h3>
                             <p>Are you sure want to delete?</p>
                         </div>
                         <div class="modal-btn delete-action">
@@ -519,8 +460,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Delete Salary Modal -->
-
+        <!-- /Delete User Modal -->
     </div>
     <!-- /Page Wrapper -->  
 @endsection

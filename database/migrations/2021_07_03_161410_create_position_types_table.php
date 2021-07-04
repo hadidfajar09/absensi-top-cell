@@ -15,18 +15,19 @@ class CreatePositionTypesTable extends Migration
     {
         Schema::create('position_types', function (Blueprint $table) {
             $table->id();
+            $table->string('position')->nullable();
             $table->timestamps();
         });
 
         DB::table('position_types')->insert([
-            ['role_type' => 'CEO'],
-            ['role_type' => 'CFO'],
-            ['role_type' => 'Manager'],
-            ['role_type' => 'Web Designer'],
-            ['role_type' => 'Web Developer'],
-            ['role_type' => 'Android Developer'],
-            ['role_type' => 'IOS Developer'],
-            ['role_type' => 'Team Leader'],
+            ['position' => 'CEO'],
+            ['position' => 'CFO'],
+            ['position' => 'Manager'],
+            ['position' => 'Web Designer'],
+            ['position' => 'Web Developer'],
+            ['position' => 'Android Developer'],
+            ['position' => 'IOS Developer'],
+            ['position' => 'Team Leader'],
         ]);
     }
 

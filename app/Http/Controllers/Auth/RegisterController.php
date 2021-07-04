@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Hash;
+use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
@@ -15,7 +16,8 @@ class RegisterController extends Controller
 {
     public function register()
     {
-        return view('auth.register');
+        $role = DB::table('role_type_users')->get();
+        return view('auth.register',compact('role'));
     }
     public function storeUser(Request $request)
     {

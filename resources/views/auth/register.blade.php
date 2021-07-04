@@ -40,10 +40,10 @@
                             <div class="form-group">
                                 <label class="col-form-label">Role Name</label>
                                 <select class="select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                    <option selected disabled>Select Role Name</option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="Super Admin">Super Admin</option>
-                                    <option value="Normal User">Normal User</option>
+                                    <option selected disabled>-- Select Role Name --</option>
+                                    @foreach ($role as $name)
+                                        <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
+                                    @endforeach
                                 </select>
                                 @error('role_name')
                                     <span class="invalid-feedback" role="alert">
