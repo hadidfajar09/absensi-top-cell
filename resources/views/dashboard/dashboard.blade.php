@@ -14,7 +14,8 @@
                         <span>Main</span>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="la la-dashboard"></i>
+                        <a href="#" class="noti-dot">
+                            <i class="la la-dashboard"></i>
                             <span> Dashboard</span> <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
@@ -35,7 +36,7 @@
                     @endif
                     <li class="menu-title"> <span>Employees</span> </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
+                        <a href="#">
                             <i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
@@ -193,7 +194,8 @@
                     <div class="card dash-widget">
                         <div class="card-body"> <span class="dash-widget-icon"><i class="fa fa-cubes"></i></span>
                             <div class="dash-widget-info">
-                                <h3>112</h3> <span>Projects</span> </div>
+                                <h3>112</h3> <span>Projects</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -201,7 +203,8 @@
                     <div class="card dash-widget">
                         <div class="card-body"> <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
                             <div class="dash-widget-info">
-                                <h3>44</h3> <span>Clients</span> </div>
+                                <h3>44</h3> <span>Clients</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,7 +212,8 @@
                     <div class="card dash-widget">
                         <div class="card-body"> <span class="dash-widget-icon"><i class="fa fa-diamond"></i></span>
                             <div class="dash-widget-info">
-                                <h3>37</h3> <span>Tasks</span> </div>
+                                <h3>37</h3> <span>Tasks</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -217,7 +221,8 @@
                     <div class="card dash-widget">
                         <div class="card-body"> <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
                             <div class="dash-widget-info">
-                                <h3>218</h3> <span>Employees</span> </div>
+                                <h3>218</h3> <span>Employees</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,12 +359,14 @@
                                     <div class="col-md-6 col-6 text-center">
                                         <div class="stats-box mb-4">
                                             <p>Total Tasks</p>
-                                            <h3>385</h3> </div>
+                                            <h3>385</h3>
+                                        </div>
                                     </div>
                                     <div class="col-md-6 col-6 text-center">
                                         <div class="stats-box mb-4">
                                             <p>Overdue Tasks</p>
-                                            <h3>19</h3> </div>
+                                            <h3>19</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -437,10 +444,12 @@
                                         <tr>
                                             <td><a href="invoice-view.html">#INV-0001</a></td>
                                             <td>
-                                                <h2><a href="#">Global Technologies</a></h2> </td>
+                                                <h2><a href="#">Global Technologies</a></h2>
+                                            </td>
                                             <td>11 Mar 2019</td>
                                             <td>$380</td>
-                                            <td> <span class="badge bg-inverse-warning">Partially Paid</span> </td>
+                                            <td> <span class="badge bg-inverse-warning">Partially Paid</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><a href="invoice-view.html">#INV-0002</a></td>
@@ -448,7 +457,9 @@
                                                 <h2><a href="#">Delta Infotech</a></h2> </td>
                                             <td>8 Feb 2019</td>
                                             <td>$500</td>
-                                            <td> <span class="badge bg-inverse-success">Paid</span> </td>
+                                            <td>
+                                                <span class="badge bg-inverse-success">Paid</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><a href="invoice-view.html">#INV-0003</a></td>
@@ -456,19 +467,24 @@
                                                 <h2><a href="#">Cream Inc</a></h2> </td>
                                             <td>23 Jan 2019</td>
                                             <td>$60</td>
-                                            <td> <span class="badge bg-inverse-danger">Unpaid</span> </td>
+                                            <td>
+                                                <span class="badge bg-inverse-danger">Unpaid</span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer"> <a href="invoices.html">View all invoices</a> </div>
+                        <div class="card-footer">
+                            <a href="invoices.html">View all invoices</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex">
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h3 class="card-title mb-0">Payments</h3> </div>
+                            <h3 class="card-title mb-0">Payments</h3>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table custom-table table-nowrap mb-0">
@@ -510,7 +526,9 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer"> <a href="payments.html">View all payments</a> </div>
+                        <div class="card-footer">
+                            <a href="payments.html">View all payments</a>
+                        </div>
                     </div>
                 </div>
             </div>

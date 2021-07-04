@@ -3,6 +3,7 @@
 @extends('sidebar.dashboard')
 @endsection --}}
 @section('content')
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -12,8 +13,10 @@
                         <span>Main</span>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="la la-dashboard"></i>
-                            <span> Dashboard</span> <span class="menu-arrow"></span>
+                        <a href="#" class="noti-dot">
+                            <i class="la la-dashboard"></i>
+                            <span> Dashboard</span>
+                            <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('home') }}">Admin Dashboard</a></li>
@@ -24,7 +27,9 @@
                         <li class="menu-title"> <span>Authentication</span> </li>
                         <li class="submenu">
                             <a href="#">
-                                <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
+                                <i class="la la-user-secret"></i>
+                                <span> User Controller</span>
+                                <span class="menu-arrow"></span>
                             </a>
                             <ul style="display: none;">
                                 <li><a href="{{ route('userManagement') }}">All User</a></li>
@@ -33,8 +38,10 @@
                     @endif
                     <li class="menu-title"> <span>Employees</span> </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
-                            <i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span>
+                        <a href="#">
+                            <i class="la la-user"></i>
+                            <span> Employees</span>
+                            <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="employees.html">All Employees</a></li>
@@ -170,6 +177,7 @@
         </div>
     </div>
     <!-- /Sidebar -->
+    
     <!-- Page Wrapper -->
     <div class="page-wrapper">
         <!-- Page Content -->

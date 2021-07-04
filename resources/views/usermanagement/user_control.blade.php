@@ -3,6 +3,7 @@
 @extends('sidebar.dashboard')
 @endsection --}}
 @section('content')
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -12,8 +13,10 @@
                         <span>Main</span>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="la la-dashboard"></i>
-                            <span> Dashboard</span> <span class="menu-arrow"></span>
+                        <a href="#">
+                            <i class="la la-dashboard"></i>
+                            <span> Dashboard</span>
+                            <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('home') }}">Admin Dashboard</a></li>
@@ -23,7 +26,7 @@
                     @if (Auth::user()->role_name=='Admin')
                         <li class="menu-title"> <span>Authentication</span> </li>
                         <li class="submenu">
-                            <a href="#">
+                            <a href="#" class="noti-dot">
                                 <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
                             </a>
                             <ul style="display: none;">
@@ -31,10 +34,14 @@
                             </ul>
                         </li>
                     @endif
-                    <li class="menu-title"> <span>Employees</span> </li>
+                    <li class="menu-title">
+                        <span>Employees</span>
+                    </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
-                            <i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span>
+                        <a href="#">
+                            <i class="la la-user"></i>
+                            <span> Employees</span>
+                            <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="employees.html">All Employees</a></li>
@@ -53,8 +60,11 @@
                             <li><a href="overtime.html">Overtime</a></li>
                         </ul>
                     </li>
-                    <li class="submenu"> <a href="#"><i class="la la-rocket"></i> 
-                        <span> Projects</span> <span class="menu-arrow"></span></a>
+                    <li class="submenu">
+                        <a href="#"><i class="la la-rocket"></i> 
+                            <span> Projects</span>
+                            <span class="menu-arrow"></span>
+                        </a>
                         <ul style="display: none;">
                             <li><a href="projects.html">Projects</a></li>
                             <li><a href="tasks.html">Tasks</a></li>
@@ -170,6 +180,7 @@
         </div>
     </div>
     <!-- /Sidebar -->
+
     <!-- Page Wrapper -->
     <div class="page-wrapper">
         <!-- Page Content -->
@@ -185,7 +196,7 @@
                         </ul>
                     </div>
                     <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Add User</a>
+                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_user"><i class="fa fa-plus"></i> Add User</a>
                     </div>
                 </div>
             </div>
@@ -330,8 +341,8 @@
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -346,65 +357,96 @@
         <!-- /Page Content -->
 
         <!-- Add User Modal -->
-        <div id="add_salary" class="modal custom-modal fade" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add New User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="row"> 
-                                <div class="col-sm-6"> 
-                                    <div class="form-group">
-                                        <label>Full Name</label>
-                                        <input class="form-control" type="text" id="" name="name">
+        <div id="add_user" class="modal custom-modal fade" role="dialog">
+            <form action="">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row"> 
+                                    <div class="col-sm-6"> 
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            <input class="form-control" type="text" id="" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label>Emaill Address</label>
+                                        <input class="form-control" type="email" id="" name="email">
                                     </div>
                                 </div>
-                                <div class="col-sm-6"> 
-                                    <label>Emaill Address</label>
-                                    <input class="form-control" type="email" id="" name="email">
+                                <div class="row"> 
+                                    <div class="col-sm-6"> 
+                                        <label>Role Name</label>
+                                        <select class="select" name="role_name" id="role_name">
+                                            <option selected disabled> --Select --</option>
+                                            @foreach ($role_name as $role )
+                                            <option value="{{ $role->role_type }}">{{ $role->role_type }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label>Position</label>
+                                        <select class="select" name="position" id="position">
+                                            <option selected disabled> --Select --</option>
+                                            @foreach ($position as $positions )
+                                            <option value="{{ $positions->position }}">{{ $positions->position }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row"> 
-                                <div class="col-sm-6"> 
-                                    <label>Role Name</label>
-                                    <select class="select" name="role_name" id="role_name">
-                                        <option selected disabled> --Select --</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Super Admin">Super Admin</option>
-                                        <option value="Normal User">Normal User</option>
-                                        <option value="Client">Client</option>
-                                        <option value="Employee">Employee</option>
-                                    </select>
+                                <br>
+                                <div class="row"> 
+                                    <div class="col-sm-6"> 
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            <input class="form-control" type="tel" id="" name="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label>Department</label>
+                                        <select class="select" name="department" id="department">
+                                            <option selected disabled> --Select --</option>
+                                            @foreach ($department as $departments )
+                                            <option value="{{ $departments->department }}">{{ $departments->department }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6"> 
-                                    <label>Position</label>
-                                    <select class="select" name="position" id="position">
-                                        <option selected disabled> --Select --</option>
-                                        <option value="Web Designer">Web Designer</option>
-                                        <option value="Web Developer">Web Developer</option>
-                                        <option value="Android Developer">Android Developer</option>
-                                        <option value="IOS Developer">IOS Developer</option>
-                                        <option value="Team Leader">Team Leader</option>
-                                    </select>
+                                <div class="row"> 
+                                    <div class="col-sm-6"> 
+                                        <label>Status</label>
+                                        <select class="select" name="status" id="status">
+                                            <option selected disabled> --Select --</option>
+                                            @foreach ($status as $status )
+                                            <option value="{{ $status->type_name }}">{{ $status->type_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label>Photo</label>
+                                        <input class="form-control" type="file" id="image" name="image">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="submit-section">
-                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
-                            </div>
-                        </form>
+                                <div class="submit-section">
+                                    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <!-- /Add User Modal -->
 				
         <!-- Edit User Modal -->
-        <div id="edit_salary" class="modal custom-modal fade" role="dialog">
+        <div id="edit_user" class="modal custom-modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -438,7 +480,7 @@
         <!-- /Edit Salary Modal -->
 				
         <!-- Delete User Modal -->
-        <div class="modal custom-modal fade" id="delete_salary" role="dialog">
+        <div class="modal custom-modal fade" id="delete_user" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
