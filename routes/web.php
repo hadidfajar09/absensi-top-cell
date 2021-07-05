@@ -70,7 +70,6 @@ Route::post('profile_user/store', [App\Http\Controllers\UserManagementController
 
 // ----------------------------- user userManagement -----------------------//
 Route::get('userManagement', [App\Http\Controllers\UserManagementController::class, 'index'])->middleware('auth')->name('userManagement');
-Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
 Route::post('user/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewUserSave'])->name('user/add/save');
 Route::get('view/detail/{id}', [App\Http\Controllers\UserManagementController::class, 'viewDetail'])->middleware('auth');
 Route::post('update', [App\Http\Controllers\UserManagementController::class, 'update'])->name('update');
