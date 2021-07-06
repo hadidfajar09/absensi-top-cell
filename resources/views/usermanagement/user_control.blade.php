@@ -266,6 +266,7 @@
                                     <th>Name</th>
                                     <th>User ID</th>
                                     <th>Email</th>
+                                    <th>Position</th>
                                     <th>Phone</th>
                                     <th>Join Date</th>
                                     <th>Role</th>
@@ -277,27 +278,28 @@
                             <tbody>
                                 @foreach ($users as $key=>$user )
                                 <tr>
-                                    <td>
+                                    <td >
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar"><img src="{{ URL::to('/assets/images/'. $user->avatar) }}" alt="{{ $user->avatar }}"></a>
-                                            <a href="profile.html">{{ $user->name }}<span>{{ $user->position }}</span></a>
+                                            <a href="profile.html" class="name">{{ $user->name }}</span></a>
                                         </h2>
                                     </td>
-                                    <td>{{ $user->rec_id }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone_number }}</td>
+                                    <td class="id">{{ $user->rec_id }}</td>
+                                    <td class="email">{{ $user->email }}</td>
+                                    <td class="position">{{ $user->position }}</td>
+                                    <td class="phone_number">{{ $user->phone_number }}</td>
                                     <td>{{ $user->join_date }}</td>
                                     <td>
                                         @if ($user->role_name=='Admin')
-                                            <span class="badge bg-inverse-danger">{{ $user->role_name }}</span>
+                                            <span class="badge bg-inverse-danger role_name">{{ $user->role_name }}</span>
                                             @elseif ($user->role_name=='Super Admin')
-                                            <span class="badge bg-inverse-warning">{{ $user->role_name }}</span>
+                                            <span class="badge bg-inverse-warning role_name">{{ $user->role_name }}</span>
                                             @elseif ($user->role_name=='Normal User')
-                                            <span class="badge bg-inverse-info">{{ $user->role_name }}</span>
+                                            <span class="badge bg-inverse-info role_name">{{ $user->role_name }}</span>
                                             @elseif ($user->role_name=='Client')
-                                            <span class="badge bg-inverse-success">{{ $user->role_name }}</span>
+                                            <span class="badge bg-inverse-success role_name">{{ $user->role_name }}</span>
                                             @elseif ($user->role_name=='Employee')
-                                            <span class="badge bg-inverse-dark">{{ $user->role_name }}</span>
+                                            <span class="badge bg-inverse-dark role_name">{{ $user->role_name }}</span>
                                         @endif
                                     </td>
                                     <td>
@@ -305,22 +307,22 @@
                                             @if ($user->status=='Active')
                                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-dot-circle-o text-success"></i>
-                                                   {{ $user->status }} 
+                                                    <span class="statuss">{{ $user->status }}</span>
                                                 </a>
                                                 @elseif ($user->status=='Inactive')
                                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-dot-circle-o text-info"></i>
-                                                    {{ $user->status }}
+                                                    <span class="statuss">{{ $user->status }}</span>
                                                 </a>
                                                 @elseif ($user->status=='Disable')
                                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-dot-circle-o text-danger"></i>
-                                                 {{ $user->status }} 
+                                                    <span class="statuss">{{ $user->status }}</span>
                                                 </a>
                                                 @elseif ($user->status=='')
                                                 <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-dot-circle-o text-dark"></i>
-                                                    N/A   
+                                                    <span class="statuss">N/A</span>
                                                 </a>
                                             @endif
                                             
@@ -337,12 +339,12 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $user->department }}</td>
+                                    <td class="department">{{ $user->department }}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item userUpdate" data-toggle="modal" data-id="'.$user->id.'" data-target="#edit_user"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
@@ -468,20 +470,84 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <br>
+                    <h2 class="table-avatar text-center">
+                        <a class="avatar"><img src="{{ URL::to('/assets/images/'. $user->avatar) }}" alt="{{ $user->avatar }}"></a>
+                    </h2>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('update') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" id="e_id" value="">
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input class="form-control" type="text" value="Soeng Souy">
+                                        <input class="form-control" type="text" name="name" id="e_name" value="" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6"> 
                                     <label>Email</label>
-                                    <input class="form-control" type="email" value="soengsouy@gmail.com">
+                                    <input class="form-control" type="text" name="email" id="e_email" value=""/>
                                 </div>
                             </div>
+                            <div class="row"> 
+                                <div class="col-sm-6"> 
+                                    <label>Role Name</label>
+                                    <input class="form-control" type="text" name="role_name" id="e_role_name" value=""/>
+                                    {{-- <select class="select" name="role_name" id="e_role_name">
+                                        <option selected disabled> --Select --</option>
+                                        @foreach ($role_name as $role )
+                                        <option value="{{ $role->role_type }}">{{ $role->role_type }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                </div>
+                                <div class="col-sm-6"> 
+                                    <label>Position</label>
+                                    <input class="form-control" type="text" name="position" id="e_position" value=""/>
+                                    {{-- <select class="select" name="position" id="position">
+                                        <option selected disabled> --Select --</option>
+                                        @foreach ($position as $positions )
+                                        <option value="{{ $positions->position }}">{{ $positions->position }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row"> 
+                                <div class="col-sm-6"> 
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input class="form-control" type="text" id="e_phone_number" name="phone" placeholder="Enter Phone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6"> 
+                                    <label>Department</label>
+                                    <input class="form-control" type="text" name="department" id="e_department" value=""/>
+                                    {{-- <select class="select" name="department" id="department">
+                                        <option selected disabled> --Select --</option>
+                                        @foreach ($department as $departments )
+                                        <option value="{{ $departments->department }}">{{ $departments->department }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                </div>
+                            </div>
+                            <div class="row"> 
+                                <div class="col-sm-6"> 
+                                    <label>Status</label>
+                                    <input class="form-control" type="text" name="status" id="e_status" value=""/>
+                                    {{-- <select class="select" name="status" id="status">
+                                        <option selected disabled> --Select --</option>
+                                        @foreach ($status as $status )
+                                        <option value="{{ $status->type_name }}">{{ $status->type_name }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                </div>
+                                <div class="col-sm-6"> 
+                                    <label>Photo</label>
+                                    <input class="form-control" type="file" id="image" name="image">
+                                </div>
+                            </div>
+                            <br>
                             <div class="submit-section">
                                 <button type="submit" class="btn btn-primary submit-btn">Update</button>
                             </div>
@@ -517,5 +583,24 @@
         </div>
         <!-- /Delete User Modal -->
     </div>
-    <!-- /Page Wrapper -->  
+    <!-- /Page Wrapper -->
+    @section('script')
+    {{-- update js --}}
+    <script>
+        $(document).on('click','.userUpdate',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_id').val(_this.find('.id').text());
+            $('#e_name').val(_this.find('.name').text());
+            $('#e_email').val(_this.find('.email').text());
+            $('#e_phone_number').val(_this.find('.phone_number').text());
+            $('#e_role_name').val(_this.find('.role_name').text());
+            $('#e_position').val(_this.find('.position').text());
+            $('#e_department').val(_this.find('.department').text());
+            $('#e_status').val(_this.find('.statuss').text());
+
+        });
+    </script>
+    @endsection
+
 @endsection

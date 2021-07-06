@@ -273,6 +273,7 @@
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>		
 	<!-- Custom JS -->
 	<script src="{{ URL::to('assets/js/app.js') }}"></script>
+	
+	@yield('script')
 </body>
-
 </html>

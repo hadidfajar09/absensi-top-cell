@@ -33,21 +33,6 @@ class UserManagementController extends Controller
         }
         
     }
-    // view detail 
-    public function viewDetail($id)
-    {  
-        if (Auth::user()->role_name=='Admin')
-        {
-            $data = DB::table('users')->where('id',$id)->get();
-            $roleName = DB::table('role_type_users')->get();
-            $userStatus = DB::table('user_types')->get();
-            return view('usermanagement.view_users',compact('data','roleName','userStatus'));
-        }
-        else
-        {
-            return redirect()->route('main_dashboard');
-        }
-    }
     // use activity log
     public function activityLog()
     {
@@ -118,12 +103,9 @@ class UserManagementController extends Controller
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
-        
         $old_image = User::find($id);
-
         $image_name = $request->hidden_image;
         $image = $request->file('image');
-
         if($old_image->avatar=='photo_defaults.jpg')
         {
             if($image != '')
@@ -142,7 +124,6 @@ class UserManagementController extends Controller
             }
         }
         
-        
         $update = [
 
             'id'           => $id,
@@ -155,7 +136,6 @@ class UserManagementController extends Controller
         ];
 
         $activityLog = [
-
             'user_name'    => $fullName,
             'email'        => $email,
             'phone_number' => $phone_number,

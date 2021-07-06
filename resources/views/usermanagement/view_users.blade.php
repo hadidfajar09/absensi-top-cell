@@ -1,20 +1,10 @@
 @extends('layouts.master')
-@section('menu')
+{{-- @section('menu')
 @extends('sidebar.usermanagement')
-@endsection
+@endsection --}}
 @section('content')
 <div id="main">
-    <style>
-        .avatar.avatar-im .avatar-content, .avatar.avatar-xl img {
-            width: 40px !important;
-            height: 40px !important;
-            font-size: 1rem !important;
-        }
-        .form-group[class*=has-icon-].has-icon-lefts .form-select {
-            padding-left: 2rem;
-        }
 
-    </style>
     
     <header class="mb-3">
         <a href="#" class="burger-btn d-block d-xl-none">
