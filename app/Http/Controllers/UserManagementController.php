@@ -24,8 +24,8 @@ class UserManagementController extends Controller
             $role_name  = DB::table('role_type_users')->get();
             $position   = DB::table('position_types')->get();
             $department = DB::table('departments')->get();
-            $status     = DB::table('user_types')->get();
-            return view('usermanagement.user_control',compact('users','role_name','position','department','status'));
+            $status_user     = DB::table('user_types')->get();
+            return view('usermanagement.user_control',compact('users','role_name','position','department','status_user'));
         }
         else
         {
