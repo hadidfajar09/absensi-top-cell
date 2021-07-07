@@ -473,9 +473,9 @@
                     </div>
                     <br>
                     <div class="modal-body">
-                        <form action="{{ route('update') }}" method="POST">
+                        <form action="{{ route('update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="id" id="e_id" value="">
+                            <input type="hidden" name="rec_id" id="e_id" value="">
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
@@ -534,7 +534,7 @@
                                 </div>
                                 <div class="col-sm-6"> 
                                     <label>Photo</label>
-                                    <input class="form-control" type="file" id="image" name="image">
+                                    <input class="form-control" type="file" id="image" name="images">
                                     <input type="hidden" name="hidden_image" id="e_image" value="">
                                 </div>
                             </div>
@@ -602,7 +602,6 @@
             var statuss = (_this.find(".statuss").text());
             var _option = '<option selected value="' +statuss+ '">' + _this.find('.statuss').text() + '</option>'
             $( _option).appendTo("#e_status");
-            
             
         });
     </script>

@@ -94,24 +94,25 @@ class UserManagementController extends Controller
     // update
     public function update(Request $request)
     {
-        $id           = $request->id;
-        $fullName     = $request->fullName;
+        $rec_id       = $request->rec_id;
+        $name         = $request->name;
         $email        = $request->email;
-        $phone_number = $request->phone_number;
-        $status       = $request->status;
         $role_name    = $request->role_name;
+        $position     = $request->position;
+        $phone        = $request->phone;
+        $department   = $request->department;
+        $status       = $request->status;
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
-        $old_image = User::find($id);
         $image_name = $request->hidden_image;
-        $image = $request->file('image');
-        if($old_image->avatar=='photo_defaults.jpg')
+        $image = $request->file('images');
+        if($image_name =='photo_defaults.jpg')
         {
             if($image != '')
             {
                 $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
+                $image->move(public_path('/assets/images/'), $image_name);
             }
         }
         else{
@@ -119,26 +120,28 @@ class UserManagementController extends Controller
             if($image != '')
             {
                 $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $image_name);
-                unlink('images/'.$old_image->avatar);
+                $image->move(public_path('/assets/images/'), $image_name);
             }
         }
         
         $update = [
 
-            'id'           => $id,
-            'name'         => $fullName,
-            'avatar'       => $image_name,
-            'email'        => $email,
-            'phone_number' => $phone_number,
-            'status'       => $status,
+            'rec_id'       => $rec_id,
+            'name'         => $name,
             'role_name'    => $role_name,
+            'email'        => $email,
+            'position'     => $position,
+            'phone_number' => $phone,
+            'department'    => $department,
+            'status'       => $status,
+            'avatar'       => $image_name,
         ];
 
+
         $activityLog = [
-            'user_name'    => $fullName,
+            'user_name'    => $name,
             'email'        => $email,
-            'phone_number' => $phone_number,
+            'phone_number' => $phone,
             'status'       => $status,
             'role_name'    => $role_name,
             'modify_user'  => 'Update',
@@ -146,7 +149,7 @@ class UserManagementController extends Controller
         ];
 
         DB::table('user_activity_logs')->insert($activityLog);
-        User::where('id',$request->id)->update($update);
+        User::where('rec_id',$request->rec_id)->update($update);
         Toastr::success('User updated successfully :)','Success');
         return redirect()->route('userManagement');
     }
