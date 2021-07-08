@@ -20,6 +20,19 @@
                             <li><a href="{{ route('em/dashboard') }}">Employee Dashboard</a></li>
                         </ul>
                     </li>
+                    @if (Auth::user()->role_name=='Admin')
+                        <li class="menu-title"> <span>Authentication</span> </li>
+                        <li class="submenu">
+                            <a href="#" class="noti-dot">
+                                <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a class="active" href="{{ route('userManagement') }}">All User</a></li>
+                                <li><a href="{{ route('activity/log') }}">Activity Log</a></li>
+                                <li><a href="{{ route('activity/login/logout') }}">Activity User</a></li>
+                            </ul>
+                        </li>
+                    @endif
                     <li class="menu-title"> <span>Employees</span> </li>
                     <li class="submenu">
                         <a href="#" class="noti-dot">
@@ -175,7 +188,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <!-- /Page Header -->
             <div class="card mb-0">
                 <div class="card-body">
@@ -192,8 +205,8 @@
                                         <div class="col-md-5">
                                             <div class="profile-info-left">
                                                 <h3 class="user-name m-t-0 mb-0">{{ Auth::user()->name }}</h3>
-                                                <h6 class="text-muted">UI/UX Design Team</h6>
-                                                <small class="text-muted">Web Designer</small>
+                                                <h6 class="text-muted">{{ Auth::user()->department }}</h6>
+                                                <small class="text-muted">{{ Auth::user()->position }}</small>
                                                 <div class="staff-id">Employee ID : {{ Auth::user()->rec_id }}</div>
                                                 <div class="small doj text-muted">Date of Join : {{ Auth::user()->join_date }}</div>
                                                 <div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>

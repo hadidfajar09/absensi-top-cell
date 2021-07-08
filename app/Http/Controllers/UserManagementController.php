@@ -67,91 +67,105 @@ class UserManagementController extends Controller
             'password'  => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
+        DB::beginTransaction();
+        try{
+            $dt       = Carbon::now();
+            $todayDate = $dt->toDayDateTimeString();
 
-        $dt       = Carbon::now();
-        $todayDate = $dt->toDayDateTimeString();
+            $image = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('assets/images'), $image);
 
-        $image = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('assets/images'), $image);
-
-        $user = new User;
-        $user->name         = $request->name;
-        $user->email        = $request->email;
-        $user->join_date    = $todayDate;
-        $user->phone_number = $request->phone;
-        $user->role_name    = $request->role_name;
-        $user->position     = $request->position;
-        $user->department   = $request->department;
-        $user->status       = $request->status;
-        $user->avatar       = $image;
-        $user->password     = Hash::make($request->password);
-        $user->save();
-
-        Toastr::success('Create new account successfully :)','Success');
-        return redirect()->route('userManagement');
+            $user = new User;
+            $user->name         = $request->name;
+            $user->email        = $request->email;
+            $user->join_date    = $todayDate;
+            $user->phone_number = $request->phone;
+            $user->role_name    = $request->role_name;
+            $user->position     = $request->position;
+            $user->department   = $request->department;
+            $user->status       = $request->status;
+            $user->avatar       = $image;
+            $user->password     = Hash::make($request->password);
+            $user->save();
+            DB::commit();
+            Toastr::success('Create new account successfully :)','Success');
+            return redirect()->route('userManagement');
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('User add new account fail :)','Error');
+            return redirect()->back();
+        }
     }
     
     // update
     public function update(Request $request)
     {
-        $rec_id       = $request->rec_id;
-        $name         = $request->name;
-        $email        = $request->email;
-        $role_name    = $request->role_name;
-        $position     = $request->position;
-        $phone        = $request->phone;
-        $department   = $request->department;
-        $status       = $request->status;
+        DB::beginTransaction();
+        try{
+            $rec_id       = $request->rec_id;
+            $name         = $request->name;
+            $email        = $request->email;
+            $role_name    = $request->role_name;
+            $position     = $request->position;
+            $phone        = $request->phone;
+            $department   = $request->department;
+            $status       = $request->status;
 
-        $dt       = Carbon::now();
-        $todayDate = $dt->toDayDateTimeString();
-        $image_name = $request->hidden_image;
-        $image = $request->file('images');
-        if($image_name =='photo_defaults.jpg')
-        {
-            if($image != '')
+            $dt       = Carbon::now();
+            $todayDate = $dt->toDayDateTimeString();
+            $image_name = $request->hidden_image;
+            $image = $request->file('images');
+            if($image_name =='photo_defaults.jpg')
             {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('/assets/images/'), $image_name);
+                if($image != '')
+                {
+                    $image_name = rand() . '.' . $image->getClientOriginalExtension();
+                    $image->move(public_path('/assets/images/'), $image_name);
+                }
             }
-        }
-        else{
+            else{
+                
+                if($image != '')
+                {
+                    $image_name = rand() . '.' . $image->getClientOriginalExtension();
+                    $image->move(public_path('/assets/images/'), $image_name);
+                }
+            }
             
-            if($image != '')
-            {
-                $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('/assets/images/'), $image_name);
-            }
+            $update = [
+
+                'rec_id'       => $rec_id,
+                'name'         => $name,
+                'role_name'    => $role_name,
+                'email'        => $email,
+                'position'     => $position,
+                'phone_number' => $phone,
+                'department'   => $department,
+                'status'       => $status,
+                'avatar'       => $image_name,
+            ];
+
+            $activityLog = [
+                'user_name'    => $name,
+                'email'        => $email,
+                'phone_number' => $phone,
+                'status'       => $status,
+                'role_name'    => $role_name,
+                'modify_user'  => 'Update',
+                'date_time'    => $todayDate,
+            ];
+
+            DB::table('user_activity_logs')->insert($activityLog);
+            User::where('rec_id',$request->rec_id)->update($update);
+            DB::commit();
+            Toastr::success('User updated successfully :)','Success');
+            return redirect()->route('userManagement');
+
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('User update fail :)','Error');
+            return redirect()->back();
         }
-        
-        $update = [
-
-            'rec_id'       => $rec_id,
-            'name'         => $name,
-            'role_name'    => $role_name,
-            'email'        => $email,
-            'position'     => $position,
-            'phone_number' => $phone,
-            'department'    => $department,
-            'status'       => $status,
-            'avatar'       => $image_name,
-        ];
-
-
-        $activityLog = [
-            'user_name'    => $name,
-            'email'        => $email,
-            'phone_number' => $phone,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Update',
-            'date_time'    => $todayDate,
-        ];
-
-        DB::table('user_activity_logs')->insert($activityLog);
-        User::where('rec_id',$request->rec_id)->update($update);
-        Toastr::success('User updated successfully :)','Success');
-        return redirect()->route('userManagement');
     }
     // delete
     public function delete($id)
@@ -159,34 +173,42 @@ class UserManagementController extends Controller
         $user = Auth::User();
         Session::put('user', $user);
         $user=Session::get('user');
+        DB::beginTransaction();
+        try{
+            $fullName     = $user->name;
+            $email        = $user->email;
+            $phone_number = $user->phone_number;
+            $status       = $user->status;
+            $role_name    = $user->role_name;
 
-        $fullName     = $user->name;
-        $email        = $user->email;
-        $phone_number = $user->phone_number;
-        $status       = $user->status;
-        $role_name    = $user->role_name;
+            $dt       = Carbon::now();
+            $todayDate = $dt->toDayDateTimeString();
 
-        $dt       = Carbon::now();
-        $todayDate = $dt->toDayDateTimeString();
+            $activityLog = [
 
-        $activityLog = [
+                'user_name'    => $fullName,
+                'email'        => $email,
+                'phone_number' => $phone_number,
+                'status'       => $status,
+                'role_name'    => $role_name,
+                'modify_user'  => 'Delete',
+                'date_time'    => $todayDate,
+            ];
 
-            'user_name'    => $fullName,
-            'email'        => $email,
-            'phone_number' => $phone_number,
-            'status'       => $status,
-            'role_name'    => $role_name,
-            'modify_user'  => 'Delete',
-            'date_time'    => $todayDate,
-        ];
+            DB::table('user_activity_logs')->insert($activityLog);
 
-        DB::table('user_activity_logs')->insert($activityLog);
-
-        $delete = User::find($id);
-        unlink('images/'.$delete->avatar);
-        $delete->delete();
-        Toastr::success('User deleted successfully :)','Success');
-        return redirect()->route('userManagement');
+            $delete = User::find($id);
+            unlink('assets/images/'.$delete->avatar);
+            $delete->delete();
+            DB::commit();
+            Toastr::success('User deleted successfully :)','Success');
+            return redirect()->route('userManagement');
+            
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('User deleted fail :)','Error');
+            return redirect()->back();
+        }
     }
 
     // view change password

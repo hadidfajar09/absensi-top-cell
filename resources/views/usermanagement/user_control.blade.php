@@ -31,6 +31,8 @@
                             </a>
                             <ul style="display: none;">
                                 <li><a class="active" href="{{ route('userManagement') }}">All User</a></li>
+                                <li><a href="{{ route('activity/log') }}">Activity Log</a></li>
+                                <li><a href="{{ route('activity/login/logout') }}">Activity User</a></li>
                             </ul>
                         </li>
                     @endif
@@ -215,9 +217,9 @@
                         <div class="form-group form-focus select-focus">
                             <select class="select floating" id="" name="role_name"> 
                                 <option> -- Select -- </option>
-                                <option value="1">Admin</option>
-                                <option value="2">Super Admin</option>
-                                <option value="3">Normal User</option>
+                                @foreach ($role_name as $role )
+                                <option value="{{ $role->role_type }}">{{ $role->role_type }}</option>
+                                @endforeach
                             </select>
                             <label class="focus-label">Role Name</label>
                         </div>
@@ -226,9 +228,9 @@
                         <div class="form-group form-focus select-focus">
                             <select class="select floating" id="" name="status"> 
                                 <option> -- Select -- </option>
-                                <option> Active </option>
-                                <option> Inactive </option>
-                                <option> Disable </option>
+                                @foreach ($status_user as $status )
+                                <option value="{{ $status->type_name }}">{{ $status->type_name }}</option>
+                                @endforeach
                             </select>
                             <label class="focus-label">Status</label>
                         </div>
@@ -346,7 +348,8 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item userUpdate" data-toggle="modal" data-id="'.$user->id.'" data-target="#edit_user"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                <a class="dropdown-item" href="{{ url('delete_user/'.$user->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -550,7 +553,7 @@
         <!-- /Edit Salary Modal -->
 				
         <!-- Delete User Modal -->
-        <div class="modal custom-modal fade" id="delete_user" role="dialog">
+        {{-- <div class="modal custom-modal fade" id="delete_user" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -571,7 +574,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- /Delete User Modal -->
     </div>
     <!-- /Page Wrapper -->

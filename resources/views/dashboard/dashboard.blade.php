@@ -31,6 +31,8 @@
                             </a>
                             <ul style="display: none;">
                                 <li><a href="{{ route('userManagement') }}">All User</a></li>
+                                <li><a href="{{ route('activity/log') }}">Activity Log</a></li>
+                                <li><a href="{{ route('activity/login/logout') }}">Activity User</a></li>
                             </ul>
                         </li>
                     @endif
