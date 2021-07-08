@@ -206,6 +206,7 @@
 
             <!-- Search Filter -->
             <form action="">
+                @csrf
                 <div class="row filter-row">
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
                         <div class="form-group form-focus">

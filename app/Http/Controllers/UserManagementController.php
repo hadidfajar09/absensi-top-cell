@@ -225,10 +225,11 @@ class UserManagementController extends Controller
             'new_password' => ['required'],
             'new_confirm_password' => ['same:new_password'],
         ]);
-   
+
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        DB::commit();
         Toastr::success('User change successfully :)','Success');
-        return redirect()->route('dashboard.main_dashboard');
+        return redirect()->intended('home');
     }
 }
 

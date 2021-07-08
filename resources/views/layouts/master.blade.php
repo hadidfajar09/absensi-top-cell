@@ -35,6 +35,11 @@
 </head>
 
 <body>
+	<style>    
+		.invalid-feedback{
+			font-size: 14px;
+		}
+	</style>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 		
@@ -231,7 +236,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{ route('profile_user') }}">My Profile</a>
 						<a class="dropdown-item" href="settings.html">Settings</a>
-						<a class="dropdown-item" href="settings.html">Change Password</a>
+						<a class="dropdown-item" href="{{ route('change/password') }}">Change Password</a>
 						<a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
 					</div>
 				</li>
