@@ -205,7 +205,7 @@
 			<!-- /Page Header -->
 
             <!-- Search Filter -->
-            <form action="">
+            <form action="{{ route('search/user/list') }}" method="POST">
                 @csrf
                 <div class="row filter-row">
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
@@ -279,7 +279,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $key=>$user )
+                                @foreach ($result as $key=>$user )
                                 <tr>
                                     <td>
                                         <span hidden class="image">{{ $user->avatar}}</span>
@@ -363,6 +363,7 @@
             </div>
         </div>
         <!-- /Page Content -->
+        
 
         <!-- Add User Modal -->
         <div id="add_user" class="modal custom-modal fade" role="dialog">

@@ -13,10 +13,27 @@ use Session;
 use Auth;
 use Hash;
 
-
 class UserManagementController extends Controller
 {
     public function index()
+    {
+        if (Auth::user()->role_name=='Admin')
+        {
+            $result      = DB::table('users')->get();
+            $role_name  = DB::table('role_type_users')->get();
+            $position   = DB::table('position_types')->get();
+            $department = DB::table('departments')->get();
+            $status_user     = DB::table('user_types')->get();
+            return view('usermanagement.user_control',compact('result','role_name','position','department','status_user'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+        
+    }
+    // search user
+    public function searchUser(Request $request)
     {
         if (Auth::user()->role_name=='Admin')
         {
@@ -25,14 +42,22 @@ class UserManagementController extends Controller
             $position   = DB::table('position_types')->get();
             $department = DB::table('departments')->get();
             $status_user     = DB::table('user_types')->get();
-            return view('usermanagement.user_control',compact('users','role_name','position','department','status_user'));
+            
+            $name      = $request->name;
+            $role_names = $request->role_name;
+
+            $result = User::where('name','LIKE','%'.$name.'%')
+                            ->orWhere('role_name','LIKE','%'.$role_names.'%')
+                            ->get();
+            return view('usermanagement.user_control',compact('users','role_name','position','department','status_user','result'));
         }
         else
         {
             return redirect()->route('home');
         }
-        
+    
     }
+
     // use activity log
     public function activityLog()
     {
