@@ -215,24 +215,14 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                        <div class="form-group form-focus select-focus">
-                            <select class="select floating" id="" name="role_name"> 
-                                <option> -- Select -- </option>
-                                @foreach ($role_name as $role )
-                                <option value="{{ $role->role_type }}">{{ $role->role_type }}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" id="name" name="role_name">
                             <label class="focus-label">Role Name</label>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"> 
-                        <div class="form-group form-focus select-focus">
-                            <select class="select floating" id="" name="status"> 
-                                <option> -- Select -- </option>
-                                @foreach ($status_user as $status )
-                                <option value="{{ $status->type_name }}">{{ $status->type_name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" id="name" name="status">
                             <label class="focus-label">Status</label>
                         </div>
                     </div>

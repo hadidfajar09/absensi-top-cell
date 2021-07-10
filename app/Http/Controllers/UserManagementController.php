@@ -42,13 +42,58 @@ class UserManagementController extends Controller
             $position   = DB::table('position_types')->get();
             $department = DB::table('departments')->get();
             $status_user     = DB::table('user_types')->get();
-            
-            $name      = $request->name;
-            $role_names = $request->role_name;
 
-            $result = User::where('name','LIKE','%'.$name.'%')
-                            ->orWhere('role_name','LIKE','%'.$role_names.'%')
-                            ->get();
+            // search by name
+            if($request->name)
+            {
+                $result = User::where('name','LIKE','%'.$request->name.'%')->get();
+            }
+
+            // search by role name
+            if($request->role_name)
+            {
+                $result = User::where('role_name','LIKE','%'.$request->role_name.'%')->get();
+            }
+
+            // search by status
+            if($request->status)
+            {
+                $result = User::where('status','LIKE','%'.$request->status.'%')->get();
+            }
+
+            // search by name and role name
+            if($request->name && $request->role_name)
+            {
+                $result = User::where('name','LIKE','%'.$request->name.'%')
+                                ->where('role_name','LIKE','%'.$request->role_name.'%')
+                                ->get();
+            }
+
+            // search by role name and status
+            if($request->role_name && $request->status)
+            {
+                $result = User::where('role_name','LIKE','%'.$request->role_name.'%')
+                                ->where('status','LIKE','%'.$request->status.'%')
+                                ->get();
+            }
+
+            // search by name and status
+            if($request->name && $request->status)
+            {
+                $result = User::where('name','LIKE','%'.$request->name.'%')
+                                ->where('status','LIKE','%'.$request->status.'%')
+                                ->get();
+            }
+
+            // search by name and role name and status
+            if($request->name && $request->role_name && $request->status)
+            {
+                $result = User::where('name','LIKE','%'.$request->name.'%')
+                                ->where('role_name','LIKE','%'.$request->role_name.'%')
+                                ->where('status','LIKE','%'.$request->status.'%')
+                                ->get();
+            }
+           
             return view('usermanagement.user_control',compact('users','role_name','position','department','status_user','result'));
         }
         else
