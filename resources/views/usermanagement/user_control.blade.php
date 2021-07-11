@@ -46,7 +46,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="employees.html">All Employees</a></li>
+                            <li><a href="{{ route('all/employee/list') }}">All Employees</a></li>
                             <li><a href="holidays.html">Holidays</a></li>
                             <li><a href="leaves.html">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
@@ -229,7 +229,7 @@
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
                         <div class="form-group form-focus">
                             <div class="cal-icon">
-                                <input class="form-control floating datetimepicker" type="text" id="" name="from">
+                                <input class="form-control floating datetimepicker" type="text" id="" name="fromDate">
                             </div>
                             <label class="focus-label">From</label>
                         </div>
@@ -237,7 +237,7 @@
                     <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
                         <div class="form-group form-focus">
                             <div class="cal-icon">
-                                <input class="form-control floating datetimepicker" type="text" id="" name="to">
+                                <input class="form-control floating datetimepicker" type="text" id="" name="toDate">
                             </div>
                             <label class="focus-label">To</label>
                         </div>

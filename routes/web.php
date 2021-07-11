@@ -5,8 +5,8 @@ use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LockScreen;
 
 
@@ -83,6 +83,9 @@ Route::post('search/user/list', [App\Http\Controllers\UserManagementController::
 // ----------------------------- form change password ------------------------------//
 Route::get('change/password', [App\Http\Controllers\UserManagementController::class, 'changePasswordView'])->middleware('auth')->name('change/password');
 Route::post('change/password/db', [App\Http\Controllers\UserManagementController::class, 'changePasswordDB'])->name('change/password/db');
+
+// ----------------------------- form change password ------------------------------//
+Route::get('all/employee/list', [App\Http\Controllers\EmployeeController::class, 'listAllEmployee'])->middleware('auth')->name('all/employee/list');
 
 
 
