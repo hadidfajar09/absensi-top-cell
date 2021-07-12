@@ -46,7 +46,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a class="active" href="{{ route('all/employee/list') }}">All Employees</a></li>
+                            <li><a class="active" href="{{ route('all/employee/card') }}">All Employees</a></li>
                             <li><a href="holidays.html">Holidays</a></li>
                             <li><a href="leaves.html">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
@@ -200,8 +200,8 @@
                     <div class="col-auto float-right ml-auto">
                         <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
                         <div class="view-icons">
-                            <a href="employees.html" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
-                            <a href="employees-list.html" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
+                            <a href="{{ route('all/employee/card') }}" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
+                            <a href="{{ route('all/employee/list') }}" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
                         </div>
                     </div>
                 </div>
@@ -242,197 +242,248 @@
             {{-- message --}}
             {!! Toastr::message() !!}
 
-            <div class="row staff-grid-row">
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">John Doe</a></h4>
-                        <div class="small text-muted">Web Designer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Richard Miles</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">John Smith</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Mike Litorus</a></h4>
-                        <div class="small text-muted">IOS Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Wilmer Deluna</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Jeffrey Warden</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Bernardo Galaviz</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Lesley Grauer</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Jeffery Lalor</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-04.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Loren Gatlin</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-03.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Tarah Shropshire</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-08.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Catherine Manseau</a></h4>
-                        <div class="small text-muted">Android Developer</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped custom-table datatable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Employee ID</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th class="text-nowrap">Join Date</th>
+                                    <th>Role</th>
+                                    <th class="text-right no-sort">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}"></a>
+                                            <a href="profile.html">John Doe <span>Web Designer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0001</td>
+                                    <td>johndoe@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>1 Jan 2013</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}"></a>
+                                            <a href="profile.html">Richard Miles <span>Web Developer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0002</td>
+                                    <td>richardmiles@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>18 Mar 2014</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}"></a>
+                                            <a href="profile.html">John Smith <span>Android Developer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0003</td>
+                                    <td>johnsmith@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>1 Apr 2014</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}"></a>
+                                            <a href="profile.html">Mike Litorus <span>IOS Developer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0004</td>
+                                    <td>mikelitorus@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>1 Apr 2014</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}"></a>
+                                            <a href="profile.html">Wilmer Deluna <span>Team Leader</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0005</td>
+                                    <td>wilmerdeluna@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>22 May 2014</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}"></a>
+                                            <a href="profile.html">Jeffrey Warden <span>Web Developer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0006</td>
+                                    <td>jeffreywarden@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>16 Jun 2013</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}"></a>
+                                            <a href="profile.html">Bernardo Galaviz <span>Web Developer</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>FT-0007</td>
+                                    <td>bernardogalaviz@example.com</td>
+                                    <td>9876543210</td>
+                                    <td>1 Jan 2013</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Software Engineer</a>
+                                                <a class="dropdown-item" href="#">Software Tester</a>
+                                                <a class="dropdown-item" href="#">Frontend Developer</a>
+                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
