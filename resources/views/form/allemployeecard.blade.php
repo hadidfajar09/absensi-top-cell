@@ -241,7 +241,6 @@
             <!-- Search Filter -->
             {{-- message --}}
             {!! Toastr::message() !!}
-
             <div class="row staff-grid-row">
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                     <div class="profile-widget">
@@ -454,86 +453,29 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="col-form-label">First Name <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Last Name</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Username <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text">
+                                        <label class="col-form-label">Full Name <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" placeholder="Enter full name">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Password</label>
-                                        <input class="form-control" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Confirm Password</label>
-                                        <input class="form-control" type="password">
+                                        <input class="form-control" type="email" placeholder="Enter email">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">  
                                     <div class="form-group">
                                         <label class="col-form-label">Employee ID <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">  
-                                    <div class="form-group">
-                                        <label class="col-form-label">Joining Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Phone </label>
-                                        <input class="form-control" type="text">
+                                        <input type="text" class="form-control" placeholder="Auto id employee">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Company</label>
                                         <select class="select">
-                                            <option value="">Global Technologies</option>
-                                            <option value="1">Delta Infotech</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Department <span class="text-danger">*</span></label>
-                                        <select class="select">
-                                            <option>Select Department</option>
-                                            <option>Web Development</option>
-                                            <option>IT Management</option>
-                                            <option>Marketing</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Designation <span class="text-danger">*</span></label>
-                                        <select class="select">
-                                            <option>Select Designation</option>
-                                            <option>Web Designer</option>
-                                            <option>Web Developer</option>
-                                            <option>Android Developer</option>
+                                            <option value="">-- Select --</option>
+                                            <option value="Soeng Souy">Soeng Souy</option>
+                                            <option value="StarGame Kh">StarGame Kh</option>
                                         </select>
                                     </div>
                                 </div>
