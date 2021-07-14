@@ -93,17 +93,6 @@ class UserManagementController extends Controller
                                 ->where('status','LIKE','%'.$request->status.'%')
                                 ->get();
             }
-
-            // search by name and role name and status
-            if($request->fromDate)
-            {
-                return dd($request->fromDate);
-
-                $result = User::where('name','LIKE','%'.$request->name.'%')
-                                ->where('role_name','LIKE','%'.$request->role_name.'%')
-                                ->where('status','LIKE','%'.$request->status.'%')
-                                ->get();
-            }
            
             return view('usermanagement.user_control',compact('users','role_name','position','department','status_user','result'));
         }
