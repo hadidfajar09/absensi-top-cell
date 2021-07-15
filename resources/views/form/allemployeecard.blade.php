@@ -449,7 +449,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('all/employee/save') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -478,7 +479,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Company</label>
-                                        <select class="select">
+                                        <select class="select" id="company" name="company">
                                             <option value="">-- Select --</option>
                                             <option value="Soeng Souy">Soeng Souy</option>
                                             <option value="StarGame Kh">StarGame Kh</option>
@@ -503,169 +504,169 @@
                                         <tr>
                                             <td>Holidays</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Leaves</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Clients</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Projects</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tasks</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Chats</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Assets</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Timing Sheets</td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox">
+                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox">
+                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
                                         </tr>
                                     </tbody>

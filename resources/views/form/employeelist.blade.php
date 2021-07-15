@@ -505,26 +505,32 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="col-form-label">Full Name <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" placeholder="Enter full name">
+                                        <label class="col-form-label">Full Name</label>
+                                        <select class="select" id="name" name="name">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $key=>$user )
+                                                <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }} data-email={{ $user->email }}>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
+                            
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email" placeholder="Enter email">
+                                        <input class="form-control" type="email" id="email" name="email" placeholder="Auto email" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">  
                                     <div class="form-group">
                                         <label class="col-form-label">Employee ID <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="Auto id employee">
+                                        <input type="text" class="form-control" id="employee_id" name="employee_id" placeholder="Auto id employee" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Company</label>
-                                        <select class="select">
+                                        <select class="select" id="company" name="company">
                                             <option value="">-- Select --</option>
                                             <option value="Soeng Souy">Soeng Souy</option>
                                             <option value="StarGame Kh">StarGame Kh</option>
@@ -1050,6 +1056,14 @@
     </div>
     <!-- /Page Wrapper -->
     @section('script')
+    <script>
+        // select auto id and email
+        $('#name').on('change',function()
+        {
+            $('#employee_id').val($(this).find(':selected').data('employee_id'));
+            $('#email').val($(this).find(':selected').data('email'));
+        });
+    </script>
     {{-- update js --}}
     <script>
         $(document).on('click','.userUpdate',function()

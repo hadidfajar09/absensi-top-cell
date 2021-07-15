@@ -122,9 +122,9 @@ class UserManagementController extends Controller
         return view('usermanagement.profile_user');
     }
    
-     // save new user
-     public function addNewUserSave(Request $request)
-     {
+    // save new user
+    public function addNewUserSave(Request $request)
+    {
         $request->validate([
             'name'      => 'required|string|max:255',
             'email'     => 'required|string|email|max:255|unique:users',
