@@ -17,16 +17,10 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('birth_date')->nullable();
+            $table->string('gender')->nullable();
             $table->string('employee_id')->nullable();
             $table->string('company')->nullable();
-            $table->string('holidays')->nullable();
-            $table->string('leaves')->nullable();
-            $table->string('clients')->nullable();
-            $table->string('projects')->nullable();
-            $table->string('tasks')->nullable();
-            $table->string('chats')->nullable();
-            $table->string('assets')->nullable();
-            $table->string('timing_sheets')->nullable();
             $table->timestamps();
         });
     }

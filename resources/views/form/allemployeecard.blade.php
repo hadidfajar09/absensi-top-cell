@@ -470,6 +470,23 @@
                                         <input class="form-control" type="email" id="email" name="email" placeholder="Auto email" readonly>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Birth Date</label>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <select class="select form-control" id="gender" name="gender">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">  
                                     <div class="form-group">
                                         <label class="col-form-label">Employee ID <span class="text-danger">*</span></label>
@@ -503,27 +520,29 @@
                                     <tbody>
                                         <tr>
                                             <td>Holidays</td>
+                                            <input type="hidden" name="holidays" value="Holidays">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="holidaysRead" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" id="holidays" name="holidaysWrite" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" id="holidays" name="holidaysCreate" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" id="holidays" name="holidaysDelete" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" id="holidays" name="holidaysImport" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" id="holidays" name="holidaysExport" value="Y">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Leaves</td>
+                                            <input type="hidden" name="leaves[]" value="Leaves">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
                                             </td>
@@ -545,6 +564,7 @@
                                         </tr>
                                         <tr>
                                             <td>Clients</td>
+                                            <input type="hidden" name="clients[]" value="Clients">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
                                             </td>
@@ -566,6 +586,7 @@
                                         </tr>
                                         <tr>
                                             <td>Projects</td>
+                                            <input type="hidden" name="projects[]" value="Projects">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="projects" name="projects[]" value="Y">
                                             </td>
@@ -587,6 +608,7 @@
                                         </tr>
                                         <tr>
                                             <td>Tasks</td>
+                                            <input type="hidden" name="tasks[]" value="Tasks">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
                                             </td>
@@ -608,6 +630,7 @@
                                         </tr>
                                         <tr>
                                             <td>Chats</td>
+                                            <input type="hidden" name="chats[]" value="Chats">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
                                             </td>
@@ -629,6 +652,7 @@
                                         </tr>
                                         <tr>
                                             <td>Assets</td>
+                                            <input type="hidden" name="assets[]" value="Assets">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
                                             </td>
@@ -650,6 +674,7 @@
                                         </tr>
                                         <tr>
                                             <td>Timing Sheets</td>
+                                            <input type="hidden" name="timing_sheets[]" value="Timing Sheets">
                                             <td class="text-center">
                                                 <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
                                             </td>
