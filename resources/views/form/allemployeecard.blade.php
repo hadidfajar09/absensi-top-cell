@@ -242,10 +242,11 @@
             {{-- message --}}
             {!! Toastr::message() !!}
             <div class="row staff-grid-row">
+                @foreach ($users as $items )
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                     <div class="profile-widget">
                         <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}" alt=""></a>
+                            <a href="profile.html" class="avatar"><img src="{{ URL::to('/assets/images/'. $items->avatar) }}" alt="{{ $items->avatar }}" alt="{{ $items->avatar }}"></a>
                         </div>
                         <div class="dropdown profile-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -254,186 +255,11 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                             </div>
                         </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">John Doe</a></h4>
-                        <div class="small text-muted">Web Designer</div>
+                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">{{ $items->name }}</a></h4>
+                        <div class="small text-muted">{{ $items->position }}</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Richard Miles</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">John Smith</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Mike Litorus</a></h4>
-                        <div class="small text-muted">IOS Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Wilmer Deluna</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Jeffrey Warden</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Bernardo Galaviz</a></h4>
-                        <div class="small text-muted">Web Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Lesley Grauer</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Jeffery Lalor</a></h4>
-                        <div class="small text-muted">Team Leader</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-04.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Loren Gatlin</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-03.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Tarah Shropshire</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                    <div class="profile-widget">
-                        <div class="profile-img">
-                            <a href="profile.html" class="avatar"><img src="{{ URL::to('assets/img/profiles/avatar-08.jpg') }}" alt=""></a>
-                        </div>
-                        <div class="dropdown profile-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                            </div>
-                        </div>
-                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="profile.html">Catherine Manseau</a></h4>
-                        <div class="small text-muted">Android Developer</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- /Page Content -->
@@ -457,7 +283,7 @@
                                         <label class="col-form-label">Full Name</label>
                                         <select class="select" id="name" name="name">
                                             <option value="">-- Select --</option>
-                                            @foreach ($users as $key=>$user )
+                                            @foreach ($userList as $key=>$user )
                                                 <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }} data-email={{ $user->email }}>{{ $user->name }}</option>
                                             @endforeach
                                         </select>
@@ -520,178 +346,186 @@
                                     <tbody>
                                         <tr>
                                             <td>Holidays</td>
-                                            <input type="hidden" name="holidays" value="Holidays">
+                                            <input type="hidden" name="permission[]" value="Holidays">
+                                            <input type="hidden" name="id_count[]" value="1">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="holidays" name="holidaysRead" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidaysWrite" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidaysCreate" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidaysDelete" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidaysImport" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidaysExport" value="Y">
+                                                <input checked="" type="checkbox" id="holidays" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Leaves</td>
-                                            <input type="hidden" name="leaves[]" value="Leaves">
+                                            <input type="hidden" name="permission[]" value="Leaves">
+                                            <input type="hidden" name="id_count[]" value="2">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" id="leaves" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Clients</td>
-                                            <input type="hidden" name="clients[]" value="Clients">
+                                            <input type="hidden" name="permission[]" value="Clients">
+                                            <input type="hidden" name="id_count[]" value="3">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" id="clients" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Projects</td>
-                                            <input type="hidden" name="projects[]" value="Projects">
+                                            <input type="hidden" name="permission[]" value="Projects">
+                                            <input type="hidden" name="id_count[]" value="4">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" id="projects" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tasks</td>
-                                            <input type="hidden" name="tasks[]" value="Tasks">
+                                            <input type="hidden" name="permission[]" value="Tasks">
+                                            <input type="hidden" name="id_count[]" value="5">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="delete[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" id="tasks" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Chats</td>
-                                            <input type="hidden" name="chats[]" value="Chats">
+                                            <input type="hidden" name="permission[]" value="Chats">
+                                            <input type="hidden" name="id_count[]" value="6">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="delete[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" id="chats" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Assets</td>
-                                            <input type="hidden" name="assets[]" value="Assets">
+                                            <input type="hidden" name="permission[]" value="Assets">
+                                            <input type="hidden" name="id_count[]" value="7">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="delete[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" id="assets" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Timing Sheets</td>
-                                            <input type="hidden" name="timing_sheets[]" value="Timing Sheets">
+                                            <input type="hidden" name="permission[]" value="Timing Sheets">
+                                            <input type="hidden" name="id_count[]" value="8">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="read[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="write[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="create[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="delete[]" value="Y">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" id="timing" name="export[]" value="N">
                                             </td>
                                         </tr>
                                     </tbody>
