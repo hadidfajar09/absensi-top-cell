@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Employee;
+use App\Models\User;
 
 class EmployeeController extends Controller
 {
@@ -45,34 +46,43 @@ class EmployeeController extends Controller
         DB::beginTransaction();
         try{
 
-            $employee = new Employee;
-            $employee->name         = $request->name;
-            $employee->email        = $request->email;
-            $employee->birth_date   = $request->birthDate;
-            $employee->gender       = $request->gender;
-            $employee->employee_id  = $request->employee_id;
-            $employee->company      = $request->company;
-            $employee->save();
+            $employees = Employee::where('email', '=',$request->email)->first();
 
-            for($i=0;$i<count($request->id_count);$i++)
+            if ($employees === null)
             {
-                $module_permissions = [
-                    'employee_id' => $request->employee_id,
-                    'module_permission' => $request->permission[$i],
-                    'id_count'          => $request->id_count[$i],
-                    'read'              => $request->read[$i],
-                    'write'             => $request->write[$i],
-                    'create'            => $request->create[$i],
-                    'delete'            => $request->delete[$i],
-                    'import'            => $request->import[$i],
-                    'export'            => $request->export[$i],
-                ];
-                DB::table('module_permissions')->insert($module_permissions);
+                $employee = new Employee;
+                $employee->name         = $request->name;
+                $employee->email        = $request->email;
+                $employee->birth_date   = $request->birthDate;
+                $employee->gender       = $request->gender;
+                $employee->employee_id  = $request->employee_id;
+                $employee->company      = $request->company;
+                $employee->save();
+    
+                for($i=0;$i<count($request->id_count);$i++)
+                {
+                    $module_permissions = [
+                        'employee_id' => $request->employee_id,
+                        'module_permission' => $request->permission[$i],
+                        'id_count'          => $request->id_count[$i],
+                        'read'              => $request->read[$i],
+                        'write'             => $request->write[$i],
+                        'create'            => $request->create[$i],
+                        'delete'            => $request->delete[$i],
+                        'import'            => $request->import[$i],
+                        'export'            => $request->export[$i],
+                    ];
+                    DB::table('module_permissions')->insert($module_permissions);
+                }
+                
+                DB::commit();
+                Toastr::success('Add new employee successfully :)','Success');
+                return redirect()->route('all/employee/card');
+            } else {
+                DB::rollback();
+                Toastr::error('Add new employee exits :)','Error');
+                return redirect()->back();
             }
-            
-            DB::commit();
-            Toastr::success('Add new employee successfully :)','Success');
-            return redirect()->route('all/employee/card');
         }catch(\Exception $e){
             DB::rollback();
             Toastr::error('Add new employee fail :)','Error');

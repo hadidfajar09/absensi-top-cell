@@ -270,11 +270,7 @@
                                     <td>{{ $items->email }}</td>
                                     <td>{{ $items->phone_number }}</td>
                                     <td>{{ $items->join_date }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ $items->role_name }}</a>
-                                        </div>
-                                    </td>
+                                    <td>{{ $items->role_name }}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -376,178 +372,234 @@
                                     <tbody>
                                         <tr>
                                             <td>Holidays</td>
-                                            <input type="hidden" name="holidays[]" value="Holidays">
+                                            <input type="hidden" name="permission[]" value="Holidays">
+                                            <input type="hidden" name="id_count[]" value="1">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input checked="" type="checkbox" class="read" id="holidays" name="read[]" value="Y">
+                                                <input type="checkbox" class="read" id="holidays" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" class="write" id="holidays" name="write[]" value="Y">
+                                                <input checked="" class="write" type="checkbox" id="holidays" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" class="create" id="holidays" name="create[]" value="Y">
+                                                <input checked="" class="create" type="checkbox" id="holidays" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" class="delete" id="holidays" name="delete[]" value="Y">
+                                                <input checked="" class="delete" type="checkbox" id="holidays" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" class="import" id="holidays" name="import[]" value="N">
+                                                <input checked="" type="checkbox" class="import" id="holidays" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="holidays" name="holidays[]" value="Y">
+                                                <input type="checkbox" class="export" id="holidays" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export" id="holidays" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Leaves</td>
-                                            <input type="hidden" name="leaves[]" value="Leaves">
+                                            <input type="hidden" name="permission[]" value="Leaves">
+                                            <input type="hidden" name="id_count[]" value="2">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" class="read1" id="leaves" name="read[]" value="Y">
+                                                <input type="checkbox" class="read1" id="leaves" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" class="write1" id="leaves" name="write[]" value="Y">
+                                                <input type="checkbox" class="write1" id="leaves" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input checked="" type="checkbox" class="create1" id="leaves" name="create[]" value="Y">
+                                                <input type="checkbox" class="create1" id="leaves" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input  type="checkbox" class="delete1" id="leaves" name="delete[]" value="Y">
+                                                <input checked="" type="checkbox" class="delete1" id="leaves" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input type="checkbox" class="import1" id="leaves" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import1" id="leaves" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="leaves" name="leaves[]" value="Y">
+                                                <input  type="checkbox" class="export1" id="leaves" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export1" id="leaves" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Clients</td>
-                                            <input type="hidden" name="clients[]" value="Clients">
+                                            <input type="hidden" name="permission[]" value="Clients">
+                                            <input type="hidden" name="id_count[]" value="3">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" class="read2" id="clients" name="read[]" value="Y">
+                                                <input type="checkbox" class="read2" id="clients" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" class="write2" id="clients" name="write[]" value="Y">
+                                                <input type="checkbox" class="write2" id="clients" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input checked="" type="checkbox" class="delete2" id="clients" name="create[]" value="Y">
+                                                <input  type="checkbox" class="delete2" id="clients" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input type="checkbox" class="" id="clients" name="delete[]" value="Y">
+                                                <input checked="" type="checkbox" class="" id="clients" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input type="checkbox" class="import2" id="clients" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import2" id="clients" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="clients" name="clients[]" value="Y">
+                                                <input type="checkbox" class="export2" id="clients" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export2" id="clients" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Projects</td>
-                                            <input type="hidden" name="projects[]" value="Projects">
+                                            <input type="hidden" name="permission[]" value="Projects">
+                                            <input type="hidden" name="id_count[]" value="4">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input checked="" type="checkbox" class="read3" id="projects" name="read[]" value="Y">
+                                                <input  type="checkbox" class="read3" id="projects" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input type="checkbox" class="write3" id="projects" name="write[]" value="Y">
+                                                <input checked="" type="checkbox" class="write3" id="projects" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input type="checkbox" class="create3" id="projects" name="create[]" value="Y">
+                                                <input checked="" type="checkbox" class="create3" id="projects" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input type="checkbox" class="delete3" id="projects" name="delete[]" value="Y">
+                                                <input checked="" type="checkbox" class="delete3" id="projects" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input type="checkbox" class="import3" id="projects" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import3" id="projects" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="projects" name="projects[]" value="Y">
+                                                <input type="checkbox" class="export3" id="projects" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export" id="projects" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tasks</td>
-                                            <input type="hidden" name="tasks[]" value="Tasks">
+                                            <input type="hidden" name="permission[]" value="Tasks">
+                                            <input type="hidden" name="id_count[]" value="5">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" class="read4" id="tasks" name="read[]" value="Y">
+                                                <input type="checkbox" class="read4" id="tasks" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" class="write4" id="tasks" name="write[]" value="Y">
+                                                <input type="checkbox" class="write4" id="tasks" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" class="create4" id="tasks" name="create[]" value="Y">
+                                                <input type="checkbox" class="" id="tasks" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input checked="" type="checkbox" class="create4" id="tasks" name="delete[]" value="Y">
+                                                <input type="checkbox" class="" id="tasks" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input type="checkbox" class="import4" id="tasks" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import4" id="tasks" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="tasks" name="tasks[]" value="Y">
+                                                <input type="checkbox" class="export4" id="tasks" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export4" id="tasks" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Chats</td>
-                                            <input type="hidden" name="chats[]" value="Chats">
+                                            <input type="hidden" name="permission[]" value="Chats">
+                                            <input type="hidden" name="id_count[]" value="6">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" class="read5" id="chats" name="read[]" value="Y">
+                                                <input type="checkbox" class="read5" id="chats" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" class="write5" id="chats" name="write[]" value="Y">
+                                                <input type="checkbox" class="write5" id="chats" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" class="create5" id="chats" name="create[]" value="Y">
+                                                <input type="checkbox" class="create5" id="chats" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input checked="" type="checkbox" class="write5" id="chats" name="delete[]" value="Y">
+                                                <input type="checkbox" class="write5" id="chats" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input type="checkbox" class="import5" id="chats" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import5" id="chats" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="chats" name="chats[]" value="Y">
+                                                <input type="checkbox" class="export5" id="chats" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export5" id="chats" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Assets</td>
-                                            <input type="hidden" name="assets[]" value="Assets">
+                                            <input type="hidden" name="permission[]" value="Assets">
+                                            <input type="hidden" name="id_count[]" value="7">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" class="read6" id="assets" name="read[]" value="Y">
+                                                <input type="checkbox" class="read6" id="assets" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" class="write6" id="assets" name="write[]" value="Y">
+                                                <input type="checkbox" class="write6" id="assets" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" class="create6" id="assets" name="create[]" value="Y">
+                                                <input type="checkbox" class="create6" id="assets" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input checked="" type="checkbox" class="delete6" id="assets" name="delete[]" value="Y">
+                                                <input type="checkbox" class="delete6" id="assets" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input type="checkbox" class="import6" id="assets" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import6" id="assets" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="assets" name="assets[]" value="Y">
+                                                <input  type="checkbox" class="export6" id="assets" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export6" id="assets" name="export[]" value="N">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Timing Sheets</td>
-                                            <input type="hidden" name="timing_sheets[]" value="Timing Sheets">
+                                            <input type="hidden" name="permission[]" value="Timing Sheets">
+                                            <input type="hidden" name="id_count[]" value="8">
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" class="" id="timing" name="read[]" value="Y">
+                                                <input type="checkbox" class="" id="timing" name="read[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" class="read7" id="timing" name="write[]" value="Y">
+                                                <input  type="checkbox" class="read7" id="timing" name="write[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" class="create7" id="timing" name="create[]" value="Y">
+                                                <input  type="checkbox" class="create7" id="timing" name="create[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input checked="" type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input checked="" type="checkbox" class="delete7" id="timing" name="delete[]" value="Y">
+                                                <input  type="checkbox" class="delete7" id="timing" name="delete[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input  type="checkbox" class="import7" id="timing" name="import[]" value="Y">
+                                                <input checked="" type="checkbox" class="import7" id="timing" name="import[]" value="N">
                                             </td>
                                             <td class="text-center">
-                                                <input type="checkbox" id="timing" name="timing[]" value="Y">
+                                                <input  type="checkbox" class="export7" id="timing" name="export[]" value="Y">
+                                                <input checked="" type="checkbox" class="export7" id="timing" name="export[]" value="N">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -886,6 +938,22 @@
     </div>
     <!-- /Page Wrapper -->
     @section('script')
+    <script>
+        $("input:checkbox").on('click', function()
+        {
+            var $box = $(this);
+            if ($box.is(":checked"))
+            {
+                var group = "input:checkbox[class='" + $box.attr("class") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            }
+            else
+            {
+                $box.prop("checked", false);
+            }
+        });
+    </script>
     <script>
         // select auto id and email
         $('#name').on('change',function()
