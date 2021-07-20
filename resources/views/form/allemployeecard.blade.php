@@ -307,7 +307,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Gender</label>
-                                        <select class="form-control" id="gender" name="gender">
+                                        <select class="select form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" id="gender" name="gender">
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
@@ -931,7 +931,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('.select2').select2({
+            $('.select2-hidden-accessible').select2({
                 closeOnSelect: false
             });
         });

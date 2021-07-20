@@ -36,7 +36,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name'        => 'required|string|max:255',
-            'email'       => 'required|string|email|max:255|unique:employees',
+            'email'       => 'required|string|email',
             'birthDate'   => 'required|string|max:255',
             'gender'      => 'required|string|max:255',
             'employee_id' => 'required|string|max:255',
@@ -88,5 +88,10 @@ class EmployeeController extends Controller
             Toastr::error('Add new employee fail :)','Error');
             return redirect()->back();
         }
+    }
+    // holidy
+    public function holiday()
+    {
+        return view('form.holidays');
     }
 }
