@@ -1,9 +1,9 @@
+
 @extends('layouts.master')
 {{-- @section('menu')
 @extends('sidebar.dashboard')
 @endsection --}}
 @section('content')
-
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -26,13 +26,13 @@
                     @if (Auth::user()->role_name=='Admin')
                         <li class="menu-title"> <span>Authentication</span> </li>
                         <li class="submenu">
-                            <a href="#" class="noti-dot">
+                            <a href="#">
                                 <i class="la la-user-secret"></i> <span> User Controller</span> <span class="menu-arrow"></span>
                             </a>
                             <ul style="display: none;">
                                 <li><a href="{{ route('userManagement') }}">All User</a></li>
                                 <li><a href="{{ route('activity/log') }}">Activity Log</a></li>
-                                <li><a class="active" href="{{ route('activity/login/logout') }}">Activity User</a></li>
+                                <li><a href="{{ route('activity/login/logout') }}">Activity User</a></li>
                             </ul>
                         </li>
                     @endif
@@ -40,13 +40,13 @@
                         <span>Employees</span>
                     </li>
                     <li class="submenu">
-                        <a href="#">
+                        <a href="#" class="noti-dot">
                             <i class="la la-user"></i>
                             <span> Employees</span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="{{ route('all/employee/card') }}">All Employees</a></li>
+                            <li><a class="active" href="{{ route('all/employee/card') }}">All Employees</a></li>
                             <li><a href="{{ route('form/holidays/new') }}">Holidays</a></li>
                             <li><a href="leaves.html">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
@@ -191,48 +191,175 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Activity User</h3>
+                        <h3 class="page-title">Employee View</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Activity User</li>
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Employee View Edit</li>
                         </ul>
                     </div>
                 </div>
             </div>
 			<!-- /Page Header -->
-
-            <!-- /Search Filter -->
+            {{-- message --}}
+            {!! Toastr::message() !!}
             <div class="row">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped custom-table datatable">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Description</th>
-                                    <th>Date Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($activityLog as $key => $item)
-                                    <tr>
-                                        <td>{{ ++$key }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->description }}</td>
-                                        <td>{{ $item->date_time }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Employee edit</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="#">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Full Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="" name="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Email</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Birth Date</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Gender</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Employee ID</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Company</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Employee Permission</label>
+                                    <div class="col-md-10">
+                                        <div class="table-responsive m-t-15">
+                                            <table class="table table-striped custom-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Module Permission</th>
+                                                        <th class="text-center">Read</th>
+                                                        <th class="text-center">Write</th>
+                                                        <th class="text-center">Create</th>
+                                                        <th class="text-center">Delete</th>
+                                                        <th class="text-center">Import</th>
+                                                        <th class="text-center">Export</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Holidays</td>
+                                                        <input type="hidden" name="permission[]" value="Holidays">
+                                                        <input type="hidden" name="id_count[]" value="1">
+                                                        <td class="text-center">
+                                                            <input checked="" type="checkbox" class="read" id="holidays" name="read[]" value="Y">
+                                                            <input type="checkbox" class="read" id="holidays" name="read[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="write" id="holidays" name="write[]" value="Y">
+                                                            <input checked="" class="write" type="checkbox" id="holidays" name="write[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="create" id="holidays" name="create[]" value="Y">
+                                                            <input checked="" class="create" type="checkbox" id="holidays" name="create[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="delete" id="holidays" name="delete[]" value="Y">
+                                                            <input checked="" class="delete" type="checkbox" id="holidays" name="delete[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="import" id="holidays" name="import[]" value="N">
+                                                            <input checked="" type="checkbox" class="import" id="holidays" name="import[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="export" id="holidays" name="export[]" value="Y">
+                                                            <input checked="" type="checkbox" class="export" id="holidays" name="export[]" value="N">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Leaves</td>
+                                                        <input type="hidden" name="permission[]" value="Leaves">
+                                                        <input type="hidden" name="id_count[]" value="2">
+                                                        <td class="text-center">
+                                                            <input checked="" type="checkbox" class="read1" id="leaves" name="read[]" value="Y">
+                                                            <input type="checkbox" class="read1" id="leaves" name="read[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input checked="" type="checkbox" class="write1" id="leaves" name="write[]" value="Y">
+                                                            <input type="checkbox" class="write1" id="leaves" name="write[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input checked="" type="checkbox" class="create1" id="leaves" name="create[]" value="Y">
+                                                            <input type="checkbox" class="create1" id="leaves" name="create[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input  type="checkbox" class="delete1" id="leaves" name="delete[]" value="Y">
+                                                            <input checked="" type="checkbox" class="delete1" id="leaves" name="delete[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="import1" id="leaves" name="import[]" value="Y">
+                                                            <input checked="" type="checkbox" class="import1" id="leaves" name="import[]" value="N">
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input  type="checkbox" class="export1" id="leaves" name="export[]" value="Y">
+                                                            <input checked="" type="checkbox" class="export1" id="leaves" name="export[]" value="N">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2"></label>
+                                    <div class="col-md-10">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /Page Content -->
+        
     </div>
+    <!-- /Page Wrapper -->
+    @section('script')
+    <script>
+        $("input:checkbox").on('click', function()
+        {
+            var $box = $(this);
+            if ($box.is(":checked"))
+            {
+                var group = "input:checkbox[class='" + $box.attr("class") + "']";
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            }
+            else
+            {
+                $box.prop("checked", false);
+            }
+        });
+    </script>
+    @endsection
+
 @endsection
-
-

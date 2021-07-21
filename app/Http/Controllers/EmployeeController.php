@@ -89,6 +89,11 @@ class EmployeeController extends Controller
             return redirect()->back();
         }
     }
+    // view edit record
+    public function viewRecord()
+    {
+        return view('form.edit.editemployee');
+    }
     // holidy
     public function holiday()
     {

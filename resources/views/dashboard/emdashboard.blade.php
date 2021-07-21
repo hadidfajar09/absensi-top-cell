@@ -47,7 +47,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('all/employee/card') }}">All Employees</a></li>
-                            <li><a href="holidays.html">Holidays</a></li>
+                            <li><a href="{{ route('form/holidays/new') }}">Holidays</a></li>
                             <li><a href="leaves.html">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
                             </li>

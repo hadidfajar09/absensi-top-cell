@@ -47,7 +47,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a class="active" href="{{ route('all/employee/card') }}">All Employees</a></li>
-                            <li><a href="holidays.html">Holidays</a></li>
+                            <li><a href="{{ route('form/holidays/new') }}">Holidays</a></li>
                             <li><a href="leaves.html">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
                             </li>
@@ -222,16 +222,10 @@
                         <label class="focus-label">Employee Name</label>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3"> 
-                    <div class="form-group form-focus select-focus">
-                        <select class="select floating"> 
-                            <option>Select Designation</option>
-                            <option>Web Developer</option>
-                            <option>Web Designer</option>
-                            <option>Android Developer</option>
-                            <option>Ios Developer</option>
-                        </select>
-                        <label class="focus-label">Designation</label>
+                <div class="col-sm-6 col-md-3">  
+                    <div class="form-group form-focus">
+                        <input type="text" class="form-control floating">
+                        <label class="focus-label">Position</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3">  
