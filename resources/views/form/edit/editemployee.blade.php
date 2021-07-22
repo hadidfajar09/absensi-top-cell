@@ -213,37 +213,37 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Full Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="" name="">
+                                        <input type="text" class="form-control" id="" name="" value="{{ $employees[0]->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Email</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" value="{{ $employees[0]->email }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Birth Date</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" value="{{ $employees[0]->birth_date }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Gender</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="{{ $employees[0]->gender }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Employee ID</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="{{ $employees[0]->employee_id }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Company</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="{{ $employees[0]->company }}">
                                     </div>
                                 </div>
 
@@ -264,8 +264,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach ($permission as $items )
+                                                        
                                                     <tr>
-                                                        <td>Holidays</td>
+                                                        <td>{{ $items->module_permission }}</td>
                                                         <input type="hidden" name="permission[]" value="Holidays">
                                                         <input type="hidden" name="id_count[]" value="1">
                                                         <td class="text-center">
@@ -293,35 +295,7 @@
                                                             <input checked="" type="checkbox" class="export" id="holidays" name="export[]" value="N">
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Leaves</td>
-                                                        <input type="hidden" name="permission[]" value="Leaves">
-                                                        <input type="hidden" name="id_count[]" value="2">
-                                                        <td class="text-center">
-                                                            <input checked="" type="checkbox" class="read1" id="leaves" name="read[]" value="Y">
-                                                            <input type="checkbox" class="read1" id="leaves" name="read[]" value="N">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input checked="" type="checkbox" class="write1" id="leaves" name="write[]" value="Y">
-                                                            <input type="checkbox" class="write1" id="leaves" name="write[]" value="N">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input checked="" type="checkbox" class="create1" id="leaves" name="create[]" value="Y">
-                                                            <input type="checkbox" class="create1" id="leaves" name="create[]" value="N">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input  type="checkbox" class="delete1" id="leaves" name="delete[]" value="Y">
-                                                            <input checked="" type="checkbox" class="delete1" id="leaves" name="delete[]" value="N">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input type="checkbox" class="import1" id="leaves" name="import[]" value="Y">
-                                                            <input checked="" type="checkbox" class="import1" id="leaves" name="import[]" value="N">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input  type="checkbox" class="export1" id="leaves" name="export[]" value="Y">
-                                                            <input checked="" type="checkbox" class="export1" id="leaves" name="export[]" value="N">
-                                                        </td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

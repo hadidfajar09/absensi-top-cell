@@ -90,9 +90,15 @@ class EmployeeController extends Controller
         }
     }
     // view edit record
-    public function viewRecord()
+    public function viewRecord($employee_id)
     {
-        return view('form.edit.editemployee');
+        $permission = DB::table('employees')
+        ->join('module_permissions', 'employees.employee_id', '=', 'module_permissions.employee_id')
+        ->select('employees.*', 'module_permissions.*')
+        ->orderBy('employees.employee_id','desc')
+        ->get();
+        $employees = DB::table('employees')->where('employee_id',$employee_id)->get();
+        return view('form.edit.editemployee',compact('employees','permission'));
     }
     // holidy
     public function holiday()
