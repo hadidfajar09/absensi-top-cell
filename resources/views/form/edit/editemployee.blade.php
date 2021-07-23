@@ -264,35 +264,39 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php
+                                                    $key = 0;
+                                                    $key1 = 0;
+                                                    ?>
                                                     @foreach ($permission as $items )
                                                         
                                                     <tr>
                                                         <td>{{ $items->module_permission }}</td>
                                                         <input type="hidden" name="permission[]" value="Holidays">
-                                                        <input type="hidden" name="id_count[]" value="1">
+                                                        <input type="hidden" name="id_count[]" value="{{ $items->id_count }}">
                                                         <td class="text-center">
-                                                            <input checked="" type="checkbox" class="read" id="holidays" name="read[]" value="Y">
-                                                            <input type="checkbox" class="read" id="holidays" name="read[]" value="N">
+                                                            <input type="checkbox" class="read{{ ++$key }}" id="holidays" name="read[]" value="{{ $items->read }}"{{ $items->read =="Y" ? 'checked' : ''}} >
+                                                            <input type="checkbox" class="read{{ ++$key1 }}" id="holidays" name="read[]" value="{{ $items->read }}" {{ $items->read =="N" ? 'checked' : ''}}>
                                                         </td>
                                                         <td class="text-center">
-                                                            <input type="checkbox" class="write" id="holidays" name="write[]" value="Y">
-                                                            <input checked="" class="write" type="checkbox" id="holidays" name="write[]" value="N">
+                                                            <input type="checkbox" class="write{{ ++$key }}" id="holidays" name="write[]" value="{{ $items->write }}" {{ $items->write =="Y" ? 'checked' : ''}}>
+                                                            <input type="checkbox" class="write{{ ++$key1 }}" id="holidays" name="write[]" value="{{ $items->write }}" {{ $items->write =="N" ? 'checked' : ''}}>
                                                         </td>
                                                         <td class="text-center">
-                                                            <input type="checkbox" class="create" id="holidays" name="create[]" value="Y">
-                                                            <input checked="" class="create" type="checkbox" id="holidays" name="create[]" value="N">
+                                                            <input type="checkbox" class="create{{ ++$key }}" id="holidays" name="create[]" value="{{ $items->create }}" {{ $items->create =="Y" ? 'checked' : ''}}>
+                                                            <input type="checkbox" class="create{{ ++$key1 }}" id="holidays" name="create[]" value="{{ $items->create }}" {{ $items->create =="N" ? 'checked' : ''}}>
                                                         </td>
                                                         <td class="text-center">
-                                                            <input type="checkbox" class="delete" id="holidays" name="delete[]" value="Y">
-                                                            <input checked="" class="delete" type="checkbox" id="holidays" name="delete[]" value="N">
+                                                            <input type="checkbox" class="delete{{ ++$key }}" id="holidays" name="delete[]" value="{{ $items->delete }}" {{ $items->delete =="Y" ? 'checked' : ''}}>
+                                                            <input type="checkbox" class="delete{{ ++$key1 }}" id="holidays" name="delete[]" value="{{ $items->delete }}" {{ $items->delete =="N" ? 'checked' : ''}}>
                                                         </td>
                                                         <td class="text-center">
-                                                            <input type="checkbox" class="import" id="holidays" name="import[]" value="N">
-                                                            <input checked="" type="checkbox" class="import" id="holidays" name="import[]" value="N">
+                                                            <input type="checkbox" class="import{{ ++$key }}" id="holidays" name="import[]" value="{{ $items->import }}" {{ $items->import =="Y" ? 'checked' : ''}}>
+                                                            <input type="checkbox" class="import{{ ++$key1 }}" id="holidays" name="import[]" value="{{ $items->import }}" {{ $items->import =="N" ? 'checked' : ''}}>
                                                         </td>
                                                         <td class="text-center">
-                                                            <input type="checkbox" class="export" id="holidays" name="export[]" value="Y">
-                                                            <input checked="" type="checkbox" class="export" id="holidays" name="export[]" value="N">
+                                                            <input type="checkbox" class="export{{ ++$key }}" id="holidays" name="export[]" value="{{ $items->export }}" {{ $items->export =="Y" ? 'checked' : ''}}>
+                                                            <input type="checkbox" class="export{{ ++$key1 }}" id="holidays" name="export[]" value="{{ $items->export }}" {{ $items->export =="N" ? 'checked' : ''}}>
                                                         </td>
                                                     </tr>
                                                     @endforeach

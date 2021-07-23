@@ -93,10 +93,10 @@ class EmployeeController extends Controller
     public function viewRecord($employee_id)
     {
         $permission = DB::table('employees')
-        ->join('module_permissions', 'employees.employee_id', '=', 'module_permissions.employee_id')
-        ->select('employees.*', 'module_permissions.*')
-        ->orderBy('employees.employee_id','desc')
-        ->get();
+            ->join('module_permissions', 'employees.employee_id', '=', 'module_permissions.employee_id')
+            ->select('employees.*', 'module_permissions.*')
+            ->where('employees.employee_id','=',$employee_id)
+            ->get();
         $employees = DB::table('employees')->where('employee_id',$employee_id)->get();
         return view('form.edit.editemployee',compact('employees','permission'));
     }
