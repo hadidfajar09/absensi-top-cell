@@ -209,41 +209,43 @@
                             <h4 class="card-title mb-0">Employee edit</h4>
                         </div>
                         <div class="card-body">
-                            <form action="#">
+                            <form action="{{ route('all/employee/update') }}" method="POST">
+                                @csrf
+                                <input type="hidden" class="form-control" id="id" name="id" value="{{ $employees[0]->id }}">
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Full Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="" name="" value="{{ $employees[0]->name }}">
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $employees[0]->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Email</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control" value="{{ $employees[0]->email }}">
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ $employees[0]->email }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Birth Date</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" value="{{ $employees[0]->birth_date }}">
+                                        <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $employees[0]->birth_date }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Gender</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" value="{{ $employees[0]->gender }}">
+                                        <input type="text" class="form-control" id="gender" name="gender" value="{{ $employees[0]->gender }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Employee ID</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" value="{{ $employees[0]->employee_id }}" readonly>
+                                        <input type="text" class="form-control" id="employee_id" name="employee_id" value="{{ $employees[0]->employee_id }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Company</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" value="{{ $employees[0]->company }}">
+                                        <input type="text" class="form-control" id="company" name="company" value="{{ $employees[0]->company }}">
                                     </div>
                                 </div>
 
@@ -269,11 +271,10 @@
                                                     $key1 = 0;
                                                     ?>
                                                     @foreach ($permission as $items )
-                                                        
                                                     <tr>
                                                         <td>{{ $items->module_permission }}</td>
-                                                        <input type="hidden" name="permission[]" value="Holidays">
-                                                        <input type="hidden" name="id_count[]" value="{{ $items->id_count }}">
+                                                        <input type="hidden" name="permission[]" value="{{ $items->module_permission }}">
+                                                        <input type="hidden" name="id[]" value="{{ $items->id }}">
                                                         <td class="text-center">
                                                             <input type="checkbox" class="read{{ ++$key }}" id="holidays" name="read[]" value="{{ $items->read }}"{{ $items->read =="Y" ? 'checked' : ''}} >
                                                             <input type="checkbox" class="read{{ ++$key1 }}" id="holidays" name="read[]" value="{{ $items->read }}" {{ $items->read =="N" ? 'checked' : ''}}>

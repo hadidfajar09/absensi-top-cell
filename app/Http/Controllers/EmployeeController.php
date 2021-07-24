@@ -7,6 +7,7 @@ use DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Employee;
 use App\Models\User;
+use App\Models\module_permission;
 
 class EmployeeController extends Controller
 {
@@ -99,6 +100,32 @@ class EmployeeController extends Controller
             ->get();
         $employees = DB::table('employees')->where('employee_id',$employee_id)->get();
         return view('form.edit.editemployee',compact('employees','permission'));
+    }
+    // update record employee
+    public function updateRecord( Request $request)
+    {
+        $updateEmployee = [
+            'id'=>$request->id,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'birth_date'=>$request->birth_date,
+            'gender'=>$request->gender,
+            'employee_id'=>$request->employee_id,
+            'company'=>$request->company,
+        ];
+
+        $updateUser = [
+            'id'=>$request->id,
+            'name'=>$request->name,
+            'email'=>$request->email,
+        ];
+
+        User::where('id',$request->id)->update($updateUser);
+        Employee::where('id',$request->id)->update($updateEmployee);
+       
+        DB::commit();
+        Toastr::success('updated record successfully :)','Success');
+        return redirect()->route('all/employee/card');
     }
     // holidy
     public function holiday()
