@@ -104,30 +104,75 @@ class EmployeeController extends Controller
     // update record employee
     public function updateRecord( Request $request)
     {
-        $updateEmployee = [
-            'id'=>$request->id,
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'birth_date'=>$request->birth_date,
-            'gender'=>$request->gender,
-            'employee_id'=>$request->employee_id,
-            'company'=>$request->company,
-        ];
+        DB::beginTransaction();
+        try{
+            // update table Employee
+            $updateEmployee = [
+                'id'=>$request->id,
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'birth_date'=>$request->birth_date,
+                'gender'=>$request->gender,
+                'employee_id'=>$request->employee_id,
+                'company'=>$request->company,
+            ];
+            // update table user
+            $updateUser = [
+                'id'=>$request->id,
+                'name'=>$request->name,
+                'email'=>$request->email,
+            ];
 
-        $updateUser = [
-            'id'=>$request->id,
-            'name'=>$request->name,
-            'email'=>$request->email,
-        ];
+            // update table module_permissions
+            for($i=0;$i<count($request->id_permission);$i++)
+            {
+                $UpdateModule_permissions = [
+                    'employee_id' => $request->employee_id,
+                    'module_permission' => $request->permission[$i],
+                    'id'                => $request->id_permission[$i],
+                    'read'              => $request->read[$i],
+                    'write'             => $request->write[$i],
+                    'create'            => $request->create[$i],
+                    'delete'            => $request->delete[$i],
+                    'import'            => $request->import[$i],
+                    'export'            => $request->export[$i],
+                ];
+                module_permission::where('id',$request->id_permission[$i])->update($UpdateModule_permissions);
+            }
 
-        User::where('id',$request->id)->update($updateUser);
-        Employee::where('id',$request->id)->update($updateEmployee);
-       
-        DB::commit();
-        Toastr::success('updated record successfully :)','Success');
-        return redirect()->route('all/employee/card');
+            User::where('id',$request->id)->update($updateUser);
+            Employee::where('id',$request->id)->update($updateEmployee);
+        
+            DB::commit();
+            Toastr::success('updated record successfully :)','Success');
+            return redirect()->route('all/employee/card');
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('updated record fail :)','Error');
+            return redirect()->back();
+        }
     }
-    // holidy
+    // delete record
+    public function deleteRecord($employee_id)
+    {
+        DB::beginTransaction();
+        try{
+
+            Employee::where('employee_id',$employee_id)->delete();
+            module_permission::where('employee_id',$employee_id)->delete();
+
+            DB::commit();
+            Toastr::success('Delete record successfully :)','Success');
+            return redirect()->route('all/employee/card');
+
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('Delete record fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    // holidays
     public function holiday()
     {
         return view('form.holidays');
