@@ -92,7 +92,9 @@ Route::get('all/employee/view/edit/{employee_id}', [App\Http\Controllers\Employe
 Route::post('all/employee/update', [App\Http\Controllers\EmployeeController::class, 'updateRecord'])->middleware('auth')->name('all/employee/update');
 Route::get('all/employee/delete/{employee_id}', [App\Http\Controllers\EmployeeController::class, 'deleteRecord'])->middleware('auth');
 
-Route::get('form/holidays/new', [App\Http\Controllers\EmployeeController::class, 'holiday'])->middleware('auth')->name('form/holidays/new');
+// ----------------------------- form holiday ------------------------------//
+Route::get('form/holidays/new', [App\Http\Controllers\HolidayController::class, 'holiday'])->middleware('auth')->name('form/holidays/new');
+Route::post('form/holidays/save', [App\Http\Controllers\HolidayController::class, 'saveRecord'])->middleware('auth')->name('form/holidays/save');
 
 
 

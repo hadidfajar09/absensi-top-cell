@@ -171,10 +171,4 @@ class EmployeeController extends Controller
             return redirect()->back();
         }
     }
-
-    // holidays
-    public function holiday()
-    {
-        return view('form.holidays');
-    }
 }

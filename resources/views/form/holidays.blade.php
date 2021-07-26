@@ -319,17 +319,20 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/holidays/save') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label>Holiday Name <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" id="nameHoliday" name="nameHoliday">
                             </div>
                             <div class="form-group">
                                 <label>Holiday Date <span class="text-danger">*</span></label>
-                                <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+                                <div class="cal-icon">
+                                    <input class="form-control datetimepicker" type="text" id="holidayDate" name="holidayDate">
+                                </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
