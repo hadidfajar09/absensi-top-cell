@@ -208,41 +208,25 @@
             <form action="{{ route('search/user/list') }}" method="POST">
                 @csrf
                 <div class="row filter-row">
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                    <div class="col-sm-6 col-md-3">  
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" id="name" name="name">
                             <label class="focus-label">User Name</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                    <div class="col-sm-6 col-md-3">  
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" id="name" name="role_name">
                             <label class="focus-label">Role Name</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"> 
+                    <div class="col-sm-6 col-md-3"> 
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" id="name" name="status">
                             <label class="focus-label">Status</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                        <div class="form-group form-focus">
-                            <div class="cal-icon">
-                                <input class="form-control floating datetimepicker" type="text" id="" name="fromDate">
-                            </div>
-                            <label class="focus-label">From</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
-                        <div class="form-group form-focus">
-                            <div class="cal-icon">
-                                <input class="form-control floating datetimepicker" type="text" id="" name="toDate">
-                            </div>
-                            <label class="focus-label">To</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+                    <div class="col-sm-6 col-md-3">  
                         <button type="sumit" class="btn btn-success btn-block"> Search </button>  
                     </div>
                 </div>

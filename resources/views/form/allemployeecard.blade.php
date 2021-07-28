@@ -209,29 +209,32 @@
 			<!-- /Page Header -->
 
             <!-- Search Filter -->
-            <div class="row filter-row">
-                <div class="col-sm-6 col-md-3">  
-                    <div class="form-group form-focus">
-                        <input type="text" class="form-control floating">
-                        <label class="focus-label">Employee ID</label>
+            <form action="{{ route('all/employee/search') }}" method="POST">
+                @csrf
+                <div class="row filter-row">
+                    <div class="col-sm-6 col-md-3">  
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" name="employee_id">
+                            <label class="focus-label">Employee ID</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">  
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" name="name">
+                            <label class="focus-label">Employee Name</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3"> 
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" name="position">
+                            <label class="focus-label">Position</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">  
+                        <button type="sumit" class="btn btn-success btn-block"> Search </button>  
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3">  
-                    <div class="form-group form-focus">
-                        <input type="text" class="form-control floating">
-                        <label class="focus-label">Employee Name</label>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3"> 
-                    <div class="form-group form-focus">
-                        <input type="text" class="form-control floating">
-                        <label class="focus-label">Position</label>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">  
-                    <a href="#" class="btn btn-success btn-block"> Search </a>  
-                </div>
-            </div>
+            </form>
             <!-- Search Filter -->
             {{-- message --}}
             {!! Toastr::message() !!}

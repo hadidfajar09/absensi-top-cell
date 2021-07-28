@@ -41,7 +41,7 @@ class UserManagementController extends Controller
             $role_name  = DB::table('role_type_users')->get();
             $position   = DB::table('position_types')->get();
             $department = DB::table('departments')->get();
-            $status_user     = DB::table('user_types')->get();
+            $status_user = DB::table('user_types')->get();
 
             // search by name
             if($request->name)

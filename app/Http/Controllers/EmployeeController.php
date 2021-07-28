@@ -12,13 +12,14 @@ use App\Models\module_permission;
 class EmployeeController extends Controller
 {
     // all employee card view
-    public function cardAllEmployee()
+    public function cardAllEmployee(Request $request)
     {
         $users = DB::table('users')
                     ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
                     ->get(); 
         $userList = DB::table('users')->get();
+
         return view('form.allemployeecard',compact('users','userList'));
     }
     // all employee list
@@ -170,5 +171,164 @@ class EmployeeController extends Controller
             Toastr::error('Delete record fail :)','Error');
             return redirect()->back();
         }
+    }
+    // employee search
+    public function employeeSearch(Request $request)
+    {
+        $users = DB::table('users')
+                    ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                    ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                    ->get(); 
+        $userList = DB::table('users')->get();
+
+        // search by id
+        if($request->employee_id)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->get();
+        }
+        // search by name
+        if($request->name)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->get();
+        }
+        // search by name
+        if($request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+
+        // search by name and id
+        if($request->employee_id && $request->name)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->get();
+        }
+        // search by position and id
+        if($request->employee_id && $request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+        // search by name and position
+        if($request->name && $request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+         // search by name and position and id
+         if($request->employee_id && $request->name && $request->position)
+         {
+             $users = DB::table('users')
+                         ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                         ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                         ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                         ->where('users.name','LIKE','%'.$request->name.'%')
+                         ->where('users.position','LIKE','%'.$request->position.'%')
+                         ->get();
+         }
+        return view('form.allemployeecard',compact('users','userList'));
+    }
+    public function employeeListSearch(Request $request)
+    {
+        $users = DB::table('users')
+                    ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                    ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                    ->get(); 
+        $userList = DB::table('users')->get();
+
+        // search by id
+        if($request->employee_id)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->get();
+        }
+        // search by name
+        if($request->name)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->get();
+        }
+        // search by name
+        if($request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+
+        // search by name and id
+        if($request->employee_id && $request->name)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->get();
+        }
+        // search by position and id
+        if($request->employee_id && $request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+        // search by name and position
+        if($request->name && $request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+        // search by name and position and id
+        if($request->employee_id && $request->name && $request->position)
+        {
+            $users = DB::table('users')
+                        ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
+                        ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
+                        ->where('employee_id','LIKE','%'.$request->employee_id.'%')
+                        ->where('users.name','LIKE','%'.$request->name.'%')
+                        ->where('users.position','LIKE','%'.$request->position.'%')
+                        ->get();
+        }
+        return view('form.employeelist',compact('users','userList'));
     }
 }
