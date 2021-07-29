@@ -86,6 +86,7 @@ Route::post('change/password/db', [App\Http\Controllers\UserManagementController
 
 // ----------------------------- job ------------------------------//
 Route::get('form/job/list', [App\Http\Controllers\JobController::class, 'jobList'])->name('form/job/list');
+Route::get('form/job/view', [App\Http\Controllers\JobController::class, 'jobView'])->name('form/job/view');
 
 // ----------------------------- form employee ------------------------------//
 Route::get('all/employee/card', [App\Http\Controllers\EmployeeController::class, 'cardAllEmployee'])->middleware('auth')->name('all/employee/card');

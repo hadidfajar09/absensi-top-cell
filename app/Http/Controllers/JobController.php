@@ -11,4 +11,9 @@ class JobController extends Controller
     {
         return view('job.joblist');
     }
+    // job view
+    public function jobView()
+    {
+        return view('job.jobview');
+    }
 }
