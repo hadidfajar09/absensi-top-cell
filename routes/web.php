@@ -102,5 +102,9 @@ Route::post('all/employee/list/search', [App\Http\Controllers\EmployeeController
 Route::get('form/holidays/new', [App\Http\Controllers\HolidayController::class, 'holiday'])->middleware('auth')->name('form/holidays/new');
 Route::post('form/holidays/save', [App\Http\Controllers\HolidayController::class, 'saveRecord'])->middleware('auth')->name('form/holidays/save');
 
+// ----------------------------- form leaves ------------------------------//
+Route::get('form/leaves/new', [App\Http\Controllers\LeavesController::class, 'leaves'])->middleware('auth')->name('form/leaves/new');
+
+
 
 
