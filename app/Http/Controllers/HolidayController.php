@@ -10,7 +10,8 @@ class HolidayController extends Controller
     // holidays
     public function holiday()
     {
-        return view('form.holidays');
+        $holiday = DB::table('holidays')->get();
+        return view('form.holidays',compact('holiday'));
     }
     // save record
     public function saveRecord(Request $request)
