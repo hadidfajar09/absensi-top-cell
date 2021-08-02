@@ -31,7 +31,9 @@ class EmployeeController extends Controller
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
                     ->get();
         $userList = DB::table('users')->get();
-        return view('form.employeelist',compact('users','userList'));
+        $permission_lists = DB::table('permission_lists')->get();
+
+        return view('form.employeelist',compact('users','userList','permission_lists'));
     }
 
     // save data employee
