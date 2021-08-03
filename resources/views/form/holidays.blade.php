@@ -204,7 +204,12 @@
             </div>
 			<!-- /Page Header -->
             {{-- message --}}
-            {!! Toastr::message() !!}  
+            {!! Toastr::message() !!} 
+            @php
+                use Carbon\Carbon;
+                $today_date = Carbon::today()->format('d-m-Y');
+            @endphp
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -220,6 +225,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($holiday as $key=>$items )
+                                @if($today_date <= $items->date_holiday)
                                 <tr class="holiday-completed">
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $items->name_holiday }}</td>
@@ -227,6 +233,7 @@
                                     <td>{{date('l',strtotime($items->date_holiday)) }}</td>
                                     <td></td>
                                 </tr>
+                                @endif
                                 @endforeach
                                 <tr class="holiday-upcoming">
                                     <td>6</td>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LockScreen;
 
@@ -42,6 +43,9 @@ Auth::routes();
 // ----------------------------- main dashboard ------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('em/dashboard', [App\Http\Controllers\HomeController::class, 'emDashboard'])->name('em/dashboard');
+
+// -----------------------------settings----------------------------------------//
+Route::get('company/settings/page', [App\Http\Controllers\SettingController::class, 'companySettings'])->middleware('auth')->name('company/settings/page');
 
 // -----------------------------login----------------------------------------//
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
