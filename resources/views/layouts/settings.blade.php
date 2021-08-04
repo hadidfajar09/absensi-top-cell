@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <meta name="description" content="Smarthr - Bootstrap Admin Template">
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="author" content="Soeng Souy">
         <meta name="robots" content="noindex, nofollow">
         <title>Settings - HRMS</title>
 		<!-- Favicon -->
@@ -24,18 +24,15 @@
     <body>
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
 			<!-- Header -->
             <div class="header">
-			
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="index.html" class="logo">
+                    <a href="{{ route('home') }}" class="logo">
 						<img src="{{ URL::to('assets/img/logo.png') }}" width="40" height="40" alt="">
 					</a>
                 </div>
 				<!-- /Logo -->
-				
 				<a id="toggle_btn" href="javascript:void(0);">
 					<span class="bar-icon">
 						<span></span>
@@ -43,15 +40,12 @@
 						<span></span>
 					</span>
 				</a>
-				
 				<!-- Header Title -->
                 <div class="page-title-box">
 					<h3>{{ Auth::user()->name }}</h3>
                 </div>
 				<!-- /Header Title -->
-				
 				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-				
 				<!-- Header Menu -->
 				<ul class="nav user-menu">
 					<!-- Search -->
@@ -67,7 +61,6 @@
 						</div>
 					</li>
 					<!-- /Search -->
-				
 					<!-- Flag -->
                     <li class="nav-item dropdown has-arrow flag-nav">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
@@ -294,7 +287,6 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('profile_user') }}">My Profile</a>
                             <a class="dropdown-item" href="{{ route('company/settings/page') }}">Settings</a>
-                            <a class="dropdown-item" href="{{ route('change/password') }}">Change Password</a>
                             <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
                     </li>
@@ -313,7 +305,6 @@
                 <!-- /Mobile Menu -->
             </div>
 			<!-- /Header -->
-			
             {{-- content --}}
             @yield('content')
         </div>

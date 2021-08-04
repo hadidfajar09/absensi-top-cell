@@ -81,7 +81,6 @@ Route::get('activity/log', [App\Http\Controllers\UserManagementController::class
 Route::get('activity/login/logout', [App\Http\Controllers\UserManagementController::class, 'activityLogInLogOut'])->middleware('auth')->name('activity/login/logout');
 
 // ----------------------------- search user management ------------------------------//
-// Route::get('change/password', [App\Http\Controllers\UserManagementController::class, 'changePasswordView'])->middleware('auth')->name('change/password');
 Route::post('search/user/list', [App\Http\Controllers\UserManagementController::class, 'searchUser'])->name('search/user/list');
 
 // ----------------------------- form change password ------------------------------//

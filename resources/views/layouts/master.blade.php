@@ -212,11 +212,13 @@
 								<li class="notification-message">
 									<a href="chat.html">
 										<div class="list-item">
-											<div class="list-left"> <span class="avatar">
-														<img alt="" src="{{ URL::to('assets/img/profiles/avatar-08.jpg') }}">
-													</span> </div>
+											<div class="list-left">
+												<span class="avatar">
+													<img alt="" src="{{ URL::to('assets/img/profiles/avatar-08.jpg') }}">
+												</span>
+											</div>
 											<div class="list-body"> <span class="message-author"> Catherine Manseau </span> <span class="message-time">27 Feb</span>
-												<div class="clearfix"></div> <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span> </div>
+											<div class="clearfix"></div> <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span> </div>
 										</div>
 									</a>
 								</li>
@@ -236,7 +238,6 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{ route('profile_user') }}">My Profile</a>
 						<a class="dropdown-item" href="{{ route('company/settings/page') }}">Settings</a>
-						<a class="dropdown-item" href="{{ route('change/password') }}">Change Password</a>
 						<a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
 					</div>
 				</li>
@@ -269,7 +270,6 @@
 	<!-- Bootstrap Core JS -->
 	<script src="{{ URL::to('assets/js/popper.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>
-
 	<!-- Chart JS -->
 	<script src="{{ URL::to('assets/plugins/morris/morris.min.js') }}"></script>
 	<script src="{{ URL::to('assets/plugins/raphael/raphael.min.js') }}"></script>

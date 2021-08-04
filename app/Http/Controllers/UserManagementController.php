@@ -284,7 +284,7 @@ class UserManagementController extends Controller
     // view change password
     public function changePasswordView()
     {
-        return view('usermanagement.change_password');
+        return view('settings.changepassword');
     }
     
     // change password in db

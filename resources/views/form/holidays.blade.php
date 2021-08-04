@@ -209,7 +209,6 @@
                 use Carbon\Carbon;
                 $today_date = Carbon::today()->format('d-m-Y');
             @endphp
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -225,32 +224,35 @@
                             </thead>
                             <tbody>
                                 @foreach ($holiday as $key=>$items )
-                                @if($today_date <= $items->date_holiday)
-                                <tr class="holiday-completed">
-                                    <td>{{ ++$key }}</td>
-                                    <td>{{ $items->name_holiday }}</td>
-                                    <td>{{date('d F ,Y',strtotime($items->date_holiday)) }}</td>
-                                    <td>{{date('l',strtotime($items->date_holiday)) }}</td>
-                                    <td></td>
-                                </tr>
-                                @endif
+                                    @if(($today_date > $items->date_holiday))
+                                        <tr class="holiday-completed">
+                                            <td>{{ ++$key }}</td>
+                                            <td>{{ $items->name_holiday }}</td>
+                                            <td>{{date('d F, Y',strtotime($items->date_holiday)) }}</td>
+                                            <td>{{date('l',strtotime($items->date_holiday)) }}</td>
+                                            <td></td>
+                                        </tr>
+                                    @endif
                                 @endforeach
-                                <tr class="holiday-upcoming">
-                                    <td>6</td>
-                                    <td>Bakrid</td>
-                                    <td>2 Sep 2019</td>
-                                    <td>Saturday</td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                    
+                                @foreach ($holiday as $key=>$items )
+                                    @if(($today_date <= $items->date_holiday))
+                                        <tr class="holiday-upcoming">
+                                            <td>{{ ++$key }}</td>
+                                            <td>{{ $items->name_holiday }}</td>
+                                            <td>{{date('d F, Y',strtotime($items->date_holiday)) }}</td>
+                                            <td>{{date('l',strtotime($items->date_holiday)) }}</td>
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
