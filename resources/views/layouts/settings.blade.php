@@ -67,21 +67,8 @@
                             <img src="{{ URL::to('assets/img/flags/us.png') }}" alt="" height="20"> <span>English</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="{{ URL::to('assets/img/flags/us.png') }}" alt="" height="16"> English
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="{{ URL::to('assets/img/flags/kh.png') }}" alt="" height="16"> Khmer 
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="{{ URL::to('assets/img/flags/fr.png') }}" alt="" height="16"> French
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="{{ URL::to('assets/img/flags/es.png') }}" alt="" height="16"> Spanish
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="{{ URL::to('assets/img/flags/de.png') }}" alt="" height="16"> German
-                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item"><img src="{{ URL::to('assets/img/flags/us.png') }}" alt="" height="16"> English</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><img src="{{ URL::to('assets/img/flags/kh.png') }}" alt="" height="16"> Khmer</a>
                         </div>
                     </li>
                     <!-- /Flag -->

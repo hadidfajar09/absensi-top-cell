@@ -278,7 +278,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Full Name</label>
-                                        <select class="select select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
+                                        <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
                                             <option value="">-- Select --</option>
                                             @foreach ($userList as $key=>$user )
                                                 <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }} data-email={{ $user->email }}>{{ $user->name }}</option>
@@ -319,7 +319,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Company</label>
-                                        <select class="select select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="company" name="company">
+                                        <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="company" name="company">
                                             <option value="">-- Select --</option>
                                             @foreach ($userList as $key=>$user )
                                                 <option value="{{ $user->name }}">{{ $user->name }}</option>
@@ -411,7 +411,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('.select2-hidden-accessible').select2({
+            $('.select2s-hidden-accessible').select2({
                 closeOnSelect: false
             });
         });

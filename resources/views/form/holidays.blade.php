@@ -237,15 +237,17 @@
                                 @foreach ($holiday as $key=>$items )
                                     @if(($today_date <= $items->date_holiday))
                                         <tr class="holiday-upcoming">
+                                            <td hidden class="id">{{ $items->id }}</td>
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $items->name_holiday }}</td>
+                                            <td class="holidayName">{{ $items->name_holiday }}</td>
+                                            <td hidden class="holidayDate">{{$items->date_holiday }}</td>
                                             <td>{{date('d F, Y',strtotime($items->date_holiday)) }}</td>
                                             <td>{{date('l',strtotime($items->date_holiday)) }}</td>
                                             <td class="text-right">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item userUpdate" data-toggle="modal" data-id="'.$items->id.'" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </div>
                                                 </div>
@@ -304,17 +306,21 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/holidays/update') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" id="e_id" value="">
                             <div class="form-group">
                                 <label>Holiday Name <span class="text-danger">*</span></label>
-                                <input class="form-control" value="New Year" type="text">
+                                <input type="text" class="form-control" id="holidayName_edit" name="holidayName" value="">
                             </div>
                             <div class="form-group">
                                 <label>Holiday Date <span class="text-danger">*</span></label>
-                                <div class="cal-icon"><input class="form-control datetimepicker" value="01-01-2019" type="text"></div>
+                                <div class="cal-icon">
+                                    <input type="text" class="form-control datetimepicker" id="holidayDate_edit" name="holidayDate" value="">
+                                </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -360,27 +366,8 @@
         {
             var _this = $(this).parents('tr');
             $('#e_id').val(_this.find('.id').text());
-            $('#e_name').val(_this.find('.name').text());
-            $('#e_email').val(_this.find('.email').text());
-            $('#e_phone_number').val(_this.find('.phone_number').text());
-            $('#e_image').val(_this.find('.image').text());
-
-            var name_role = (_this.find(".role_name").text());
-            var _option = '<option selected value="' + name_role+ '">' + _this.find('.role_name').text() + '</option>'
-            $( _option).appendTo("#e_role_name");
-
-            var position = (_this.find(".position").text());
-            var _option = '<option selected value="' +position+ '">' + _this.find('.position').text() + '</option>'
-            $( _option).appendTo("#e_position");
-
-            var department = (_this.find(".department").text());
-            var _option = '<option selected value="' +department+ '">' + _this.find('.department').text() + '</option>'
-            $( _option).appendTo("#e_department");
-
-            var statuss = (_this.find(".statuss").text());
-            var _option = '<option selected value="' +statuss+ '">' + _this.find('.statuss').text() + '</option>'
-            $( _option).appendTo("#e_status");
-            
+            $('#holidayName_edit').val(_this.find('.holidayName').text());
+            $('#holidayDate_edit').val(_this.find('.holidayDate').text());  
         });
     </script>
     @endsection
