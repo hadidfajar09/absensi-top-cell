@@ -11,4 +11,10 @@ class SettingController extends Controller
     {
         return view('settings.companysettings');
     }
+    
+    // Roles & Permissions 
+    public function rolesPermissions()
+    {
+        return view('settings.rolespermissions');
+    }
 }
