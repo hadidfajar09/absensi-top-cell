@@ -43,14 +43,17 @@
                     </div>
                 </div>
             </div>
+            {{-- message --}}
+            {!! Toastr::message() !!}
             <!-- /Page Header -->
             <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3">
                     <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_role"><i class="fa fa-plus"></i> Add Roles</a>
                     <div class="roles-menu">
                         <ul>
-                            <li class="active">
-                                <a href="javascript:void(0);">Administrator
+                            @foreach ($rolesPermissions as $rolesName )
+                            <li class="{{ $loop->first ? 'active' : '' }}">
+                                <a class="active roleName" href="javascript:void(0);">{{ $rolesName->permissions_name }}
                                     <span class="role-action">
                                         <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
                                             <i class="material-icons">edit</i>
@@ -61,114 +64,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);">CEO
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">Manager
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">Team Leader
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">Accountant
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">Web Developer
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">Web Designer
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">HR
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">UI/UX Developer
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">SEO Analyst
-                                    <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
-                                            <i class="material-icons">edit</i>
-                                        </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
-                                            <i class="material-icons">delete</i>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -363,10 +259,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="" method="POST">
                             <div class="form-group">
                                 <label>Role Name <span class="text-danger">*</span></label>
-                                <input class="form-control" value="Team Leader" type="text">
+                                <input type="text" class="form-control" value="" id="e_roleNmae" name="roleName">
                             </div>
                             <div class="submit-section">
                                 <button class="btn btn-primary submit-btn">Save</button>
