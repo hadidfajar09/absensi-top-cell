@@ -44,4 +44,18 @@ class SettingController extends Controller
             return redirect()->back();
         }
     }
+    // delete roles permissions
+    public function deleteRolesPermissions(Request $request)
+    {
+        try{
+            RolesPermissions::destroy($request->id);
+            Toastr::success('Role Name deleted successfully :)','Success');
+            return redirect()->back();
+        
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('Role Name delete fail :)','Error');
+            return redirect()->back();
+        }
+    }
 }

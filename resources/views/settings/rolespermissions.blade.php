@@ -59,7 +59,7 @@
                                         <span class="action-circle large rolesUpdate" data-toggle="modal" data-id="'.$rolesName->id.'" data-target="#edit_role">
                                             <i class="material-icons">edit</i>
                                         </span>
-                                        <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
+                                        <span class="action-circle large delete-btn rolesDelete" data-toggle="modal"  data-id="'.$rolesName->id.'" data-target="#delete_role">
                                             <i class="material-icons">delete</i>
                                         </span>
                                     </span>
@@ -287,14 +287,18 @@
                             <p>Are you sure want to delete?</p>
                         </div>
                         <div class="modal-btn delete-action">
+                        <form action="{{ route('roles/permissions/delete') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" class="e_id" value="">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                                    <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
                                 </div>
                                 <div class="col-6">
                                     <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -311,6 +315,14 @@
             var _this = $(this).closest("li");;
             $('#e_id').val(_this.find('.id').text());
             $('#e_roleNmae').val(_this.find('.roleNmae').text());
+        });
+    </script>
+    {{-- delete js --}}
+    <script>
+        $(document).on('click','.rolesDelete',function()
+        {
+            var _this = $(this).closest("li");;
+            $('.e_id').val(_this.find('.id').text());
         });
     </script>
     @endsection
