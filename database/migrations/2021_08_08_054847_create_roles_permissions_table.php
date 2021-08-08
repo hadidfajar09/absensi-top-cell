@@ -16,6 +16,7 @@ class CreateRolesPermissionsTable extends Migration
         Schema::create('roles_permissions', function (Blueprint $table) {
             $table->id();
             $table->string('permissions_name')->nullable();
+            $table->timestamps();
         });
 
         DB::table('roles_permissions')->insert(

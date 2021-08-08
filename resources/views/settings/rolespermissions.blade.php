@@ -53,9 +53,10 @@
                         <ul>
                             @foreach ($rolesPermissions as $rolesName )
                             <li class="{{ $loop->first ? 'active' : '' }}">
-                                <a class="active roleName" href="javascript:void(0);">{{ $rolesName->permissions_name }}
+                                <span hidden class="id">{{ $rolesName->id }}</span>
+                                <a class="active" href="javascript:void(0);"><span class="roleNmae">{{ $rolesName->permissions_name }}</span>
                                     <span class="role-action">
-                                        <span class="action-circle large" data-toggle="modal" data-target="#edit_role">
+                                        <span class="action-circle large rolesUpdate" data-toggle="modal" data-id="'.$rolesName->id.'" data-target="#edit_role">
                                             <i class="material-icons">edit</i>
                                         </span>
                                         <span class="action-circle large delete-btn" data-toggle="modal" data-target="#delete_role">
@@ -259,13 +260,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('roles/permissions/update') }}" method="POST">
+                            @csrf
                             <div class="form-group">
+                                <input type="hidden" name="id" id="e_id" value="">
                                 <label>Role Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="" id="e_roleNmae" name="roleName">
+                                <input type="text" class="form-control" id="e_roleNmae" name="roleName" value="">
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -300,4 +303,15 @@
         <!-- /Delete Role Modal -->
     </div>	
     <!-- /Page Wrapper -->
+    @section('script')
+    {{-- update js --}}
+    <script>
+        $(document).on('click','.rolesUpdate',function()
+        {
+            var _this = $(this).closest("li");;
+            $('#e_id').val(_this.find('.id').text());
+            $('#e_roleNmae').val(_this.find('.roleNmae').text());
+        });
+    </script>
+    @endsection
 @endsection

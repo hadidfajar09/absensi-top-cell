@@ -20,6 +20,11 @@
 		<link rel="stylesheet" href="{{ URL::to('assets/css/select2.min.css') }}">
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
+		{{-- message toastr --}}
+		<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+		<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
     </head>
     <body>
 		<!-- Main Wrapper -->
@@ -308,6 +313,6 @@
 		<script src="{{ URL::to('assets/js/select2.min.js') }}"></script>
 		<!-- Custom JS -->
 		<script src="{{ URL::to('assets/js/app.js') }}"></script>
-		
+		@yield('script')
     </body>
 </html>

@@ -21,20 +21,19 @@ class SettingController extends Controller
         return view('settings.rolespermissions',compact('rolesPermissions'));
     }
     // edit roles permissions
-    public function editRolesPermissions( Request $request)
+    public function editRolesPermissions(Request $request)
     {
         DB::beginTransaction();
         try{
-            $id           = $request->id;
+            $id        = $request->id;
             $roleName  = $request->roleName;
             
             $update = [
-
                 'id'               => $id,
                 'permissions_name' => $roleName,
             ];
 
-            RolesPermissions::where('id',$request->id)->update($update);
+            RolesPermissions::where('id',$id)->update($update);
             DB::commit();
             Toastr::success('Role Name updated successfully :)','Success');
             return redirect()->back();

@@ -47,5 +47,6 @@
 		<script src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
 		<!-- Custom JS -->
 		<script src="{{ URL::to('assets/js/app.js') }}"></script>
+		@yield('script')
     </body>
 </html>
