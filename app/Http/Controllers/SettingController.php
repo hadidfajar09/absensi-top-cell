@@ -20,6 +20,42 @@ class SettingController extends Controller
         $rolesPermissions = RolesPermissions::All();
         return view('settings.rolespermissions',compact('rolesPermissions'));
     }
+
+    // add role permissions
+    public function addRecord(Request $request)
+    {
+        $request->validate([
+            'roleName' => 'required|string|max:255',
+        ]);
+        
+        DB::beginTransaction();
+        try{
+
+            $roles = RolesPermissions::where('permissions_name', '=', $request->roleName)->first();
+            if ($roles === null)
+            {
+                // roles name doesn't exist
+                $role = new RolesPermissions;
+                $role->permissions_name = $request->roleName;
+                $role->save();
+            }else{
+
+                // roles name exits
+                DB::rollback();
+                Toastr::error('Roles name exits :)','Error');
+                return redirect()->back();
+            }
+
+            DB::commit();
+            Toastr::success('Create new role successfully :)','Success');
+            return redirect()->back();
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('Add Role fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     // edit roles permissions
     public function editRolesPermissions(Request $request)
     {

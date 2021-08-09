@@ -234,13 +234,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('roles/permissions/save') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label>Role Name <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text">
+                                <input type="text" class="form-control @error('roleName') is-invalid @enderror" id="roleName" name="roleName" value="{{ old('roleName') }}" placeholder="Enter role name">
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
