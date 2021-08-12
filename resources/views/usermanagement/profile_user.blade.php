@@ -216,11 +216,11 @@
                                             <ul class="personal-info">
                                                 <li>
                                                     <div class="title">Phone:</div>
-                                                    <div class="text"><a href="">9876543210</a></div>
+                                                    <div class="text"><a href="">{{ Auth::user()->phone_number }}</a></div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Email:</div>
-                                                    <div class="text"><a href="">johndoe@example.com</a></div>
+                                                    <div class="text"><a href="">{{ Auth::user()->email }}</a></div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Birthday:</div>
@@ -239,11 +239,11 @@
                                                     <div class="text">
                                                         <div class="avatar-box">
                                                             <div class="avatar avatar-xs">
-                                                                <img src="assets/img/profiles/avatar-16.jpg" alt="">
+                                                                <img src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                                                             </div>
                                                         </div>
                                                         <a href="profile.html">
-                                                            Jeffery Lalor
+                                                            {{ Auth::user()->name }}
                                                         </a>
                                                     </div>
                                                 </li>
@@ -990,23 +990,17 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="profile-img-wrap edit-img">
-                                        <img class="inline-block" src="assets/img/profiles/avatar-02.jpg" alt="user">
+                                        <img class="inline-block" src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
                                             <input class="upload" type="file">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" value="John">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" value="Doe">
+                                                <label>Full Name</label>
+                                                <input type="text" class="form-control" value="{{ Auth::user()->name }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
