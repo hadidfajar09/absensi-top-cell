@@ -7,6 +7,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use App\Models\User;
 use App\Models\Form;
+use App\Models\ProfileInformation;
 use App\Rules\MatchOldPassword;
 use Carbon\Carbon;
 use Session;
@@ -120,6 +121,55 @@ class UserManagementController extends Controller
     public function profile()
     {
         return view('usermanagement.profile_user');
+    }
+
+    // save profile information
+    public function profileInformation()
+    {
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|string|email',
+            'birth_date'   => 'required|string|max:255',
+            'gender'      => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'state'     => 'required|string|max:255',
+            'country'     => 'required|string|max:255',
+            'pin_code'     => 'required|string|max:255',
+            'phone_number'     => 'required|string|max:255',
+            'department'     => 'required|string|max:255',
+            'designation'     => 'required|string|max:255',
+            'reports_to'     => 'required|string|max:255',
+        ]);
+
+        DB::beginTransaction();
+        try{
+
+            $employees = ProfileInformation::where('email', '=',$request->email)->first();
+
+            if ($employees === null)
+            {
+                $employee = new ProfileInformation;
+                $employee->name         = $request->name;
+                $employee->email        = $request->email;
+                $employee->birth_date   = $request->birthDate;
+                $employee->gender       = $request->gender;
+                $employee->employee_id  = $request->employee_id;
+                $employee->company      = $request->company;
+                $employee->save();
+                
+                DB::commit();
+                Toastr::success('Profile Information successfully :)','Success');
+                return redirect()->back();
+            } else {
+                DB::rollback();
+                Toastr::error('Profile Information exits :)','Error');
+                return redirect()->back();
+            }
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('Profile Information fail :)','Error');
+            return redirect()->back();
+        }
     }
    
     // save new user

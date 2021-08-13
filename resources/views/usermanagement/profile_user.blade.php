@@ -986,37 +986,38 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('profile/information/save') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="profile-img-wrap edit-img">
                                         <img class="inline-block" src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
-                                            <input class="upload" type="file">
+                                            <input class="upload" type="file" id="upload" name="upload">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Full Name</label>
-                                                <input type="text" class="form-control" value="{{ Auth::user()->name }}">
+                                                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Birth Date</label>
                                                 <div class="cal-icon">
-                                                    <input class="form-control datetimepicker" type="text" value="05/06/1985">
+                                                    <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate" value="05/06/1985">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Gender</label>
-                                                <select class="select form-control">
-                                                    <option value="male selected">Male</option>
-                                                    <option value="female">Female</option>
+                                                <select class="select form-control" id="gender" name="gender">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1027,69 +1028,69 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" value="4487 Snowbird Lane">
+                                        <input type="text" class="form-control" id="address" name="address" value="4487 Snowbird Lane">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>State</label>
-                                        <input type="text" class="form-control" value="New York">
+                                        <input type="text" class="form-control" id="state" name="state" value="New York">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Country</label>
-                                        <input type="text" class="form-control" value="United States">
+                                        <input type="text" class="form-control" id="" name="country" value="United States">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Pin Code</label>
-                                        <input type="text" class="form-control" value="10523">
+                                        <input type="text" class="form-control" id="pin_code" name="pin_code" value="10523">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input type="text" class="form-control" value="631-889-3206">
+                                        <input type="text" class="form-control" id="phoneNumber" name="phone_number" value="631-889-3206">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Department <span class="text-danger">*</span></label>
-                                        <select class="select">
-                                            <option>Select Department</option>
-                                            <option>Web Development</option>
-                                            <option>IT Management</option>
-                                            <option>Marketing</option>
+                                        <select class="select" id="department" name="department">
+                                            <option selected disabled>Select Department</option>
+                                            <option value="Web Development"></option>
+                                            <option value="IT Management"></option>
+                                            <option value="Marketing"></option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Designation <span class="text-danger">*</span></label>
-                                        <select class="select">
-                                            <option>Select Designation</option>
-                                            <option>Web Designer</option>
-                                            <option>Web Developer</option>
-                                            <option>Android Developer</option>
+                                        <select class="select" id="" name="designation">
+                                            <option selected disabled>Select Designation</option>
+                                            <option value="Web Designer"></option>
+                                            <option value="Web Developer"></option>
+                                            <option value="Android Developer"></option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Reports To <span class="text-danger">*</span></label>
-                                        <select class="select">
-                                            <option>-</option>
-                                            <option>Wilmer Deluna</option>
-                                            <option>Lesley Grauer</option>
-                                            <option>Jeffery Lalor</option>
+                                        <select class="select" id="" name="reports_to">
+                                            <option selected disabled>-- select --</option>
+                                            <option value="Wilmer Deluna">Wilmer Deluna</option>
+                                            <option value="Lesley Grauer">Lesley Grauer</option>
+                                            <option value="Jeffery Lalor">Jeffery Lalor</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
