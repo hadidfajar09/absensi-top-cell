@@ -126,50 +126,61 @@ class UserManagementController extends Controller
     }
 
     // save profile information
-    public function profileInformation()
+    public function profileInformation(Request $request)
     {
-        $request->validate([
-            'name'        => 'required|string|max:255',
-            'email'       => 'required|string|email',
-            'birth_date'   => 'required|string|max:255',
-            'gender'      => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'state'     => 'required|string|max:255',
-            'country'     => 'required|string|max:255',
-            'pin_code'     => 'required|string|max:255',
-            'phone_number'     => 'required|string|max:255',
-            'department'     => 'required|string|max:255',
-            'designation'     => 'required|string|max:255',
-            'reports_to'     => 'required|string|max:255',
-        ]);
-
         DB::beginTransaction();
         try{
 
-            $employees = ProfileInformation::where('email', '=',$request->email)->first();
+            $employees = ProfileInformation::where('rec_id', '=',$request->rec_id)->first();
 
             if ($employees === null)
             {
                 $employee = new ProfileInformation;
                 $employee->name         = $request->name;
+                $employee->rec_id       = $request->rec_id;
                 $employee->email        = $request->email;
                 $employee->birth_date   = $request->birthDate;
                 $employee->gender       = $request->gender;
-                $employee->employee_id  = $request->employee_id;
-                $employee->company      = $request->company;
+                $employee->address      = $request->address;
+                $employee->state        = $request->state;
+                $employee->country      = $request->country;
+                $employee->pin_code     = $request->pin_code;
+                $employee->phone_number = $request->phone_number;
+                $employee->department   = $request->department;
+                $employee->designation  = $request->designation;
+                $employee->reports_to   = $request->reports_to;
                 $employee->save();
                 
                 DB::commit();
                 Toastr::success('Profile Information successfully :)','Success');
                 return redirect()->back();
             } else {
-                DB::rollback();
-                Toastr::error('Profile Information exits :)','Error');
+                
+                $update = [
+
+                    'rec_id'       => $request->rec_id,
+                    'name'         => $request->name,
+                    'email'        => $request->email,
+                    'birth_date'   =>$request->birthDate,
+                    'gender'       => $request->gender,
+                    'address'      => $request->address,
+                    'state'        => $request->state,
+                    'country'      => $request->country,
+                    'pin_code'     => $request->pin_code,
+                    'phone_number' => $request->phone_number,
+                    'department'   => $request->department,
+                    'designation'  => $request->designation,
+                    'reports_to'   => $request->reports_to,
+                ];
+                
+                ProfileInformation::where('rec_id',$request->rec_id)->update($update);
+                DB::commit();
+                Toastr::success('Updated Profile Information successfully :)','Success');
                 return redirect()->back();
             }
         }catch(\Exception $e){
             DB::rollback();
-            Toastr::error('Profile Information fail :)','Error');
+            Toastr::error('Add Profile Information fail :)','Error');
             return redirect()->back();
         }
     }

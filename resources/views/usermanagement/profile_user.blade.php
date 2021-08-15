@@ -188,7 +188,8 @@
                     </div>
                 </div>
             </div>
-
+            {{-- message --}}
+            {!! Toastr::message() !!}
             <!-- /Page Header -->
             <div class="card mb-0">
                 <div class="card-body">
@@ -1002,13 +1003,15 @@
                                             <div class="form-group">
                                                 <label>Full Name</label>
                                                 <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
+                                                <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{ Auth::user()->rec_id }}">
+                                                <input type="hidden" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Birth Date</label>
                                                 <div class="cal-icon">
-                                                    <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate" value="05/06/1985">
+                                                    <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -1028,31 +1031,31 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" id="address" name="address" value="4487 Snowbird Lane">
+                                        <input type="text" class="form-control" id="address" name="address" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>State</label>
-                                        <input type="text" class="form-control" id="state" name="state" value="New York">
+                                        <input type="text" class="form-control" id="state" name="state" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Country</label>
-                                        <input type="text" class="form-control" id="" name="country" value="United States">
+                                        <input type="text" class="form-control" id="" name="country" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Pin Code</label>
-                                        <input type="text" class="form-control" id="pin_code" name="pin_code" value="10523">
+                                        <input type="text" class="form-control" id="pin_code" name="pin_code" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input type="text" class="form-control" id="phoneNumber" name="phone_number" value="631-889-3206">
+                                        <input type="text" class="form-control" id="phoneNumber" name="phone_number" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -1060,9 +1063,9 @@
                                         <label>Department <span class="text-danger">*</span></label>
                                         <select class="select" id="department" name="department">
                                             <option selected disabled>Select Department</option>
-                                            <option value="Web Development"></option>
-                                            <option value="IT Management"></option>
-                                            <option value="Marketing"></option>
+                                            <option value="Web Development">Web Development</option>
+                                            <option value="IT Management">IT Management</option>
+                                            <option value="Marketing">Marketing</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1071,9 +1074,9 @@
                                         <label>Designation <span class="text-danger">*</span></label>
                                         <select class="select" id="" name="designation">
                                             <option selected disabled>Select Designation</option>
-                                            <option value="Web Designer"></option>
-                                            <option value="Web Developer"></option>
-                                            <option value="Android Developer"></option>
+                                            <option value="Web Designer">Web Designer</option>
+                                            <option value="Web Developer">Web Developer</option>
+                                            <option value="Android Developer">Android Developer</option>
                                         </select>
                                     </div>
                                 </div>
