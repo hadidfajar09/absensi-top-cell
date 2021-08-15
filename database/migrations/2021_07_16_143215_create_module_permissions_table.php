@@ -24,6 +24,7 @@ class CreateModulePermissionsTable extends Migration
             $table->string('delete')->nullable();
             $table->string('import')->nullable();
             $table->string('export')->nullable();
+            $table->timestamps();
         });
     }
 

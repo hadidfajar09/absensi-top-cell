@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use App\Models\User;
+use App\Models\Employee;
 use App\Models\Form;
 use App\Models\ProfileInformation;
 use App\Rules\MatchOldPassword;
@@ -39,6 +40,7 @@ class UserManagementController extends Controller
         if (Auth::user()->role_name=='Admin')
         {
             $users      = DB::table('users')->get();
+            $result     = DB::table('users')->get();
             $role_name  = DB::table('role_type_users')->get();
             $position   = DB::table('position_types')->get();
             $department = DB::table('departments')->get();
@@ -288,7 +290,7 @@ class UserManagementController extends Controller
         }
     }
     // delete
-    public function delete($id)
+    public function delete(Request $request)
     {
         $user = Auth::User();
         Session::put('user', $user);
@@ -317,9 +319,12 @@ class UserManagementController extends Controller
 
             DB::table('user_activity_logs')->insert($activityLog);
 
-            $delete = User::find($id);
-            unlink('assets/images/'.$delete->avatar);
-            $delete->delete();
+            if($request->avatar =='photo_defaults.jpg'){
+                User::destroy($request->id);
+            }else{
+                User::destroy($request->id);
+                unlink('assets/images/'.$request->avatar);
+            }
             DB::commit();
             Toastr::success('User deleted successfully :)','Success');
             return redirect()->route('userManagement');

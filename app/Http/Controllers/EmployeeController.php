@@ -14,13 +14,13 @@ class EmployeeController extends Controller
     // all employee card view
     public function cardAllEmployee(Request $request)
     {
+
         $users = DB::table('users')
                     ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
                     ->get(); 
         $userList = DB::table('users')->get();
         $permission_lists = DB::table('permission_lists')->get();
-
         return view('form.allemployeecard',compact('users','userList','permission_lists'));
     }
     // all employee list
@@ -32,7 +32,6 @@ class EmployeeController extends Controller
                     ->get();
         $userList = DB::table('users')->get();
         $permission_lists = DB::table('permission_lists')->get();
-
         return view('form.employeelist',compact('users','userList','permission_lists'));
     }
 
@@ -52,9 +51,9 @@ class EmployeeController extends Controller
         try{
 
             $employees = Employee::where('email', '=',$request->email)->first();
-
             if ($employees === null)
             {
+
                 $employee = new Employee;
                 $employee->name         = $request->name;
                 $employee->email        = $request->email;
@@ -181,7 +180,8 @@ class EmployeeController extends Controller
         $users = DB::table('users')
                     ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
-                    ->get(); 
+                    ->get();
+        $permission_lists = DB::table('permission_lists')->get();
         $userList = DB::table('users')->get();
 
         // search by id
@@ -253,7 +253,7 @@ class EmployeeController extends Controller
                          ->where('users.position','LIKE','%'.$request->position.'%')
                          ->get();
          }
-        return view('form.allemployeecard',compact('users','userList'));
+        return view('form.allemployeecard',compact('users','userList','permission_lists'));
     }
     public function employeeListSearch(Request $request)
     {
@@ -261,6 +261,7 @@ class EmployeeController extends Controller
                     ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
                     ->get(); 
+        $permission_lists = DB::table('permission_lists')->get();
         $userList = DB::table('users')->get();
 
         // search by id
@@ -332,6 +333,6 @@ class EmployeeController extends Controller
                         ->where('users.position','LIKE','%'.$request->position.'%')
                         ->get();
         }
-        return view('form.employeelist',compact('users','userList'));
+        return view('form.employeelist',compact('users','userList','permission_lists'));
     }
 }
