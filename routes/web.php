@@ -73,7 +73,7 @@ Route::get('reset-password/{token}', [App\Http\Controllers\Auth\ResetPasswordCon
 Route::post('reset-password', [App\Http\Controllers\Auth\ResetPasswordController::class, 'updatePassword']);
 
 // ----------------------------- user profile ------------------------------//
-Route::get('profile_user', [App\Http\Controllers\UserManagementController::class, 'profile'])->name('profile_user');
+Route::get('profile_user', [App\Http\Controllers\UserManagementController::class, 'profile'])->middleware('auth')->name('profile_user');
 Route::post('profile/information/save', [App\Http\Controllers\UserManagementController::class, 'profileInformation'])->name('profile/information/save');
 
 // ----------------------------- user userManagement -----------------------//
