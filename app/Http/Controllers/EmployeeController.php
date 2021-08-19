@@ -335,4 +335,11 @@ class EmployeeController extends Controller
         }
         return view('form.employeelist',compact('users','userList','permission_lists'));
     }
+
+    // employee profile
+    public function profileEmployee($rec_id)
+    {
+        $user = DB::table('users')->where('rec_id',$rec_id)->get();
+        return view('form.employeeprofile',compact('user'));
+    }
 }

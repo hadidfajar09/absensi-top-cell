@@ -259,8 +259,8 @@
                                 <tr>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('/assets/images/'. $items->avatar) }}"></a>
-                                            <a href="profile.html">{{ $items->name }}<span>{{ $items->position }}</span></a>
+                                            <a href="{{ url('employee/profile/'.$items->rec_id) }}" class="avatar"><img alt="" src="{{ URL::to('/assets/images/'. $items->avatar) }}"></a>
+                                            <a href="{{ url('employee/profile/'.$items->rec_id) }}">{{ $items->name }}<span>{{ $items->position }}</span></a>
                                         </h2>
                                     </td>
                                     <td>{{ $items->rec_id }}</td>
