@@ -225,15 +225,15 @@
                                                 </li>
                                                 <li>
                                                     <div class="title">Birthday:</div>
-                                                    <div class="text">N/A</div>
+                                                    <div class="text">{{ $users->birth_date }}</div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Address:</div>
-                                                    <div class="text">N/A</div>
+                                                    <div class="text">{{ $users->address }}</div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Gender:</div>
-                                                    <div class="text">N/A</div>
+                                                    <div class="text">{{ $users->gender }}</div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Reports to:</div>
@@ -987,31 +987,32 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('profile/information/save') }}" method="POST">
+                        <form action="{{ route('profile/information/save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="profile-img-wrap edit-img">
-                                        <img class="inline-block" src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
+                                        <img class="inline-block" src="{{ URL::to('/assets/images/'. $users->avatar) }}" alt="{{ $users->name }}">
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
-                                            <input class="upload" type="file" id="upload" name="upload">
+                                            <input class="upload" type="file" id="image" name="images">
+                                            <input type="hidden" name="hidden_image" id="e_image" value="{{ $users->avatar }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Full Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
-                                                <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{ Auth::user()->rec_id }}">
-                                                <input type="hidden" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}">
+                                                <input type="text" class="form-control" id="name" name="name" value="{{ $users->name }}">
+                                                <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{ $users->rec_id }}">
+                                                <input type="hidden" class="form-control" id="email" name="email" value="{{ $users->email }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Birth Date</label>
                                                 <div class="cal-icon">
-                                                    <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate">
+                                                    <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate" value="{{ $users->birth_date }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1019,6 +1020,7 @@
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 <select class="select form-control" id="gender" name="gender">
+                                                    <option value="{{ $users->gender }}" {{ ( $users->gender == $users->gender) ? 'selected' : '' }}>{{ $users->gender }} </option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
@@ -1031,31 +1033,31 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" id="address" name="address">
+                                        <input type="text" class="form-control" id="address" name="address" value="{{ $users->address }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>State</label>
-                                        <input type="text" class="form-control" id="state" name="state">
+                                        <input type="text" class="form-control" id="state" name="state" value="{{ $users->state }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Country</label>
-                                        <input type="text" class="form-control" id="" name="country">
+                                        <input type="text" class="form-control" id="" name="country" value="{{ $users->country }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Pin Code</label>
-                                        <input type="text" class="form-control" id="pin_code" name="pin_code">
+                                        <input type="text" class="form-control" id="pin_code" name="pin_code" value="{{ $users->pin_code }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input type="text" class="form-control" id="phoneNumber" name="phone_number">
+                                        <input type="text" class="form-control" id="phoneNumber" name="phone_number" value="{{ $users->phone_number }}">
                                     </div>
                                 </div>
 
@@ -1063,7 +1065,7 @@
                                     <div class="form-group">
                                         <label>Department <span class="text-danger">*</span></label>
                                         <select class="select" id="department" name="department">
-                                            <option selected disabled>Select Department</option>
+                                            <option value="{{ $users->department }}" {{ ( $users->department == $users->department) ? 'selected' : '' }}>{{ $users->department }} </option>
                                             <option value="Web Development">Web Development</option>
                                             <option value="IT Management">IT Management</option>
                                             <option value="Marketing">Marketing</option>
@@ -1073,9 +1075,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Designation <span class="text-danger">*</span></label>
-                                        
-                                        <select class="select" id="" name="designation">
-                                            <option selected disabled>Select Designation</option>
+                                        <select class="select" id="designation" name="designation">
+                                            <option value="{{ $users->designation }}" {{ ( $users->designation == $users->designation) ? 'selected' : '' }}>{{ $users->designation }} </option>
                                             <option value="Web Designer">Web Designer</option>
                                             <option value="Web Developer">Web Developer</option>
                                             <option value="Android Developer">Android Developer</option>
@@ -1086,7 +1087,7 @@
                                     <div class="form-group">
                                         <label>Reports To <span class="text-danger">*</span></label>
                                         <select class="select" id="" name="reports_to">
-                                            <option selected disabled>-- select --</option>
+                                            <option value="{{ $users->reports_to }}" {{ ( $users->reports_to == $users->reports_to) ? 'selected' : '' }}>{{ $users->reports_to }} </option>
                                             @foreach ($user as $users )
                                             <option value="{{ $users->name }}">{{ $users->name }}</option>
                                             @endforeach
