@@ -601,42 +601,36 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/leaves/save') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label>Leave Type <span class="text-danger">*</span></label>
-                                <select class="select">
-                                    <option>Select Leave Type</option>
-                                    <option>Casual Leave 12 Days</option>
-                                    <option>Medical Leave</option>
-                                    <option>Loss of Pay</option>
+                                <select class="select" id="leaveType" name="leave_type">
+                                    <option selected disabled>Select Leave Type</option>
+                                    <option value="Casual Leave 12 Days">Casual Leave 12 Days</option>
+                                    <option value="Medical Leave">Medical Leave</option>
+                                    <option value="Loss of Pay">Loss of Pay</option>
                                 </select>
                             </div>
+                            <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{ Auth::user()->rec_id }}">
                             <div class="form-group">
                                 <label>From <span class="text-danger">*</span></label>
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" type="text">
+                                    <input type="text" class="form-control datetimepicker" id="from_date" name="from_date">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>To <span class="text-danger">*</span></label>
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" type="text">
+                                    <input type="text" class="form-control datetimepicker" id="to_date" name="to_date">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Number of days <span class="text-danger">*</span></label>
-                                <input class="form-control" readonly type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>Remaining Leaves <span class="text-danger">*</span></label>
-                                <input class="form-control" readonly value="12" type="text">
-                            </div>
-                            <div class="form-group">
                                 <label>Leave Reason <span class="text-danger">*</span></label>
-                                <textarea rows="4" class="form-control"></textarea>
+                                <textarea rows="4" class="form-control" id="leave_reason" name="leave_reason"></textarea>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
