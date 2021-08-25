@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\LeavesAdmin;
 use DB;
+use DateTime;
 
 class LeavesController extends Controller
 {
@@ -23,14 +24,21 @@ class LeavesController extends Controller
             'to_date'      => 'required|string|max:255',
             'leave_reason' => 'required|string|max:255',
         ]);
-        
+
         DB::beginTransaction();
         try{
+
+            $from_date = new DateTime($request->from_date);
+            $to_date = new DateTime($request->to_date);
+            $day = $from_date->diff($to_date);
+            $days    = $day->d;
+
             $leaves = new LeavesAdmin;
             $leaves->rec_id        = $request->rec_id;
             $leaves->leave_type    = $request->leave_type;
             $leaves->from_date     = $request->from_date;
             $leaves->to_date       = $request->to_date;
+            $leaves->day           = $days;
             $leaves->leave_reason  = $request->leave_reason;
             $leaves->save();
             

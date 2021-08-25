@@ -204,7 +204,8 @@
             </div>
 			<!-- /Page Header -->
             {{-- message --}}
-            {!! Toastr::message() !!} 
+            {!! Toastr::message() !!}
+
             @php
                 use Carbon\Carbon;
                 $today_date = Carbon::today()->format('d-m-Y');

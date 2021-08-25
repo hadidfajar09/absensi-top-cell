@@ -13,6 +13,7 @@ class LeavesAdmin extends Model
         'leave_type',
         'from_date',
         'to_date',
+        'day',
         'leave_reason',
     ];
 }

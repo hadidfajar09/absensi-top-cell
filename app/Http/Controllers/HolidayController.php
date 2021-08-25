@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Holiday;
 use DB;
+
 class HolidayController extends Controller
 {
     // holidays
