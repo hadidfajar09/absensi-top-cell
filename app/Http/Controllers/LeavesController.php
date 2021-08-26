@@ -13,7 +13,12 @@ class LeavesController extends Controller
     // leaves
     public function leaves()
     {
-        return view('form.leaves');
+        $leaves = DB::table('leaves_admins')
+                    ->join('users', 'users.rec_id', '=', 'leaves_admins.rec_id')
+                    ->select('leaves_admins.*', 'users.*')
+                    ->get();
+
+        return view('form.leaves',compact('leaves'));
     }
     // save record
     public function saveRecord(Request $request)
@@ -26,11 +31,11 @@ class LeavesController extends Controller
         ]);
 
         DB::beginTransaction();
-        try{
+        try {
 
             $from_date = new DateTime($request->from_date);
             $to_date = new DateTime($request->to_date);
-            $day = $from_date->diff($to_date);
+            $day     = $from_date->diff($to_date);
             $days    = $day->d;
 
             $leaves = new LeavesAdmin;
@@ -45,7 +50,7 @@ class LeavesController extends Controller
             DB::commit();
             Toastr::success('Create new Leaves successfully :)','Success');
             return redirect()->back();
-        }catch(\Exception $e){
+        } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Add Leaves fail :)','Error');
             return redirect()->back();
