@@ -312,11 +312,14 @@
                                                     <a href="#">{{ $items->name }}<span>{{ $items->position }}</span></a>
                                                 </h2>
                                             </td>
-                                            <td>{{$items->leave_type}}</td>
+                                            <td hidden class="id">{{ $items->id }}</td>
+                                            <td class="leave_type">{{$items->leave_type}}</td>
+                                            <td hidden class="from_date">{{ $items->from_date }}</td>
                                             <td>{{date('d F, Y',strtotime($items->from_date)) }}</td>
+                                            <td hidden class="to_date">{{$items->to_date}}</td>
                                             <td>{{date('d F, Y',strtotime($items->to_date)) }}</td>
-                                            <td>{{$items->day}} Day</td>
-                                            <td>{{$items->leave_reason}}</td>
+                                            <td class="day">{{$items->day}} Day</td>
+                                            <td class="leave_reason">{{$items->leave_reason}}</td>
                                             <td class="text-center">
                                                 <div class="dropdown action-label">
                                                     <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -334,7 +337,7 @@
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item leaveUpdate" data-toggle="modal" data-id="'.$items->id.'" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </div>
                                                 </div>
@@ -410,40 +413,40 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/leaves/edit') }}" method="POST">
+                            @csrf
+                            <input type="hidden" id="e_id" name="id" value="">
                             <div class="form-group">
                                 <label>Leave Type <span class="text-danger">*</span></label>
-                                <select class="select">
-                                    <option>Select Leave Type</option>
-                                    <option>Casual Leave 12 Days</option>
+                                <select class="select" id="e_leave_type" name="leave_type">
+                                    <option selected disabled>Select Leave Type</option>
+                                    <option value="Casual Leave 12 Days">Casual Leave 12 Days</option>
+                                    <option value="Medical Leave">Medical Leave</option>
+                                    <option value="Loss of Pay">Loss of Pay</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>From <span class="text-danger">*</span></label>
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" value="01-01-2019" type="text">
+                                    <input type="text" class="form-control datetimepicker" id="e_from_date" name="from_date" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>To <span class="text-danger">*</span></label>
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" value="01-01-2019" type="text">
+                                    <input type="text" class="form-control datetimepicker" id="e_to_date" name="to_date" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Number of days <span class="text-danger">*</span></label>
-                                <input class="form-control" readonly type="text" value="2">
-                            </div>
-                            <div class="form-group">
-                                <label>Remaining Leaves <span class="text-danger">*</span></label>
-                                <input class="form-control" readonly value="12" type="text">
+                                <input class="form-control" readonly type="text" id="e_number_of_days" name="number_of_days" value="">
                             </div>
                             <div class="form-group">
                                 <label>Leave Reason <span class="text-danger">*</span></label>
-                                <textarea rows="4" class="form-control">Going to hospital</textarea>
+                                <textarea rows="4" class="form-control" id="e_leave_reason" name="leave_reason" value=""></textarea>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -504,5 +507,24 @@
     </div>
     <!-- /Page Wrapper -->
     @section('script')
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    {{-- update js --}}
+    <script>
+        $(document).on('click','.leaveUpdate',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_id').val(_this.find('.id').text());
+            $('#e_number_of_days').val(_this.find('.day').text());
+            $('#e_from_date').val(_this.find('.from_date').text());  
+            $('#e_to_date').val(_this.find('.to_date').text());  
+            $('#e_leave_reason').val(_this.find('.leave_reason').text());
+
+            var leave_type = (_this.find(".leave_type").text());
+            var _option = '<option selected value="' + leave_type+ '">' + _this.find('.leave_type').text() + '</option>'
+            $( _option).appendTo("#e_leave_type");
+        });
+    </script>
     @endsection
 @endsection

@@ -15,7 +15,7 @@ class LeavesController extends Controller
     {
         $leaves = DB::table('leaves_admins')
                     ->join('users', 'users.rec_id', '=', 'leaves_admins.rec_id')
-                    ->select('leaves_admins.*', 'users.*')
+                    ->select('leaves_admins.*', 'users.position','users.name','users.avatar')
                     ->get();
 
         return view('form.leaves',compact('leaves'));
@@ -53,6 +53,39 @@ class LeavesController extends Controller
         } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Add Leaves fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    // edit record
+    public function editRecordLeave(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $from_date = new DateTime($request->from_date);
+            $to_date = new DateTime($request->to_date);
+            $day     = $from_date->diff($to_date);
+            $days    = $day->d;
+
+            $update = [
+                'id'           => $request->id,
+                'leave_type'   => $request->leave_type,
+                'from_date'    => $request->from_date,
+                'to_date'      => $request->to_date,
+                'day'          => $days,
+                'leave_reason' => $request->leave_reason,
+            ];
+
+            LeavesAdmin::where('id',$request->id)->update($update);
+            DB::commit();
+            
+            DB::commit();
+            Toastr::success('Updated Leaves successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Update Leaves fail :)','Error');
             return redirect()->back();
         }
     }
