@@ -288,18 +288,18 @@
                             <p>Are you sure want to delete?</p>
                         </div>
                         <div class="modal-btn delete-action">
-                        <form action="{{ route('roles/permissions/delete') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" class="e_id" value="">
-                            <div class="row">
-                                <div class="col-6">
-                                    <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                            <form action="{{ route('roles/permissions/delete') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" class="e_id" value="">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
     <script>
         $(document).on('click','.rolesDelete',function()
         {
-            var _this = $(this).closest("li");;
+            var _this = $(this).closest("li");
             $('.e_id').val(_this.find('.id').text());
         });
     </script>

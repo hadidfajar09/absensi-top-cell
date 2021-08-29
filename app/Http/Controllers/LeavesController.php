@@ -89,4 +89,21 @@ class LeavesController extends Controller
             return redirect()->back();
         }
     }
+
+    // delete record
+    public function deleteLeave(Request $request)
+    {
+        try {
+
+            LeavesAdmin::destroy($request->id);
+            Toastr::success('Leaves admin deleted successfully :)','Success');
+            return redirect()->back();
+        
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            Toastr::error('Leaves admin delete fail :)','Error');
+            return redirect()->back();
+        }
+    }
 }
