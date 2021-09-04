@@ -1,8 +1,4 @@
 @extends('layouts.settings')
-{{-- 
-@section('menu')
-@extends('sidebar.dashboard')
-@endsection --}}
 @section('content')
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">

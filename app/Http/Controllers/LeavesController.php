@@ -106,4 +106,10 @@ class LeavesController extends Controller
             return redirect()->back();
         }
     }
+
+    // attendance
+    public function attendanceIndex()
+    {
+        return view('form.attendance');
+    }
 }

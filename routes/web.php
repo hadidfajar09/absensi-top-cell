@@ -121,6 +121,9 @@ Route::post('form/leaves/save', [App\Http\Controllers\LeavesController::class, '
 Route::post('form/leaves/edit', [App\Http\Controllers\LeavesController::class, 'editRecordLeave'])->middleware('auth')->name('form/leaves/edit');
 Route::post('form/leaves/edit/delete', [App\Http\Controllers\LeavesController::class, 'deleteLeave'])->middleware('auth')->name('form/leaves/edit/delete');
 
+// ----------------------------- form attendance  ------------------------------//
+Route::get('attendance/page', [App\Http\Controllers\LeavesController::class, 'attendanceIndex'])->middleware('auth')->name('attendance/page');
+
 
 
 

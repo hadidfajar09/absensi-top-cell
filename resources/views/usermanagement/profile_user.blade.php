@@ -1,8 +1,4 @@
 @extends('layouts.master')
-{{-- 
-@section('menu')
-@extends('sidebar.dashboard')
-@endsection --}}
 @section('content')
 
 	<!-- Sidebar -->
@@ -53,14 +49,6 @@
                             <li><a href="timesheet.html">Timesheet</a></li>
                             <li><a href="shift-scheduling.html">Shift & Schedule</a></li>
                             <li><a href="overtime.html">Overtime</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu"> <a href="#"><i class="la la-rocket"></i> 
-                        <span> Projects</span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="tasks.html">Tasks</a></li>
-                            <li><a href="task-board.html">Task Board</a></li>
                         </ul>
                     </li>
                     <li class="menu-title"> <span>HR</span> </li>
@@ -121,13 +109,6 @@
                             <li><a href="performance-appraisal.html"> Performance Appraisal </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"> <a href="#"><i class="la la-crosshairs"></i>
-                        <span> Goals </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="goal-tracking.html"> Goal List </a></li>
-                            <li><a href="goal-type.html"> Goal Type </a></li>
-                        </ul>
-                    </li>
                     <li class="submenu"> <a href="#"><i class="la la-edit"></i>
                         <span> Training </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
@@ -164,7 +145,6 @@
                         <a href="#"><i class="la la-user"></i> <span> Profile </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a class="active" href="{{ route('profile_user') }}"> Employee Profile </a></li>
-                            <li><a href="client-profile.html"> Client Profile </a></li>
                         </ul>
                     </li>
                 </ul>

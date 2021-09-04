@@ -24,7 +24,7 @@ class HolidayController extends Controller
         ]);
         
         DB::beginTransaction();
-        try{
+        try {
             $holiday = new Holiday;
             $holiday->name_holiday = $request->nameHoliday;
             $holiday->date_holiday  = $request->holidayDate;
@@ -33,7 +33,8 @@ class HolidayController extends Controller
             DB::commit();
             Toastr::success('Create new holiday successfully :)','Success');
             return redirect()->back();
-        }catch(\Exception $e){
+            
+        } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Add Holiday fail :)','Error');
             return redirect()->back();
