@@ -44,7 +44,7 @@
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
                             </li>
                             <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
-                            <li><a href="leave-settings.html">Leave Settings</a></li>
+                            <li><a href="{{ route('form/leavesettings/page') }}">Leave Settings</a></li>
                             <li><a href="{{ route('attendance/page') }}">Attendance (Admin)</a></li>
                             <li><a href="attendance-employee.html">Attendance (Employee)</a></li>
                             <li><a href="departments.html">Departments</a></li>

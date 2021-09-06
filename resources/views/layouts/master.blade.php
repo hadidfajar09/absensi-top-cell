@@ -280,7 +280,9 @@
 	<script src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
 	<!-- Datatable JS -->
 	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>		
+	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
+	<!-- Multiselect JS -->
+	<script src="{{ URL::to('assets/js/multiselect.min.js') }}"></script>		
 	<!-- Custom JS -->
 	<script src="{{ URL::to('assets/js/app.js') }}"></script>
 	

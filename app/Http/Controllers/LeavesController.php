@@ -107,6 +107,12 @@ class LeavesController extends Controller
         }
     }
 
+    // leaveSettings
+    public function leaveSettings()
+    {
+        return view('form.leavesettings');
+    }
+
     // attendance
     public function attendanceIndex()
     {
