@@ -113,9 +113,15 @@ class LeavesController extends Controller
         return view('form.leavesettings');
     }
 
-    // attendance
+    // attendance admin
     public function attendanceIndex()
     {
         return view('form.attendance');
+    }
+
+    // attendance employee
+    public function AttendanceEmployee()
+    {
+        return view('form.attendanceemployee');
     }
 }
