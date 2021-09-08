@@ -124,4 +124,16 @@ class LeavesController extends Controller
     {
         return view('form.attendanceemployee');
     }
+
+    // shiftscheduling
+    public function shiftScheduLing()
+    {
+        return view('form.shiftscheduling');
+    }
+
+    // shiftList
+    public function shiftList()
+    {
+        return view('form.shiftlist');
+    }
 }

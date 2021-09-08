@@ -55,7 +55,7 @@
                             <li><a href="departments.html">Departments</a></li>
                             <li><a href="designations.html">Designations</a></li>
                             <li><a href="timesheet.html">Timesheet</a></li>
-                            <li><a href="shift-scheduling.html">Shift & Schedule</a></li>
+                            <li><a href="{{ route('form/shiftscheduling/page') }}">Shift & Schedule</a></li>
                             <li><a href="overtime.html">Overtime</a></li>
                         </ul>
                     </li>
