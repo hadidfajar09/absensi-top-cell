@@ -83,7 +83,7 @@
                     <li class="submenu"> <a href="#"><i class="la la-money"></i>
                         <span> Payroll </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="salary.html"> Employee Salary </a></li>
+                            <li><a href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
                             <li><a href="salary-view.html"> Payslip </a></li>
                             <li><a href="payroll-lists.html"> Payroll lists </a></li>
                         </ul>
