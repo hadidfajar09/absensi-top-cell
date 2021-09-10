@@ -131,6 +131,7 @@ Route::get('form/shiftlist/page', [App\Http\Controllers\LeavesController::class,
 
 // ----------------------------- form payroll  ------------------------------//
 Route::get('form/salary/page', [App\Http\Controllers\PayrollController::class, 'salary'])->middleware('auth')->name('form/salary/page');
+Route::get('form/salary/view', [App\Http\Controllers\PayrollController::class, 'salaryView'])->middleware('auth')->name('form/salary/view');
 
 
 

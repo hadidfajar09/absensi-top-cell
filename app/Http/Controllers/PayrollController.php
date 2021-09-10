@@ -11,4 +11,10 @@ class PayrollController extends Controller
     {
         return view('payroll.employeesalary');
     }
+
+    // salary view detail
+    public function salaryView()
+    {
+        return view('payroll.salaryview');
+    }
 }

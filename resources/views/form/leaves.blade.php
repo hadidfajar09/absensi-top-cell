@@ -60,26 +60,6 @@
                         </ul>
                     </li>
                     <li class="menu-title"> <span>HR</span> </li>
-                    <li class="submenu"> <a href="#"><i class="la la-files-o"></i>
-                        <span> Sales </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="estimates.html">Estimates</a></li>
-                            <li><a href="invoices.html">Invoices</a></li>
-                            <li><a href="payments.html">Payments</a></li>
-                            <li><a href="expenses.html">Expenses</a></li>
-                            <li><a href="provident-fund.html">Provident Fund</a></li>
-                            <li><a href="taxes.html">Taxes</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu"> <a href="#"><i class="la la-files-o"></i>
-                        <span> Accounting </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="categories.html">Categories</a></li>
-                            <li><a href="budgets.html">Budgets</a></li>
-                            <li><a href="budget-expenses.html">Budget Expenses</a></li>
-                            <li><a href="budget-revenues.html">Budget Revenues</a></li>
-                        </ul>
-                    </li>
                     <li class="submenu"> <a href="#"><i class="la la-money"></i>
                         <span> Payroll </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">

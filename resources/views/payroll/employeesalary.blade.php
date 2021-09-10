@@ -60,26 +60,6 @@
                         </ul>
                     </li>
                     <li class="menu-title"> <span>HR</span> </li>
-                    <li class="submenu"> <a href="#"><i class="la la-files-o"></i>
-                        <span> Sales </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="estimates.html">Estimates</a></li>
-                            <li><a href="invoices.html">Invoices</a></li>
-                            <li><a href="payments.html">Payments</a></li>
-                            <li><a href="expenses.html">Expenses</a></li>
-                            <li><a href="provident-fund.html">Provident Fund</a></li>
-                            <li><a href="taxes.html">Taxes</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu"> <a href="#"><i class="la la-files-o"></i>
-                        <span> Accounting </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="categories.html">Categories</a></li>
-                            <li><a href="budgets.html">Budgets</a></li>
-                            <li><a href="budget-expenses.html">Budget Expenses</a></li>
-                            <li><a href="budget-revenues.html">Budget Revenues</a></li>
-                        </ul>
-                    </li>
                     <li class="submenu">
                         <a href="#" class="noti-dot">
                             <i class="la la-user"></i>
@@ -274,7 +254,7 @@
                                         </div>
                                     </td>
                                     <td>$59698</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{ route('form/salary/view') }}">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -307,7 +287,7 @@
                                         </div>
                                     </td>
                                     <td>$72000</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{ route('form/salary/view') }}">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -340,7 +320,7 @@
                                         </div>
                                     </td>
                                     <td>$48200</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{ route('form/salary/view') }}">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
