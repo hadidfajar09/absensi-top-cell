@@ -17,4 +17,10 @@ class PayrollController extends Controller
     {
         return view('payroll.salaryview');
     }
+
+    // payroll Items
+    public function payrollItems()
+    {
+        return view('payroll.payrollitems');
+    }
 }

@@ -37,7 +37,7 @@
                         <span>Employees</span>
                     </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
+                        <a href="#">
                             <i class="la la-user"></i>
                             <span> Employees</span>
                             <span class="menu-arrow"></span>
@@ -68,8 +68,8 @@
                         </a>
                         <ul style="display: none;">
                             <li><a class="active" href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
-                            <li><a href="salary-view.html"> Payslip </a></li>
-                            <li><a href="payroll-items.html"> Payroll Items </a></li>
+                            <li><a href="{{ route('form/salary/view') }}"> Payslip </a></li>
+                            <li><a href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
                     <li> <a href="policies.html">
