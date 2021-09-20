@@ -29,9 +29,9 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 
 	{{-- message toastr --}}
-	<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
-	<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
+	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
+	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
 </head>
 
 <body>

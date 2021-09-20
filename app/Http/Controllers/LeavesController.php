@@ -125,6 +125,12 @@ class LeavesController extends Controller
         return view('form.attendanceemployee');
     }
 
+    // leaves Employee
+    public function leavesEmployee()
+    {
+        return view('form.leavesemployee');
+    }
+
     // shiftscheduling
     public function shiftScheduLing()
     {

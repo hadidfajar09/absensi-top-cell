@@ -48,7 +48,7 @@
                             <li><a href="{{ route('form/leaves/new') }}">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
                             </li>
-                            <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
+                            <li><a href="{{route('form/leavesemployee/new')}}">Leaves (Employee)</a></li>
                             <li><a href="{{ route('form/leavesettings/page') }}">Leave Settings</a></li>
                             <li><a href="{{ route('attendance/page') }}">Attendance (Admin)</a></li>
                             <li><a href="{{ route('attendance/employee/page') }}">Attendance (Employee)</a></li>
@@ -339,6 +339,7 @@
 
         </div>
         <!-- /Page Content -->
+
         <!-- Add Salary Modal -->
         <div id="add_salary" class="modal custom-modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -350,20 +351,23 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="" method="POST">
+                            @csrf
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
                                         <label>Select Staff</label>
-                                        <select class="select"> 
-                                            <option>John Doe</option>
-                                            <option>Richard Miles</option>
+                                        <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($userList as $key=>$user )
+                                                <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }} data-email={{ $user->email }}>{{ $user->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6"> 
                                     <label>Net Salary</label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="salary" id="salary" placeholder="Enter net salary">
                                 </div>
                             </div>
                             <div class="row"> 
@@ -371,73 +375,59 @@
                                     <h4 class="text-primary">Earnings</h4>
                                     <div class="form-group">
                                         <label>Basic</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="basic" id="basic" placeholder="Enter basic">
                                     </div>
                                     <div class="form-group">
                                         <label>DA(40%)</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text"  name="da" id="da" placeholder="Enter DA(40%)">
                                     </div>
                                     <div class="form-group">
                                         <label>HRA(15%)</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text"  name="hra" id="hra" placeholder="Enter HRA(15%)">
                                     </div>
                                     <div class="form-group">
                                         <label>Conveyance</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text"  name="conveyance" id="conveyance" placeholder="Enter conveyance">
                                     </div>
                                     <div class="form-group">
                                         <label>Allowance</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text"  name="allowance" id="allowance" placeholder="Enter allowance">
                                     </div>
                                     <div class="form-group">
                                         <label>Medical  Allowance</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="add-more">
-                                        <a href="#"><i class="fa fa-plus-circle"></i> Add More</a>
+                                        <input class="form-control" type="text" name="medical_allowance" id="medical_allowance" placeholder="Enter medical  allowance">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">  
                                     <h4 class="text-primary">Deductions</h4>
                                     <div class="form-group">
                                         <label>TDS</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="tds" id="tds" placeholder="Enter TDS">
                                     </div> 
                                     <div class="form-group">
                                         <label>ESI</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="esi" id="esi" placeholder="Enter ESI">
                                     </div>
                                     <div class="form-group">
                                         <label>PF</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="pf" id="pf" placeholder="Enter PF">
                                     </div>
                                     <div class="form-group">
                                         <label>Leave</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="leave" id="leave" placeholder="Enter leave">
                                     </div>
                                     <div class="form-group">
                                         <label>Prof. Tax</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="prof_tax" id="prof_tax" placeholder="Enter Prof. Tax">
                                     </div>
                                     <div class="form-group">
                                         <label>Labour Welfare</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>
-                                    <div class="add-more">
-                                        <a href="#"><i class="fa fa-plus-circle"></i> Add More</a>
+                                        <input class="form-control" type="text" name="labour_welfare" id="labour_welfare" placeholder="Enter labour welfare">
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -579,6 +569,12 @@
     </div>
     <!-- /Page Wrapper -->
     @section('script')
-    
+        <script>
+            $(document).ready(function() {
+                $('.select2s-hidden-accessible').select2({
+                    closeOnSelect: false
+                });
+            });
+        </script>
     @endsection
 @endsection

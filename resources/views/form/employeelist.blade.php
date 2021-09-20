@@ -47,7 +47,7 @@
                             <li><a href="{{ route('form/leaves/new') }}">Leaves (Admin) 
                                 <span class="badge badge-pill bg-primary float-right">1</span></a>
                             </li>
-                            <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
+                            <li><a href="{{route('form/leavesemployee/new')}}">Leaves (Employee)</a></li>
                             <li><a href="{{ route('form/leavesettings/page') }}">Leave Settings</a></li>
                             <li><a href="attendance.html">Attendance (Admin)</a></li>
                             <li><a href="{{ route('attendance/employee/page') }}">Attendance (Employee)</a></li>
