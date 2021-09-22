@@ -1,6 +1,8 @@
 
 @extends('layouts.master')
 @section('content')
+    {{-- message --}}
+    {!! Toastr::message() !!}
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -351,7 +353,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('form/salary/save') }}" method="POST">
                             @csrf
                             <div class="row"> 
                                 <div class="col-sm-6"> 
@@ -360,11 +362,12 @@
                                         <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
                                             <option value="">-- Select --</option>
                                             @foreach ($userList as $key=>$user )
-                                                <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }} data-email={{ $user->email }}>{{ $user->name }}</option>
+                                                <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }}>{{ $user->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <input class="form-control" type="hidden" name="rec_id" id="employee_id" readonly>
                                 <div class="col-sm-6"> 
                                     <label>Net Salary</label>
                                     <input class="form-control" type="text" name="salary" id="salary" placeholder="Enter net salary">
@@ -574,6 +577,13 @@
                 $('.select2s-hidden-accessible').select2({
                     closeOnSelect: false
                 });
+            });
+        </script>
+        <script>
+            // select auto id and email
+            $('#name').on('change',function()
+            {
+                $('#employee_id').val($(this).find(':selected').data('employee_id'));
             });
         </script>
     @endsection
