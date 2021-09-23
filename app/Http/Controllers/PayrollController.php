@@ -25,17 +25,25 @@ class PayrollController extends Controller
     // save record
      public function saveRecord(Request $request)
      {
-        // $request->validate([
-        //     'leave_type'   => 'required|string|max:255',
-        //     'from_date'    => 'required|string|max:255',
-        //     'to_date'      => 'required|string|max:255',
-        //     'leave_reason' => 'required|string|max:255',
-        // ]);
+        $request->validate([
+            'name'         => 'required|string|max:255',
+            'salary'       => 'required|string|max:255',
+            'basic' => 'required|string|max:255',
+            'da'    => 'required|string|max:255',
+            'conveyance' => 'required|string|max:255',
+            'allowance'  => 'required|string|max:255',
+            'medical_allowance' => 'required|string|max:255',
+            'tds' => 'required|string|max:255',
+            'esi' => 'required|string|max:255',
+            'pf'  => 'required|string|max:255',
+            'leave'    => 'required|string|max:255',
+            'prof_tax' => 'required|string|max:255',
+            'labour_welfare' => 'required|string|max:255',
+        ]);
 
         DB::beginTransaction();
         try {
-
-            $salary = new StaffSalary;
+            $salary = StaffSalary::updateOrCreate(['rec_id' => $request->rec_id]);
             $salary->name              = $request->name;
             $salary->rec_id            = $request->rec_id;
             $salary->salary            = $request->salary;

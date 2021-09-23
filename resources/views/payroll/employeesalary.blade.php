@@ -359,18 +359,28 @@
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
                                         <label>Select Staff</label>
-                                        <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
+                                        <select class="select select2s-hidden-accessible @error('name') is-invalid @enderror" style="width: 100%;" tabindex="-1" aria-hidden="true" id="name" name="name">
                                             <option value="">-- Select --</option>
                                             @foreach ($userList as $key=>$user )
                                                 <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }}>{{ $user->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <input class="form-control" type="hidden" name="rec_id" id="employee_id" readonly>
                                 <div class="col-sm-6"> 
                                     <label>Net Salary</label>
-                                    <input class="form-control" type="text" name="salary" id="salary" placeholder="Enter net salary">
+                                    <input class="form-control @error('salary') is-invalid @enderror" type="text" name="salary" id="salary" value="{{ old('salary') }}" placeholder="Enter net salary">
+                                    @error('salary')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row"> 
@@ -378,54 +388,114 @@
                                     <h4 class="text-primary">Earnings</h4>
                                     <div class="form-group">
                                         <label>Basic</label>
-                                        <input class="form-control" type="text" name="basic" id="basic" placeholder="Enter basic">
+                                        <input class="form-control @error('basic') is-invalid @enderror" type="text" name="basic" id="basic" value="{{ old('basic') }}" placeholder="Enter basic">
+                                        @error('basic')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>DA(40%)</label>
-                                        <input class="form-control" type="text"  name="da" id="da" placeholder="Enter DA(40%)">
+                                        <input class="form-control @error('da') is-invalid @enderror" type="text"  name="da" id="da" value="{{ old('da') }}" placeholder="Enter DA(40%)">
+                                        @error('da')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>HRA(15%)</label>
-                                        <input class="form-control" type="text"  name="hra" id="hra" placeholder="Enter HRA(15%)">
+                                        <input class="form-control @error('hra') is-invalid @enderror" type="text"  name="hra" id="hra" value="{{ old('hra') }}" placeholder="Enter HRA(15%)">
+                                        @error('hra')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Conveyance</label>
-                                        <input class="form-control" type="text"  name="conveyance" id="conveyance" placeholder="Enter conveyance">
+                                        <input class="form-control @error('conveyance') is-invalid @enderror" type="text"  name="conveyance" id="conveyance" value="{{ old('conveyance') }}" placeholder="Enter conveyance">
+                                        @error('conveyance')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Allowance</label>
-                                        <input class="form-control" type="text"  name="allowance" id="allowance" placeholder="Enter allowance">
+                                        <input class="form-control @error('allowance') is-invalid @enderror" type="text"  name="allowance" id="allowance" value="{{ old('allowance') }}" placeholder="Enter allowance">
+                                        @error('allowance')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Medical  Allowance</label>
-                                        <input class="form-control" type="text" name="medical_allowance" id="medical_allowance" placeholder="Enter medical  allowance">
+                                        <input class="form-control @error('medical_allowance') is-invalid @enderror" type="text" name="medical_allowance" id="medical_allowance" value="{{ old('medical_allowance') }}" placeholder="Enter medical  allowance">
+                                        @error('medical_allowance')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-6">  
                                     <h4 class="text-primary">Deductions</h4>
                                     <div class="form-group">
                                         <label>TDS</label>
-                                        <input class="form-control" type="text" name="tds" id="tds" placeholder="Enter TDS">
+                                        <input class="form-control @error('tds') is-invalid @enderror" type="text" name="tds" id="tds" value="{{ old('tds') }}" placeholder="Enter TDS">
+                                        @error('tds')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div> 
                                     <div class="form-group">
                                         <label>ESI</label>
-                                        <input class="form-control" type="text" name="esi" id="esi" placeholder="Enter ESI">
+                                        <input class="form-control @error('esi') is-invalid @enderror" type="text" name="esi" id="esi" value="{{ old('esi') }}" placeholder="Enter ESI">
+                                        @error('esi')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>PF</label>
-                                        <input class="form-control" type="text" name="pf" id="pf" placeholder="Enter PF">
+                                        <input class="form-control @error('pf') is-invalid @enderror" type="text" name="pf" id="pf" value="{{ old('pf') }}" placeholder="Enter PF">
+                                        @error('pf')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Leave</label>
-                                        <input class="form-control" type="text" name="leave" id="leave" placeholder="Enter leave">
+                                        <input class="form-control @error('leave') is-invalid @enderror" type="text" name="leave" id="leave" value="{{ old('leave') }}" placeholder="Enter leave">
+                                        @error('leave')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Prof. Tax</label>
-                                        <input class="form-control" type="text" name="prof_tax" id="prof_tax" placeholder="Enter Prof. Tax">
+                                        <input class="form-control @error('prof_tax') is-invalid @enderror" type="text" name="prof_tax" id="prof_tax" value="{{ old('prof_tax') }}" placeholder="Enter Prof. Tax">
+                                        @error('prof_tax')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Labour Welfare</label>
-                                        <input class="form-control" type="text" name="labour_welfare" id="labour_welfare" placeholder="Enter labour welfare">
+                                        <input class="form-control @error('labour_welfare') is-invalid @enderror" type="text" name="labour_welfare" id="labour_welfare" value="{{ old('labour_welfare') }}" placeholder="Enter labour welfare">
+                                        @error('labour_welfare')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
