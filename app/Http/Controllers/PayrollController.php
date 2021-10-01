@@ -71,9 +71,14 @@ class PayrollController extends Controller
      }
 
     // salary view detail
-    public function salaryView()
+    public function salaryView($rec_id)
     {
-        return view('payroll.salaryview');
+        $users = DB::table('users')
+                ->join('staff_salaries', 'users.rec_id', '=', 'staff_salaries.rec_id')
+                ->join('profile_information', 'users.rec_id', '=', 'profile_information.rec_id')
+                ->select('users.*', 'staff_salaries.*','profile_information.*')
+                ->first();
+        return view('payroll.salaryview',compact('users'));
     }
 
     // payroll Items

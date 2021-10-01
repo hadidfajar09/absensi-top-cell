@@ -68,7 +68,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
-                            <li><a class="active" href="{{ route('form/salary/view') }}"> Payslip </a></li>
+                            <li><a class="active" href="{{ url('form/salary/view') }}"> Payslip </a></li>
                             <li><a href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
@@ -173,21 +173,21 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="payslip-title">Payslip for the month of Feb 2019</h4>
+                            <h4 class="payslip-title">Payslip for the month of {{ \Carbon\Carbon::now()->format('M') }}   {{ \Carbon\Carbon::now()->year }}  </h4>
                             <div class="row">
                                 <div class="col-sm-6 m-b-20">
-                                    <img src="{{ URL::to('assets/img/logo2.png') }}" class="inv-logo" alt="">
+                                    <img src="{{ URL::to('/assets/images/'. $users->avatar) }}" class="inv-logo" alt="{{ $users->name }}">
                                     <ul class="list-unstyled mb-0">
-                                        <li>Dreamguy's Technologies</li>
-                                        <li>3864 Quiet Valley Lane,</li>
-                                        <li>Sherman Oaks, CA, 91403</li>
+                                        <li>{{ $users->name }}</li>
+                                        <li>{{ $users->address }}</li>
+                                        <li>{{ $users->country }}</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6 m-b-20">
                                     <div class="invoice-details">
                                         <h3 class="text-uppercase">Payslip #49029</h3>
                                         <ul class="list-unstyled">
-                                            <li>Salary Month: <span>March, 2019</span></li>
+                                            <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('M') }}  , {{ \Carbon\Carbon::now()->year }}  </span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -195,10 +195,10 @@
                             <div class="row">
                                 <div class="col-lg-12 m-b-20">
                                     <ul class="list-unstyled">
-                                        <li><h5 class="mb-0"><strong>John Doe</strong></h5></li>
-                                        <li><span>Web Designer</span></li>
-                                        <li>Employee ID: FT-0009</li>
-                                        <li>Joining Date: 1 Jan 2013</li>
+                                        <li><h5 class="mb-0"><strong>{{ $users->name }}</strong></h5></li>
+                                        <li><span>{{ $users->position }}</span></li>
+                                        <li>Employee ID: {{ $users->rec_id }}</li>
+                                        <li>Joining Date: {{ $users->join_date }}</li>
                                     </ul>
                                 </div>
                             </div>

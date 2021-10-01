@@ -70,7 +70,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a class="active" href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
-                            <li><a href="{{ route('form/salary/view') }}"> Payslip </a></li>
+                            <li><a href="{{ url('form/salary/view') }}"> Payslip </a></li>
                             <li><a href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
@@ -247,7 +247,7 @@
                                     <td>{{ $items->join_date }}</td>
                                     <td>{{ $items->role_name }}</td>
                                     <td>${{ $items->salary }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="{{ route('form/salary/view') }}">Generate Slip</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{ url('form/salary/view/'.$items->rec_id) }}">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
