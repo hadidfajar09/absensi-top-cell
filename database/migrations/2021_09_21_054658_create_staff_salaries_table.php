@@ -20,6 +20,7 @@ class CreateStaffSalariesTable extends Migration
             $table->string('salary')->nullable();
             $table->string('basic')->nullable();
             $table->string('da')->nullable();
+            $table->string('hra')->nullable();
             $table->string('conveyance')->nullable();
             $table->string('allowance')->nullable();
             $table->string('medical_allowance')->nullable();

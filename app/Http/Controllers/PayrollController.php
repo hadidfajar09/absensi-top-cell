@@ -30,6 +30,7 @@ class PayrollController extends Controller
             'salary'       => 'required|string|max:255',
             'basic' => 'required|string|max:255',
             'da'    => 'required|string|max:255',
+            'hra'    => 'required|string|max:255',
             'conveyance' => 'required|string|max:255',
             'allowance'  => 'required|string|max:255',
             'medical_allowance' => 'required|string|max:255',
@@ -49,6 +50,7 @@ class PayrollController extends Controller
             $salary->salary            = $request->salary;
             $salary->basic             = $request->basic;
             $salary->da                = $request->da;
+            $salary->hra               = $request->hra;
             $salary->conveyance        = $request->conveyance;
             $salary->allowance         = $request->allowance;
             $salary->medical_allowance = $request->medical_allowance;

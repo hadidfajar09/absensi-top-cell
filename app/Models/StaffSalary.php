@@ -14,6 +14,7 @@ class StaffSalary extends Model
         'salary',
         'basic',
         'da',
+        'hra',
         'conveyance',
         'allowance',
         'medical_allowance',
