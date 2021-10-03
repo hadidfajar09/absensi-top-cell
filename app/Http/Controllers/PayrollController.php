@@ -79,6 +79,7 @@ class PayrollController extends Controller
                 ->join('staff_salaries', 'users.rec_id', '=', 'staff_salaries.rec_id')
                 ->join('profile_information', 'users.rec_id', '=', 'profile_information.rec_id')
                 ->select('users.*', 'staff_salaries.*','profile_information.*')
+                ->where('staff_salaries.rec_id',$rec_id)
                 ->first();
         return view('payroll.salaryview',compact('users'));
     }

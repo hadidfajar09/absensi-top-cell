@@ -415,8 +415,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Labour Welfare</label>
-                                        <input class="form-control @error('labour_welfare') is-invalid @enderror" type="text" name="labour_welfare" id="labour_welfare" value="{{ old('labour_welfare') }}" placeholder="Enter labour welfare">
+                                        <label>Loan</label>
+                                        <input class="form-control @error('labour_welfare') is-invalid @enderror" type="number" name="labour_welfare" id="labour_welfare" value="{{ old('labour_welfare') }}" placeholder="Enter Loan">
                                         @error('labour_welfare')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

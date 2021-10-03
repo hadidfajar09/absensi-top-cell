@@ -208,6 +208,13 @@
                                         <h4 class="m-b-10"><strong>Earnings</strong></h4>
                                         <table class="table table-bordered">
                                             <tbody>
+                                                <?php
+                                                    $a =  (int)$users->basic;
+                                                    $b =  (int)$users->hra;
+                                                    $c =  (int)$users->conveyance;
+                                                    $e =  (int)$users->allowance;
+                                                    $Total_Earnings   = $a + $b + $c + $e;
+                                                ?>
                                                 <tr>
                                                     <td><strong>Basic Salary</strong> <span class="float-right">${{ $users->basic }}</span></td>
                                                 </tr>
@@ -221,7 +228,7 @@
                                                     <td><strong>Other Allowance</strong> <span class="float-right">${{ $users->allowance }}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Total Earnings</strong> <span class="float-right"><strong>$55</strong></span></td>
+                                                    <td><strong>Total Earnings</strong> <span class="float-right"><strong>$ <?php echo $Total_Earnings ?></strong></span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -232,20 +239,27 @@
                                         <h4 class="m-b-10"><strong>Deductions</strong></h4>
                                         <table class="table table-bordered">
                                             <tbody>
+                                                <?php
+                                                    $a =  (int)$users->tds;
+                                                    $b =  (int)$users->prof_tax;
+                                                    $c =  (int)$users->esi;
+                                                    $e =  (int)$users->labour_welfare;
+                                                    $Total_Deductions   = $a + $b + $c + $e;
+                                                ?>
                                                 <tr>
                                                     <td><strong>Tax Deducted at Source (T.D.S.)</strong> <span class="float-right">${{ $users->tds }}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Provident Fund</strong> <span class="float-right">$0</span></td>
+                                                    <td><strong>Provident Fund</strong> <span class="float-right">${{ $users->prof_tax }}</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>ESI</strong> <span class="float-right">${{ $users->esi }}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Loan</strong> <span class="float-right">$300</span></td>
+                                                    <td><strong>Loan</strong> <span class="float-right">${{ $users->labour_welfare }}</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Total Deductions</strong> <span class="float-right"><strong>$59698</strong></span></td>
+                                                    <td><strong>Total Deductions</strong> <span class="float-right"><strong>$<?php echo $Total_Deductions;?></strong></span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -261,6 +275,4 @@
             </div>
         </div>
         <!-- /Page Content -->
-      
-  
 @endsection
