@@ -84,6 +84,28 @@ class PayrollController extends Controller
         return view('payroll.salaryview',compact('users'));
     }
 
+    // update record
+    public function updateRecord()
+    {
+        DB::beginTransaction();
+        try{
+            $update = [
+
+                'id'  => $request->id,
+            ];
+
+            StaffSalary::where('id',$request->id)->update($update);
+            DB::commit();
+            Toastr::success('Salary updated successfully :)','Success');
+            return redirect()->back();
+
+        }catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('Salary update fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     // payroll Items
     public function payrollItems()
     {

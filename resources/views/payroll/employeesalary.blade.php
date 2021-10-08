@@ -446,20 +446,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/salary/update') }}" method="POST">
+                            @csrf
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
-                                        <label>Select Staff</label>
-                                        <select class="select"> 
-                                            <option>John Doe</option>
-                                            <option>Richard Miles</option>
-                                        </select>
+                                        <label>Name Staff</label>
+                                        <input class="form-control " type="number" name="salary" id="salary" value="">
                                     </div>
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
+                                <input class="form-control" type="hidden" name="rec_id" id="employee_id" readonly>
                                 <div class="col-sm-6"> 
                                     <label>Net Salary</label>
-                                    <input class="form-control" type="text" value="$4000">
+                                    <input class="form-control" type="number" name="salary" id="salary" value="">
                                 </div>
                             </div>
                             <div class="row"> 
@@ -467,71 +471,59 @@
                                     <h4 class="text-primary">Earnings</h4>
                                     <div class="form-group">
                                         <label>Basic</label>
-                                        <input class="form-control" type="text" value="$6500">
+                                        <input class="form-control" type="number" name="basic" id="basic" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>DA(40%)</label>
-                                        <input class="form-control" type="text" value="$2000">
+                                        <input class="form-control" type="number"  name="da" id="da" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>HRA(15%)</label>
-                                        <input class="form-control" type="text" value="$700">
+                                        <input class="form-control" type="number"  name="hra" id="hra" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Conveyance</label>
-                                        <input class="form-control" type="text" value="$70">
+                                        <input class="form-control" type="number"  name="conveyance" id="conveyance" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Allowance</label>
-                                        <input class="form-control" type="text" value="$30">
+                                        <input class="form-control" type="number"  name="allowance" id="allowance" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Medical  Allowance</label>
-                                        <input class="form-control" type="text" value="$20">
+                                        <input class="form-control" type="number" name="medical_allowance" id="medical_allowance" value="">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text">
-                                    </div>  
                                 </div>
                                 <div class="col-sm-6">  
                                     <h4 class="text-primary">Deductions</h4>
                                     <div class="form-group">
                                         <label>TDS</label>
-                                        <input class="form-control" type="text" value="$300">
+                                        <input class="form-control" type="number" name="tds" id="tds" value="">
                                     </div> 
                                     <div class="form-group">
                                         <label>ESI</label>
-                                        <input class="form-control" type="text" value="$20">
+                                        <input class="form-control" type="number" name="esi" id="esi" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>PF</label>
-                                        <input class="form-control" type="text" value="$20">
+                                        <input class="form-control" type="number" name="pf" id="pf" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Leave</label>
-                                        <input class="form-control" type="text" value="$250">
+                                        <input class="form-control" type="text" name="leave" id="leave" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Prof. Tax</label>
-                                        <input class="form-control" type="text" value="$110">
+                                        <input class="form-control" type="number" name="prof_tax" id="prof_tax" value="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Labour Welfare</label>
-                                        <input class="form-control" type="text" value="$10">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Fund</label>
-                                        <input class="form-control" type="text" value="$40">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Others</label>
-                                        <input class="form-control" type="text" value="$15">
+                                        <label>Loan</label>
+                                        <input class="form-control" type="number" name="labour_welfare" id="labour_welfare" value="">
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Update</button>
                             </div>
                         </form>
                     </div>
