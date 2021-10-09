@@ -243,16 +243,31 @@
                                         </h2>
                                     </td>
                                     <td>{{ $items->rec_id }}</td>
+                                    <td hidden class="id">{{ $items->id }}</td>
+                                    <td hidden class="name">{{ $items->name }}</td>
+                                    <td hidden class="basic">{{ $items->basic }}</td>
+                                    <td hidden class="da">{{ $items->da }}</td>
+                                    <td hidden class="hra">{{ $items->hra }}</td>
+                                    <td hidden class="conveyance">{{ $items->conveyance }}</td>
+                                    <td hidden class="allowance">{{ $items->allowance }}</td>
+                                    <td hidden class="medical_allowance">{{ $items->medical_allowance }}</td>
+                                    <td hidden class="tds">{{ $items->tds }}</td>
+                                    <td hidden class="esi">{{ $items->esi }}</td>
+                                    <td hidden class="pf">{{ $items->pf }}</td>
+                                    <td hidden class="leave">{{ $items->leave }}</td>
+                                    <td hidden class="prof_tax">{{ $items->prof_tax }}</td>
+                                    <td hidden class="labour_welfare">{{ $items->labour_welfare }}</td>
                                     <td>{{ $items->email }}</td>
                                     <td>{{ $items->join_date }}</td>
                                     <td>{{ $items->role_name }}</td>
                                     <td>${{ $items->salary }}</td>
+                                    <td hidden class="salary">{{ $items->salary }}</td>
                                     <td><a class="btn btn-sm btn-primary" href="{{ url('form/salary/view/'.$items->rec_id) }}">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item userSalary" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
@@ -448,11 +463,12 @@
                     <div class="modal-body">
                         <form action="{{ route('form/salary/update') }}" method="POST">
                             @csrf
+                            <input class="form-control" type="hidden" name="id" id="e_id" value="" readonly>
                             <div class="row"> 
                                 <div class="col-sm-6"> 
                                     <div class="form-group">
                                         <label>Name Staff</label>
-                                        <input class="form-control " type="number" name="salary" id="salary" value="">
+                                        <input class="form-control " type="text" name="name" id="e_name" value="" readonly>
                                     </div>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -460,10 +476,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <input class="form-control" type="hidden" name="rec_id" id="employee_id" readonly>
                                 <div class="col-sm-6"> 
                                     <label>Net Salary</label>
-                                    <input class="form-control" type="number" name="salary" id="salary" value="">
+                                    <input class="form-control" type="text" name="salary" id="e_salary" value="">
                                 </div>
                             </div>
                             <div class="row"> 
@@ -471,54 +486,54 @@
                                     <h4 class="text-primary">Earnings</h4>
                                     <div class="form-group">
                                         <label>Basic</label>
-                                        <input class="form-control" type="number" name="basic" id="basic" value="">
+                                        <input class="form-control" type="text" name="basic" id="e_basic" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>DA(40%)</label>
-                                        <input class="form-control" type="number"  name="da" id="da" value="">
+                                        <input class="form-control" type="text"  name="da" id="e_da" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>HRA(15%)</label>
-                                        <input class="form-control" type="number"  name="hra" id="hra" value="">
+                                        <input class="form-control" type="text"  name="hra" id="e_hra" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Conveyance</label>
-                                        <input class="form-control" type="number"  name="conveyance" id="conveyance" value="">
+                                        <input class="form-control" type="text"  name="conveyance" id="e_conveyance" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Allowance</label>
-                                        <input class="form-control" type="number"  name="allowance" id="allowance" value="">
+                                        <input class="form-control" type="text"  name="allowance" id="e_allowance" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Medical  Allowance</label>
-                                        <input class="form-control" type="number" name="medical_allowance" id="medical_allowance" value="">
+                                        <input class="form-control" type="text" name="medical_allowance" id="e_medical_allowance" value="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">  
                                     <h4 class="text-primary">Deductions</h4>
                                     <div class="form-group">
                                         <label>TDS</label>
-                                        <input class="form-control" type="number" name="tds" id="tds" value="">
+                                        <input class="form-control" type="text" name="tds" id="e_tds" value="">
                                     </div> 
                                     <div class="form-group">
                                         <label>ESI</label>
-                                        <input class="form-control" type="number" name="esi" id="esi" value="">
+                                        <input class="form-control" type="text" name="esi" id="e_esi" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>PF</label>
-                                        <input class="form-control" type="number" name="pf" id="pf" value="">
+                                        <input class="form-control" type="text" name="pf" id="e_pf" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Leave</label>
-                                        <input class="form-control" type="text" name="leave" id="leave" value="">
+                                        <input class="form-control" type="text" name="leave" id="e_leave" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Prof. Tax</label>
-                                        <input class="form-control" type="number" name="prof_tax" id="prof_tax" value="">
+                                        <input class="form-control" type="text" name="prof_tax" id="e_prof_tax" value="">
                                     </div>
                                     <div class="form-group">
                                         <label>Loan</label>
-                                        <input class="form-control" type="number" name="labour_welfare" id="labour_welfare" value="">
+                                        <input class="form-control" type="text" name="labour_welfare" id="e_labour_welfare" value="">
                                     </div>
                                 </div>
                             </div>
@@ -572,6 +587,28 @@
             $('#name').on('change',function()
             {
                 $('#employee_id').val($(this).find(':selected').data('employee_id'));
+            });
+        </script>
+        {{-- update js --}}
+        <script>
+            $(document).on('click','.userSalary',function()
+            {
+                var _this = $(this).parents('tr');
+                $('#e_id').val(_this.find('.id').text());
+                $('#e_name').val(_this.find('.name').text());
+                $('#e_salary').val(_this.find('.salary').text());
+                $('#e_basic').val(_this.find('.basic').text());
+                $('#e_da').val(_this.find('.da').text());
+                $('#e_hra').val(_this.find('.hra').text());
+                $('#e_conveyance').val(_this.find('.conveyance').text());
+                $('#e_allowance').val(_this.find('.allowance').text());
+                $('#e_medical_allowance').val(_this.find('.medical_allowance').text());
+                $('#e_tds').val(_this.find('.tds').text());
+                $('#e_esi').val(_this.find('.esi').text());
+                $('#e_pf').val(_this.find('.pf').text());
+                $('#e_leave').val(_this.find('.leave').text());
+                $('#e_prof_tax').val(_this.find('.prof_tax').text());
+                $('#e_labour_welfare').val(_this.find('.labour_welfare').text());
             });
         </script>
     @endsection
