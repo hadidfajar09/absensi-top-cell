@@ -268,7 +268,7 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item userSalary" href="#" data-toggle="modal" data-target="#edit_salary"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                <a class="dropdown-item salaryDelete" href="#" data-toggle="modal" data-target="#delete_salary"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -557,14 +557,18 @@
                             <p>Are you sure want to delete?</p>
                         </div>
                         <div class="modal-btn delete-action">
-                            <div class="row">
-                                <div class="col-6">
-                                    <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                            <form action="{{ route('form/salary/delete') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="hidden" name="id" class="e_id" value="">
+                                        <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -611,5 +615,13 @@
                 $('#e_labour_welfare').val(_this.find('.labour_welfare').text());
             });
         </script>
+         {{-- delete js --}}
+    <script>
+        $(document).on('click','.salaryDelete',function()
+        {
+            var _this = $(this).parents('tr');
+            $('.e_id').val(_this.find('.id').text());
+        });
+    </script>
     @endsection
 @endsection

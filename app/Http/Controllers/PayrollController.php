@@ -121,6 +121,25 @@ class PayrollController extends Controller
         }
     }
 
+    // delete record
+    public function deleteRecord(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            StaffSalary::destroy($request->id);
+
+            DB::commit();
+            Toastr::success('Salary deleted successfully :)','Success');
+            return redirect()->back();
+            
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Salary deleted fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     // payroll Items
     public function payrollItems()
     {
