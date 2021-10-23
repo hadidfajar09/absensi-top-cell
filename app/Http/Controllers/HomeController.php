@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
-
+use PDF;
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -34,5 +35,16 @@ class HomeController extends Controller
         $dt        = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
         return view('dashboard.emdashboard',compact('todayDate'));
+    }
+
+    public function generatePDF(Request $request)
+    {
+        // $data = ['title' => 'Welcome to ItSolutionStuff.com'];
+        // $pdf = PDF::loadView('payroll.salaryview', $data);
+        // return $pdf->download('text.pdf');
+        // selecting PDF view
+        $pdf = PDF::loadView('payroll.salaryview');
+        // download pdf file
+        return $pdf->download('pdfview.pdf');
     }
 }

@@ -1,6 +1,8 @@
 
 @extends('layouts.master')
 @section('content')
+    {{-- message --}}
+    {!! Toastr::message() !!}
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -61,21 +63,25 @@
                     </li>
                     <li class="menu-title"> <span>HR</span> </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
+                        <a href="#">
                             <i class="la la-user"></i>
                             <span> Payroll</span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
-                            <li><a class="active" href="{{ url('form/salary/view') }}"> Payslip </a></li>
+                            <li><a href="{{ url('form/salary/view') }}"> Payslip </a></li>
                             <li><a href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"> <a href="#"><i class="la la-pie-chart"></i>
-                        <span> Reports </span> <span class="menu-arrow"></span></a>
+                    <li class="submenu">
+                        <a href="#" class="noti-dot">
+                            <i class="la la-pie-chart"></i>
+                            <span> Reports </span>
+                            <span class="menu-arrow"></span>
+                        </a>
                         <ul style="display: none;">
-                            <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
+                            <li><a class="active" href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
                             <li><a href="invoice-reports.html"> Invoice Report </a></li>
                             <li><a href="payments-reports.html"> Payments Report </a></li>
                             <li><a href="project-reports.html"> Project Report </a></li>
@@ -147,129 +153,148 @@
         <div class="content container-fluid">
             <!-- Page Header -->
             <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Payslip</h3>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="page-title">Expense Report</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Payslip</li>
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Expense Report</li>
                         </ul>
                     </div>
-                    <div class="col-auto float-right ml-auto">
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn btn-white">CSV</button>
-                            <button class="btn btn-white"><a href="{{ route('generate-pdf',['download'=>'pdf']) }}">PDF</a></button>
-                            <button class="btn btn-white"><i class="fa fa-print fa-lg"></i> Print</button>
-                        </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <!-- Search Filter -->
+            <div class="row filter-row">
+                <div class="col-sm-6 col-md-3"> 
+                    <div class="form-group form-focus select-focus">
+                        <select class="select floating"> 
+                            <option>Select buyer</option>
+                            <option>Loren Gatlin</option>
+                            <option>Tarah Shropshire</option>
+                        </select>
+                        <label class="focus-label">Purchased By</label>
                     </div>
                 </div>
-            dddddddddd
-            {{-- <div class="row">
+                <div class="col-sm-6 col-md-3">  
+                    <div class="form-group form-focus">
+                        <div class="cal-icon">
+                            <input class="form-control floating datetimepicker" type="text">
+                        </div>
+                        <label class="focus-label">From</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">  
+                    <div class="form-group form-focus">
+                        <div class="cal-icon">
+                            <input class="form-control floating datetimepicker" type="text">
+                        </div>
+                        <label class="focus-label">To</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">  
+                    <a href="#" class="btn btn-success btn-block"> Search </a>  
+                </div>     
+            </div>
+            <!-- /Search Filter -->
+            
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="payslip-title">Payslip for the month of {{ \Carbon\Carbon::now()->format('M') }}   {{ \Carbon\Carbon::now()->year }}  </h4>
-                            <div class="row">
-                                <div class="col-sm-6 m-b-20">
-                                    @if(!empty($users->avatar))
-                                    <img src="{{ URL::to('/assets/images/'. $users->avatar) }}" class="inv-logo" alt="{{ $users->name }}">
-                                    @endif
-                                    <ul class="list-unstyled mb-0">
-                                        <li>{{ $users->name }}</li>
-                                        <li>{{ $users->address }}</li>
-                                        <li>{{ $users->country }}</li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6 m-b-20">
-                                    <div class="invoice-details">
-                                        <h3 class="text-uppercase">Payslip #49029</h3>
-                                        <ul class="list-unstyled">
-                                            <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('M') }}  , {{ \Carbon\Carbon::now()->year }}  </span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 m-b-20">
-                                    <ul class="list-unstyled">
-                                        <li><h5 class="mb-0"><strong>{{ $users->name }}</strong></h5></li>
-                                        <li><span>{{ $users->position }}</span></li>
-                                        <li>Employee ID: {{ $users->rec_id }}</li>
-                                        <li>Joining Date: {{ $users->join_date }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div>
-                                        <h4 class="m-b-10"><strong>Earnings</strong></h4>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <?php
-                                                    $a =  (int)$users->basic;
-                                                    $b =  (int)$users->hra;
-                                                    $c =  (int)$users->conveyance;
-                                                    $e =  (int)$users->allowance;
-                                                    $Total_Earnings   = $a + $b + $c + $e;
-                                                ?>
-                                                <tr>
-                                                    <td><strong>Basic Salary</strong> <span class="float-right">${{ $users->basic }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>House Rent Allowance (H.R.A.)</strong> <span class="float-right">${{ $users->hra }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Conveyance</strong> <span class="float-right">${{ $users->conveyance }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Other Allowance</strong> <span class="float-right">${{ $users->allowance }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Total Earnings</strong> <span class="float-right"><strong>$ <?php echo $Total_Earnings ?></strong></span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div>
-                                        <h4 class="m-b-10"><strong>Deductions</strong></h4>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <?php
-                                                    $a =  (int)$users->tds;
-                                                    $b =  (int)$users->prof_tax;
-                                                    $c =  (int)$users->esi;
-                                                    $e =  (int)$users->labour_welfare;
-                                                    $Total_Deductions   = $a + $b + $c + $e;
-                                                ?>
-                                                <tr>
-                                                    <td><strong>Tax Deducted at Source (T.D.S.)</strong> <span class="float-right">${{ $users->tds }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Provident Fund</strong> <span class="float-right">${{ $users->prof_tax }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>ESI</strong> <span class="float-right">${{ $users->esi }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Loan</strong> <span class="float-right">${{ $users->labour_welfare }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Total Deductions</strong> <span class="float-right"><strong>$<?php echo $Total_Deductions;?></strong></span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <p><strong>Net Salary: ${{ $users->salary }}</strong> (Fifty nine thousand six hundred and ninety eight only.)</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped custom-table mb-0 datatable">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Purchase From</th>
+                                    <th>Purchase Date</th>
+                                    <th>Purchased By</th>
+                                    <th>Amount</th>
+                                    <th>Paid By</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Dell Laptop</strong>
+                                    </td>
+                                    <td>Amazon</td>
+                                    <td>5 Jan 2019</td>
+                                    <td>
+                                        <a href="profile.html" class="avatar avatar-xs">
+                                            <img src="{{URL::to('assets/img/profiles/avatar-04.jpg')}}" alt="">
+                                        </a>
+                                        <h2><a href="profile.html">Loren Gatlin</a></h2>
+                                    </td>
+                                    <td>$ 1215</td>
+                                    <td>Cash</td>
+                                    <td class="text-center">
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-danger"></i> Pending
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Mac System</strong>
+                                    </td>
+                                    <td>Amazon</td>
+                                    <td>5 Jan 2019</td>
+                                    <td>
+                                        <a href="profile.html" class="avatar avatar-xs">
+                                            <img src="{{URL::to('assets/img/profiles/avatar-03.jpg')}}" alt="">
+                                        </a>
+                                        <h2><a href="profile.html">Tarah Shropshire</a></h2>
+                                    </td>
+                                    <td>$ 1215</td>
+                                    <td>Cheque</td>
+                                    <td class="text-center">
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-success"></i> Approved
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <!-- /Page Content -->
+        
+    </div>
+    <!-- /Page Wrapper -->
+
 @endsection

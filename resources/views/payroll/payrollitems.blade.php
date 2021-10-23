@@ -72,14 +72,10 @@
                             <li><a class="active" href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
-                    <li> <a href="policies.html">
-                        <i class="la la-file-pdf-o"></i>
-                        <span>Policies</span></a>
-                    </li>
                     <li class="submenu"> <a href="#"><i class="la la-pie-chart"></i>
                         <span> Reports </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="expense-reports.html"> Expense Report </a></li>
+                            <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
                             <li><a href="invoice-reports.html"> Invoice Report </a></li>
                             <li><a href="payments-reports.html"> Payments Report </a></li>
                             <li><a href="project-reports.html"> Project Report </a></li>

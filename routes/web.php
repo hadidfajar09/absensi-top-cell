@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LockScreen;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\ExpenseReportsController;
 
 
 /*
@@ -138,5 +139,9 @@ Route::post('form/salary/delete', [App\Http\Controllers\PayrollController::class
 Route::get('form/salary/view/{rec_id}', [App\Http\Controllers\PayrollController::class, 'salaryView'])->middleware('auth');
 Route::get('form/payroll/items', [App\Http\Controllers\PayrollController::class, 'payrollItems'])->middleware('auth')->name('form/payroll/items');
 
+// ----------------------------- reports  ------------------------------//
+Route::get('form/expense/reports/page', [App\Http\Controllers\ExpenseReportsController::class, 'index'])->middleware('auth')->name('form/expense/reports/page');
 
+
+Route::get('generate-pdf', [App\Http\Controllers\HomeController::class, 'generatePDF'])->name('generate-pdf');
 
