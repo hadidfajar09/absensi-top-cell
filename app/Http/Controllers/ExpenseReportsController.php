@@ -11,4 +11,10 @@ class ExpenseReportsController extends Controller
     {
         return view('reports.expensereport');
     }
+
+    // view page
+    public function invoiceReports()
+    {
+        return view('reports.invoicereports');
+    }
 }

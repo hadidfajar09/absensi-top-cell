@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
+        LaravelDaily\Invoices\InvoiceServiceProvider::class,
        
 
         /*
@@ -230,7 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class
         
 
     ],

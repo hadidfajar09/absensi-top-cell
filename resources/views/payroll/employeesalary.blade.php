@@ -78,7 +78,7 @@
                         <span> Reports </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
-                            <li><a href="invoice-reports.html"> Invoice Report </a></li>
+                            <li><a href="{{ route('form/invoice/reports/page') }}"> Invoice Report </a></li>
                             <li><a href="payments-reports.html"> Payments Report </a></li>
                             <li><a href="project-reports.html"> Project Report </a></li>
                             <li><a href="task-reports.html"> Task Report </a></li>
