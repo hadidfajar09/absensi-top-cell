@@ -64,6 +64,21 @@
                     <li class="menu-title"> <span>HR</span> </li>
                     <li class="submenu">
                         <a href="#">
+                            <i class="la la-files-o"></i>
+                            <span> Sales </span> 
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul style="display: none;">
+                            <li><a href="estimates.html">Estimates</a></li>
+                            <li><a class="active" href="{{ route('form/invoice/view/page') }}">Invoices</a></li>
+                            <li><a href="payments.html">Payments</a></li>
+                            <li><a href="expenses.html">Expenses</a></li>
+                            <li><a href="provident-fund.html">Provident Fund</a></li>
+                            <li><a href="taxes.html">Taxes</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#">
                             <i class="la la-user"></i>
                             <span> Payroll</span>
                             <span class="menu-arrow"></span>
@@ -218,7 +233,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td><a href="invoice-view.html">#INV-0001</a></td>
+                                    <td><a href="{{ route('form/invoice/view/page') }}">#INV-0001</a></td>
                                     <td>Global Technologies</td>
                                     <td>11 Mar 2019</td>
                                     <td>17 Mar 2019</td>
@@ -238,7 +253,7 @@
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td><a href="invoice-view.html">#INV-0002</a></td>
+                                    <td><a href="{{ route('form/invoice/view/page') }}">#INV-0002</a></td>
                                     <td> 	Delta Infotech</td>
                                     <td>11 Mar 2019</td>
                                     <td>17 Mar 2019</td>

@@ -142,7 +142,8 @@ Route::get('form/payroll/items', [App\Http\Controllers\PayrollController::class,
 // ----------------------------- reports  ------------------------------//
 Route::get('form/expense/reports/page', [App\Http\Controllers\ExpenseReportsController::class, 'index'])->middleware('auth')->name('form/expense/reports/page');
 Route::get('form/invoice/reports/page', [App\Http\Controllers\ExpenseReportsController::class, 'invoiceReports'])->middleware('auth')->name('form/invoice/reports/page');
+Route::get('form/invoice/view/page', [App\Http\Controllers\ExpenseReportsController::class, 'invoiceView'])->middleware('auth')->name('form/invoice/view/page');
 
 
-Route::get('generate-pdf', [App\Http\Controllers\RandomController::class, 'show'])->name('generate-pdf');
+Route::get('generate-pdf', [App\Http\Controllers\HomeController::class, 'generatePDF'])->name('generate-pdf');
 

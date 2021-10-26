@@ -1,6 +1,8 @@
 
 @extends('layouts.master')
 @section('content')
+    {{-- message --}}
+    {!! Toastr::message() !!}
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -61,7 +63,7 @@
                     </li>
                     <li class="menu-title"> <span>HR</span> </li>
                     <li class="submenu">
-                        <a href="#">
+                        <a href="#" class="noti-dot">
                             <i class="la la-files-o"></i>
                             <span> Sales </span> 
                             <span class="menu-arrow"></span>
@@ -76,19 +78,23 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#" class="noti-dot">
+                        <a href="#">
                             <i class="la la-user"></i>
                             <span> Payroll</span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/salary/page') }}"> Employee Salary </a></li>
-                            <li><a class="active" href="{{ url('form/salary/view') }}"> Payslip </a></li>
+                            <li><a href="{{ url('form/salary/view') }}"> Payslip </a></li>
                             <li><a href="{{ route('form/payroll/items') }}"> Payroll Items </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"> <a href="#"><i class="la la-pie-chart"></i>
-                        <span> Reports </span> <span class="menu-arrow"></span></a>
+                    <li class="submenu">
+                        <a href="#">
+                            <i class="la la-pie-chart"></i>
+                            <span> Reports </span>
+                            <span class="menu-arrow"></span>
+                        </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
                             <li><a href="{{ route('form/invoice/reports/page') }}"> Invoice Report </a></li>
@@ -164,127 +170,167 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Payslip</h3>
+                        <h3 class="page-title">Invoice</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Payslip</li>
+                            <li class="breadcrumb-item active">Invoice</li>
                         </ul>
                     </div>
                     <div class="col-auto float-right ml-auto">
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-white">CSV</button>
-                            <button class="btn btn-white"><a href="{{ route('generate-pdf',['download'=>'pdf']) }}">PDF</a></button>
+                            <button class="btn btn-white">PDF</button>
                             <button class="btn btn-white"><i class="fa fa-print fa-lg"></i> Print</button>
                         </div>
                     </div>
                 </div>
-            dddddddddd
-            {{-- <div class="row">
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="payslip-title">Payslip for the month of {{ \Carbon\Carbon::now()->format('M') }}   {{ \Carbon\Carbon::now()->year }}  </h4>
                             <div class="row">
                                 <div class="col-sm-6 m-b-20">
-                                    @if(!empty($users->avatar))
-                                    <img src="{{ URL::to('/assets/images/'. $users->avatar) }}" class="inv-logo" alt="{{ $users->name }}">
-                                    @endif
-                                    <ul class="list-unstyled mb-0">
-                                        <li>{{ $users->name }}</li>
-                                        <li>{{ $users->address }}</li>
-                                        <li>{{ $users->country }}</li>
+                                    <img src="{{ URL::to('assets/img/logo2.png') }}" class="inv-logo" alt="">
+                                     <ul class="list-unstyled">
+                                        <li>Soeng Souy</li>
+                                        <li>3864 Quiet Valley Lane,</li>
+                                        <li>Sherman Oaks, CA, 91403</li>
+                                        <li>GST No:</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6 m-b-20">
                                     <div class="invoice-details">
-                                        <h3 class="text-uppercase">Payslip #49029</h3>
+                                        <h3 class="text-uppercase">Invoice #INV-0001</h3>
                                         <ul class="list-unstyled">
-                                            <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('M') }}  , {{ \Carbon\Carbon::now()->year }}  </span></li>
+                                            <li>Date: <span>March 12, 2019</span></li>
+                                            <li>Due date: <span>April 25, 2019</span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 m-b-20">
-                                    <ul class="list-unstyled">
-                                        <li><h5 class="mb-0"><strong>{{ $users->name }}</strong></h5></li>
-                                        <li><span>{{ $users->position }}</span></li>
-                                        <li>Employee ID: {{ $users->rec_id }}</li>
-                                        <li>Joining Date: {{ $users->join_date }}</li>
+                                <div class="col-sm-6 col-lg-7 col-xl-8 m-b-20">
+                                    <h5>Invoice to:</h5>
+                                     <ul class="list-unstyled">
+                                        <li><h5><strong>Barry Cuda</strong></h5></li>
+                                        <li><span>Global Technologies</span></li>
+                                        <li>5754 Airport Rd</li>
+                                        <li>Coosada, AL, 36020</li>
+                                        <li>United States</li>
+                                        <li>888-777-6655</li>
+                                        <li><a href="#">barrycuda@example.com</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 col-lg-5 col-xl-4 m-b-20">
+                                    <span class="text-muted">Payment Details:</span>
+                                    <ul class="list-unstyled invoice-payment-details">
+                                        <li><h5>Total Due: <span class="text-right">$8,750</span></h5></li>
+                                        <li>Bank name: <span>Profit Bank Europe</span></li>
+                                        <li>Country: <span>United Kingdom</span></li>
+                                        <li>City: <span>London E1 8BF</span></li>
+                                        <li>Address: <span>3 Goodman Street</span></li>
+                                        <li>IBAN: <span>KFH37784028476740</span></li>
+                                        <li>SWIFT code: <span>BPT4E</span></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div>
-                                        <h4 class="m-b-10"><strong>Earnings</strong></h4>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <?php
-                                                    $a =  (int)$users->basic;
-                                                    $b =  (int)$users->hra;
-                                                    $c =  (int)$users->conveyance;
-                                                    $e =  (int)$users->allowance;
-                                                    $Total_Earnings   = $a + $b + $c + $e;
-                                                ?>
-                                                <tr>
-                                                    <td><strong>Basic Salary</strong> <span class="float-right">${{ $users->basic }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>House Rent Allowance (H.R.A.)</strong> <span class="float-right">${{ $users->hra }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Conveyance</strong> <span class="float-right">${{ $users->conveyance }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Other Allowance</strong> <span class="float-right">${{ $users->allowance }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Total Earnings</strong> <span class="float-right"><strong>$ <?php echo $Total_Earnings ?></strong></span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ITEM</th>
+                                            <th class="d-none d-sm-table-cell">DESCRIPTION</th>
+                                            <th>UNIT COST</th>
+                                            <th>QUANTITY</th>
+                                            <th class="text-right">TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Android Application</td>
+                                            <td class="d-none d-sm-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                            <td>$1000</td>
+                                            <td>2</td>
+                                            <td class="text-right">$2000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Ios Application</td>
+                                            <td class="d-none d-sm-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                            <td>$1750</td>
+                                            <td>1</td>
+                                            <td class="text-right">$1750</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Codeigniter Project</td>
+                                            <td class="d-none d-sm-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                            <td>$90</td>
+                                            <td>3</td>
+                                            <td class="text-right">$270</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Phonegap Project</td>
+                                            <td class="d-none d-sm-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                            <td>$1200</td>
+                                            <td>2</td>
+                                            <td class="text-right">$2400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Website Optimization</td>
+                                            <td class="d-none d-sm-table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                            <td>$200</td>
+                                            <td>2</td>
+                                            <td class="text-right">$400</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <div class="row invoice-payment">
+                                    <div class="col-sm-7">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="m-b-20">
+                                            <div class="table-responsive no-border">
+                                                <table class="table mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Subtotal:</th>
+                                                            <td class="text-right">$7,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Tax: <span class="text-regular">(25%)</span></th>
+                                                            <td class="text-right">$1,750</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Total:</th>
+                                                            <td class="text-right text-primary"><h5>$8,750</h5></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div>
-                                        <h4 class="m-b-10"><strong>Deductions</strong></h4>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <?php
-                                                    $a =  (int)$users->tds;
-                                                    $b =  (int)$users->prof_tax;
-                                                    $c =  (int)$users->esi;
-                                                    $e =  (int)$users->labour_welfare;
-                                                    $Total_Deductions   = $a + $b + $c + $e;
-                                                ?>
-                                                <tr>
-                                                    <td><strong>Tax Deducted at Source (T.D.S.)</strong> <span class="float-right">${{ $users->tds }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Provident Fund</strong> <span class="float-right">${{ $users->prof_tax }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>ESI</strong> <span class="float-right">${{ $users->esi }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Loan</strong> <span class="float-right">${{ $users->labour_welfare }}</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Total Deductions</strong> <span class="float-right"><strong>$<?php echo $Total_Deductions;?></strong></span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <p><strong>Net Salary: ${{ $users->salary }}</strong> (Fifty nine thousand six hundred and ninety eight only.)</p>
+                                <div class="invoice-info">
+                                    <h5>Other information</h5>
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero, eu finibus sapien interdum vel</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <!-- /Page Content -->
+    </div>
+    <!-- /Page Wrapper -->
 @endsection
