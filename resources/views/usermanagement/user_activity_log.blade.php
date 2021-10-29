@@ -99,7 +99,7 @@
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
                             <li><a href="leave-reports.html"> Leave Report </a></li>
-                            <li><a href="daily-reports.html"> Daily Report </a></li>
+                            <li><a href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
                         </ul>
                     </li>
                     <li class="menu-title"> <span>Performance</span> </li>

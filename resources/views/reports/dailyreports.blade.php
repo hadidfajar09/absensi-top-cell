@@ -97,7 +97,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
-                            <li><a class="active" href="{{ route('form/invoice/reports/page') }}"> Invoice Report </a></li>
+                            <li><a href="{{ route('form/invoice/reports/page') }}"> Invoice Report </a></li>
                             <li><a href="payments-reports.html"> Payments Report </a></li>
                             <li><a href="project-reports.html"> Project Report </a></li>
                             <li><a href="task-reports.html"> Task Report </a></li>
@@ -106,7 +106,7 @@
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
                             <li><a href="leave-reports.html"> Leave Report </a></li>
-                            <li><a href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
+                            <li><a class="active" href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
                         </ul>
                     </li>
                     <li class="menu-title"> <span>Performance</span> </li>
@@ -162,34 +162,80 @@
     </div>
     <!-- /Sidebar -->
 
-   <!-- Page Wrapper -->
-   <div class="page-wrapper">
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
         <!-- Page Content -->
         <div class="content container-fluid">
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="page-title">Invoice Report</h3>
+                    <div class="col">
+                        <h3 class="page-title">Daily Report</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Invoice Report</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Daily Report</li>
                         </ul>
+                    </div>
+                    <div class="col-auto">
+                        <a href="#" class="btn btn-primary">PDF</a>
                     </div>
                 </div>
             </div>
             <!-- /Page Header -->
             
+            <!-- Content Starts -->
+            <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3><b>101</b></h3>
+                            <p>Total Employees</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3 class="text-success"><b>84</b></h3>
+                            <p>Today Present</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3 class="text-danger"><b>12</b></h3>
+                            <p>Today Absent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3><b>5</b></h3>
+                            <p>Today Left</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Search Filter -->
-            <div class="row filter-row">
+            <div class="row filter-row mb-4">
+                <div class="col-sm-6 col-md-3">  
+                    <div class="form-group form-focus">
+                        <input class="form-control floating" type="text">
+                        <label class="focus-label">Employee</label>
+                    </div>
+                </div>
                 <div class="col-sm-6 col-md-3"> 
                     <div class="form-group form-focus select-focus">
                         <select class="select floating"> 
-                            <option>Select Client</option>
-                            <option>Global Technologies</option>
-                            <option>Delta Infotech</option>
+                            <option>Select Department</option>
+                            <option>Designing</option>
+                            <option>Development</option>
+                            <option>Finance</option>
+                            <option>Hr & Finance</option>
                         </select>
-                        <label class="focus-label">Client</label>
+                        <label class="focus-label">Department</label>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3">  
@@ -213,62 +259,82 @@
                 </div>     
             </div>
             <!-- /Search Filter -->
-            
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-striped custom-table mb-0 datatable">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Invoice Number</th>
-                                    <th>Client</th>
-                                    <th>Created Date</th>
-                                    <th>Due Date</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th class="text-right">Action</th>
+                                    <th>Employee</th>
+                                    <th>Date</th>
+                                    <th>Department</th>
+                                    <th class="text-center">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href="{{ route('form/invoice/view/page') }}">#INV-0001</a></td>
-                                    <td>Global Technologies</td>
-                                    <td>11 Mar 2019</td>
-                                    <td>17 Mar 2019</td>
-                                    <td>$2099</td>
-                                    <td><span class="badge bg-inverse-success">Paid</span></td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="edit-invoice.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="invoice-view.html"><i class="fa fa-eye m-r-5"></i> View</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o m-r-5"></i> Download</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}"></a>
+                                            <a href="profile.html">John Doe <span>#0001</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>20 Dec 2020</td>
+                                    <td>Design</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-info btn-sm">Week off</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>2</td>
-                                    <td><a href="{{ route('form/invoice/view/page') }}">#INV-0002</a></td>
-                                    <td> 	Delta Infotech</td>
-                                    <td>11 Mar 2019</td>
-                                    <td>17 Mar 2019</td>
-                                    <td>$2099</td>
-                                    <td><span class="badge bg-inverse-info">Sent</span></td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="edit-invoice.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="invoice-view.html"><i class="fa fa-eye m-r-5"></i> View</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o m-r-5"></i> Download</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}"></a>
+                                            <a href="profile.html">Richard Miles <span>#0002</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>20 Dec 2020</td>
+                                    <td>Web Developer</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-danger btn-sm">Absent</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}"></a>
+                                            <a href="profile.html">John Smith <span>#003</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>20 Dec 2020</td>
+                                    <td>Android Developer</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}"></a>
+                                            <a href="profile.html">Mike Litorus <span>#004</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>20 Dec 2020</td>
+                                    <td>IOS Developer</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}"></a>
+                                            <a href="profile.html">Wilmer Deluna <span>#005</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>20 Dec 2020</td>
+                                    <td>Team Leader</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-info btn-sm">Week off</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -276,9 +342,12 @@
                     </div>
                 </div>
             </div>
+            <!-- /Content End -->
         </div>
         <!-- /Page Content -->
     </div>
     <!-- /Page Wrapper -->
+</div>
+<!-- /Main Wrapper -->
 
 @endsection

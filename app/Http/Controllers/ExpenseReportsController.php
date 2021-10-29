@@ -23,4 +23,10 @@ class ExpenseReportsController extends Controller
     {
         return view('reports.invoiceview');
     }
+
+    // daily report page
+    public function dailyReport()
+    {
+        return view('reports.dailyreports');
+    }
 }
