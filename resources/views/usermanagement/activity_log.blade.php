@@ -89,9 +89,6 @@
                             <li><a href="{{ route('form/expense/reports/page') }}"> Expense Report </a></li>
                             <li><a href="{{ route('form/invoice/reports/page') }}"> Invoice Report </a></li>
                             <li><a href="payments-reports.html"> Payments Report </a></li>
-                            <li><a href="project-reports.html"> Project Report </a></li>
-                            <li><a href="task-reports.html"> Task Report </a></li>
-                            <li><a href="user-reports.html"> User Report </a></li>
                             <li><a href="employee-reports.html"> Employee Report </a></li>
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
