@@ -102,8 +102,8 @@
                             <li><a href="employee-reports.html"> Employee Report </a></li>
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
-                            <li><a href="{{ route('form/leave/reports/page') }}"> Leave Report </a></li>
-                            <li><a class="active" href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
+                            <li><a class="active" href="{{ route('form/leave/reports/page') }}"> Leave Report </a></li>
+                            <li><a href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
                         </ul>
                     </li>
                     <li class="menu-title"> <span>Performance</span> </li>
@@ -167,10 +167,10 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col">
-                        <h3 class="page-title">Daily Report</h3>
+                        <h3 class="page-title">Leave Report</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Daily Report</li>
+                            <li class="breadcrumb-item active">Leave Report</li>
                         </ul>
                     </div>
                     <div class="col-auto">
@@ -180,41 +180,6 @@
             </div>
             <!-- /Page Header -->
             
-            <!-- Content Starts -->
-            <div class="row justify-content-center">
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3><b>101</b></h3>
-                            <p>Total Employees</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3 class="text-success"><b>84</b></h3>
-                            <p>Today Present</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3 class="text-danger"><b>12</b></h3>
-                            <p>Today Absent</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3><b>5</b></h3>
-                            <p>Today Left</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Search Filter -->
             <div class="row filter-row mb-4">
                 <div class="col-sm-6 col-md-3">  
@@ -256,6 +221,7 @@
                 </div>     
             </div>
             <!-- /Search Filter -->
+            
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -265,7 +231,12 @@
                                     <th>Employee</th>
                                     <th>Date</th>
                                     <th>Department</th>
-                                    <th class="text-center">Status</th>
+                                    <th>Leave Type</th>
+                                    <th>No.of Days</th>
+                                    <th>Remaining Leave</th>
+                                    <th>Total Leaves</th>
+                                    <th>Total Leave Taken</th>
+                                    <th>Leave Carry Forward</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -279,8 +250,13 @@
                                     <td>20 Dec 2020</td>
                                     <td>Design</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
                                     </td>
+                                    <td class="text-center"><span class="btn btn-danger btn-sm">05</span></td>
+                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>08</b></span></td>
+                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                    <td class="text-center">12</td>
+                                    <td class="text-center">08</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -289,11 +265,16 @@
                                             <a href="profile.html">Richard Miles <span>#0002</span></a>
                                         </h2>
                                     </td>
-                                    <td>20 Dec 2020</td>
+                                    <td>21 Dec 2020</td>
                                     <td>Web Developer</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-danger btn-sm">Absent</button>
+                                        <button class="btn btn-outline-warning btn-sm">Parenting Leave</button>
                                     </td>
+                                    <td class="text-center"><span class="btn btn-danger btn-sm">03</span></td>
+                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>08</b></span></td>
+                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                    <td class="text-center">12</td>
+                                    <td class="text-center">05</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -302,11 +283,16 @@
                                             <a href="profile.html">John Smith <span>#003</span></a>
                                         </h2>
                                     </td>
-                                    <td>20 Dec 2020</td>
+                                    <td>22 Dec 2020</td>
                                     <td>Android Developer</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                        <button class="btn btn-outline-danger btn-sm">Emercency Leave</button>
                                     </td>
+                                    <td class="text-center"><span class="btn btn-danger btn-sm">01</span></td>
+                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>09</b></span></td>
+                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                    <td class="text-center">17</td>
+                                    <td class="text-center">03</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -315,11 +301,16 @@
                                             <a href="profile.html">Mike Litorus <span>#004</span></a>
                                         </h2>
                                     </td>
-                                    <td>20 Dec 2020</td>
+                                    <td>23 Dec 2020</td>
                                     <td>IOS Developer</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
                                     </td>
+                                    <td class="text-center"><span class="btn btn-danger btn-sm">15</span></td>
+                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>05</b></span></td>
+                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                    <td class="text-center">15</td>
+                                    <td class="text-center">05</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -328,20 +319,25 @@
                                             <a href="profile.html">Wilmer Deluna <span>#005</span></a>
                                         </h2>
                                     </td>
-                                    <td>20 Dec 2020</td>
+                                    <td>24 Dec 2020</td>
                                     <td>Team Leader</td>
                                     <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Week off</button>
+                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
                                     </td>
+                                    <td class="text-center"><span class="btn btn-danger btn-sm">10</span></td>
+                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>07</b></span></td>
+                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                    <td class="text-center">18</td>
+                                    <td class="text-center">2</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- /Content End -->
         </div>
         <!-- /Page Content -->
     </div>
     <!-- /Page Wrapper -->
+
 @endsection

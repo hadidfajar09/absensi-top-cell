@@ -29,4 +29,10 @@ class ExpenseReportsController extends Controller
     {
         return view('reports.dailyreports');
     }
+
+    // leave reports page
+    public function leaveReport()
+    {
+        return view('reports.leavereports');
+    }
 }

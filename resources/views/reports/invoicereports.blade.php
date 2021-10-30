@@ -102,7 +102,7 @@
                             <li><a href="employee-reports.html"> Employee Report </a></li>
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
-                            <li><a href="leave-reports.html"> Leave Report </a></li>
+                            <li><a href="{{ route('form/leave/reports/page') }}"> Leave Report </a></li>
                             <li><a href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
                         </ul>
                     </li>

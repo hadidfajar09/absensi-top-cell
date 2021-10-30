@@ -60,7 +60,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a href="estimates.html">Estimates</a></li>
-                            <li><a class="active" href="{{ route('form/invoice/view/page') }}">Invoices</a></li>
+                            <li><a href="{{ route('form/invoice/view/page') }}">Invoices</a></li>
                             <li><a href="payments.html">Payments</a></li>
                             <li><a href="expenses.html">Expenses</a></li>
                             <li><a href="provident-fund.html">Provident Fund</a></li>
@@ -84,7 +84,7 @@
                             <li><a href="employee-reports.html"> Employee Report </a></li>
                             <li><a href="payslip-reports.html"> Payslip Report </a></li>
                             <li><a href="attendance-reports.html"> Attendance Report </a></li>
-                            <li><a href="leave-reports.html"> Leave Report </a></li>
+                            <li><a href="{{ route('form/leave/reports/page') }}"> Leave Report </a></li>
                             <li><a href="{{ route('form/daily/reports/page') }}"> Daily Report </a></li>
                         </ul>
                     </li>
