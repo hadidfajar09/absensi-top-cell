@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class ExpenseReportsController extends Controller
 {
@@ -33,6 +34,10 @@ class ExpenseReportsController extends Controller
     // leave reports page
     public function leaveReport()
     {
-        return view('reports.leavereports');
+        $leaves = DB::table('leaves_admins')
+                    ->join('users', 'users.rec_id', '=', 'leaves_admins.rec_id')
+                    ->select('leaves_admins.*', 'users.*')
+                    ->get();
+        return view('reports.leavereports',compact('leaves'));
     }
 }

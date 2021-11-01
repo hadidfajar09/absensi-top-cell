@@ -188,18 +188,6 @@
                         <label class="focus-label">Employee</label>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3"> 
-                    <div class="form-group form-focus select-focus">
-                        <select class="select floating"> 
-                            <option>Select Department</option>
-                            <option>Designing</option>
-                            <option>Development</option>
-                            <option>Finance</option>
-                            <option>Hr & Finance</option>
-                        </select>
-                        <label class="focus-label">Department</label>
-                    </div>
-                </div>
                 <div class="col-sm-6 col-md-3">  
                     <div class="form-group form-focus">
                         <div class="cal-icon">
@@ -240,96 +228,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}"></a>
-                                            <a href="profile.html">John Doe <span>#0001</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>20 Dec 2020</td>
-                                    <td>Design</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
-                                    </td>
-                                    <td class="text-center"><span class="btn btn-danger btn-sm">05</span></td>
-                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>08</b></span></td>
-                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
-                                    <td class="text-center">12</td>
-                                    <td class="text-center">08</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}"></a>
-                                            <a href="profile.html">Richard Miles <span>#0002</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>21 Dec 2020</td>
-                                    <td>Web Developer</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-warning btn-sm">Parenting Leave</button>
-                                    </td>
-                                    <td class="text-center"><span class="btn btn-danger btn-sm">03</span></td>
-                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>08</b></span></td>
-                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
-                                    <td class="text-center">12</td>
-                                    <td class="text-center">05</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}"></a>
-                                            <a href="profile.html">John Smith <span>#003</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>22 Dec 2020</td>
-                                    <td>Android Developer</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-danger btn-sm">Emercency Leave</button>
-                                    </td>
-                                    <td class="text-center"><span class="btn btn-danger btn-sm">01</span></td>
-                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>09</b></span></td>
-                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
-                                    <td class="text-center">17</td>
-                                    <td class="text-center">03</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}"></a>
-                                            <a href="profile.html">Mike Litorus <span>#004</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>23 Dec 2020</td>
-                                    <td>IOS Developer</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
-                                    </td>
-                                    <td class="text-center"><span class="btn btn-danger btn-sm">15</span></td>
-                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>05</b></span></td>
-                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
-                                    <td class="text-center">15</td>
-                                    <td class="text-center">05</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}"></a>
-                                            <a href="profile.html">Wilmer Deluna <span>#005</span></a>
-                                        </h2>
-                                    </td>
-                                    <td>24 Dec 2020</td>
-                                    <td>Team Leader</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-info btn-sm">Sick Leave</button>
-                                    </td>
-                                    <td class="text-center"><span class="btn btn-danger btn-sm">10</span></td>
-                                    <td class="text-center"><span class="btn btn-warning btn-sm"><b>07</b></span></td>
-                                    <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
-                                    <td class="text-center">18</td>
-                                    <td class="text-center">2</td>
-                                </tr>
+                                @foreach ($leaves as $items)
+                                    <tr>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a href="profile.html" class="avatar"><img alt="{{ $items->avatar }}" src="{{ URL::to('/assets/images/'. $items->avatar) }}"></a>
+                                                <a href="profile.html">{{ $items->name }} <span>{{ $items->rec_id }}</span></a>
+                                            </h2>
+                                        </td>
+                                        <td>{{ $items->join_date }}</td>
+                                        <td>{{ $items->department }}</td>
+                                        <td class="text-center">
+                                            @if ($items->leave_type == 'Loss of Pay')
+                                            <button class="btn btn-outline-info btn-sm">{{ $items->leave_type }}</button>
+                                            @elseif ($items->leave_type=='Medical Leave')
+                                            <button class="btn btn-outline-danger btn-sm">{{ $items->leave_type }}</button>
+                                            @else
+                                            <button class="btn btn-outline-success btn-sm">{{ $items->leave_type }}</button>
+                                            @endif
+                                        </td>
+                                        <td class="text-center"><span class="btn btn-danger btn-sm">{{$items->day}} Day</span></td>
+                                        <td class="text-center"><span class="btn btn-warning btn-sm"><b>08</b></span></td>
+                                        <td class="text-center"><span class="btn btn-success btn-sm"><b>20</b></span></td>
+                                        <td class="text-center">12</td>
+                                        <td class="text-center">08</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
