@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LockScreen;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ExpenseReportsController;
+use App\Http\Controllers\PerformanceController;
 
 
 /*
@@ -146,6 +147,6 @@ Route::get('form/invoice/view/page', [App\Http\Controllers\ExpenseReportsControl
 Route::get('form/daily/reports/page', [App\Http\Controllers\ExpenseReportsController::class, 'dailyReport'])->middleware('auth')->name('form/daily/reports/page');
 Route::get('form/leave/reports/page', [App\Http\Controllers\ExpenseReportsController::class, 'leaveReport'])->middleware('auth')->name('form/leave/reports/page');
 
-
-Route::get('generate-pdf', [App\Http\Controllers\HomeController::class, 'generatePDF'])->name('generate-pdf');
+// ----------------------------- performance  ------------------------------//
+Route::get('form/performance/indicator/page', [App\Http\Controllers\PerformanceController::class, 'index'])->middleware('auth')->name('form/performance/indicator/page');
 
