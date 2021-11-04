@@ -11,4 +11,10 @@ class PerformanceController extends Controller
     {
         return view('performance.performanceindicator');
     }
+
+    //performance
+    public function performance()
+    {
+        return view('performance.performance');
+    }
 }

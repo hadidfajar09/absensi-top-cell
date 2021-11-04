@@ -149,4 +149,5 @@ Route::get('form/leave/reports/page', [App\Http\Controllers\ExpenseReportsContro
 
 // ----------------------------- performance  ------------------------------//
 Route::get('form/performance/indicator/page', [App\Http\Controllers\PerformanceController::class, 'index'])->middleware('auth')->name('form/performance/indicator/page');
+Route::get('form/performance/page', [App\Http\Controllers\PerformanceController::class, 'performance'])->middleware('auth')->name('form/performance/page');
 
