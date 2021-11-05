@@ -105,8 +105,8 @@
                         <span> Performance </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{ route('form/performance/indicator/page') }}"> Performance Indicator </a></li>
-                            <li><a href="performance.html"> Performance Review </a></li>
-                            <li><a href="performance-appraisal.html"> Performance Appraisal </a></li>
+                            <li><a href="{{ route('form/performance/page') }}"> Performance Review </a></li>
+                            <li><a href="{{ route('form/performance/appraisal/page') }}"> Performance Appraisal </a></li>
                         </ul>
                     </li>
                     <li class="submenu"> <a href="#"><i class="la la-edit"></i>

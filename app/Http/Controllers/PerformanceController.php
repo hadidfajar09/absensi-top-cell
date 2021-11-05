@@ -17,4 +17,10 @@ class PerformanceController extends Controller
     {
         return view('performance.performance');
     }
+
+    //performance appraisal view page
+    public function performanceAppraisal()
+    {
+        return view('performance.performanceappraisal');
+    }
 }
