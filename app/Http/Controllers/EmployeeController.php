@@ -14,7 +14,6 @@ class EmployeeController extends Controller
     // all employee card view
     public function cardAllEmployee(Request $request)
     {
-
         $users = DB::table('users')
                     ->join('employees', 'users.rec_id', '=', 'employees.employee_id')
                     ->select('users.*', 'employees.birth_date', 'employees.gender', 'employees.company')
@@ -344,7 +343,6 @@ class EmployeeController extends Controller
                 ->select('profile_information.*', 'users.*')
                 ->where('profile_information.rec_id','=',$rec_id)
                 ->first();
-
         $user = DB::table('users')->where('rec_id',$rec_id)->get();
         return view('form.employeeprofile',compact('user','users'));
     }

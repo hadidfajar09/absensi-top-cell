@@ -391,15 +391,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Designation</label>
                                         <select class="select">
-                                            <option>Select Designation</option>
-                                            <option>Web Designer</option>
-                                            <option>IOS Developer</option>
+                                            <option value="">Select Designation</option>
+                                            <option value="">Web Designer</option>
+                                            <option value="">IOS Developer</option>
                                         </select>
                                     </div>
                                 </div>
@@ -408,71 +409,71 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Customer Experience</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Marketing</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Management</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Administration</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Presentation Skill</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Quality Of Work</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Efficiency</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                 </div>
@@ -481,71 +482,71 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Integrity</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Professionalism</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Team Work</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Critical Thinking</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Conflict Management</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Attendance</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Ability To Meet Deadline</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                 </div>
@@ -553,14 +554,14 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
                                         <select class="select">
-                                            <option>Active</option>
-                                            <option>Inactive</option>
+                                            <option value="">Active</option>
+                                            <option value="">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -580,15 +581,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Designation</label>
                                         <select class="select">
-                                            <option>Select Designation</option>
-                                            <option selected>Web Designer</option>
-                                            <option>IOS Developer</option>
+                                            <option value="">Select Designation</option>
+                                            <option value="" selected>Web Designer</option>
+                                            <option value="">IOS Developer</option>
                                         </select>
                                     </div>
                                 </div>
@@ -597,71 +599,71 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Customer Experience</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option selected>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="" selected>Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Marketing</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option selected>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="" selected>Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Management</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option selected>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="" selected>Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Administration</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option selected>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="" selected>Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Presentation Skill</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Quality Of Work</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Efficiency</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                 </div>
@@ -670,71 +672,71 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Integrity</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Professionalism</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option selected>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="" selected>Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Team Work</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Critical Thinking</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option selected>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="" selected>Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Conflict Management</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option selected>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="" selected>Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Attendance</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option selected>Intermediate</option>
-                                            <option>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="" selected>Intermediate</option>
+                                            <option value="">Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Ability To Meet Deadline</label>
                                         <select class="select">
-                                            <option>None</option>
-                                            <option>Beginner</option>
-                                            <option>Intermediate</option>
-                                            <option selected>Advanced</option>
-                                            <option>Expert / Leader</option>
+                                            <option value="">None</option>
+                                            <option value="">Beginner</option>
+                                            <option value="">Intermediate</option>
+                                            <option value="" selected>Advanced</option>
+                                            <option value="">Expert / Leader</option>
                                         </select>
                                     </div>
                                 </div>
@@ -742,14 +744,14 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
                                         <select class="select">
-                                            <option>Active</option>
-                                            <option>Inactive</option>
+                                            <option value="">Active</option>
+                                            <option value="">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Save</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -767,16 +769,18 @@
                             <h3>Delete Performance Indicator List</h3>
                             <p>Are you sure want to delete?</p>
                         </div>
-                        <div class="modal-btn delete-action">
-                            <div class="row">
-                                <div class="col-6">
-                                    <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
-                                </div>
-                                <div class="col-6">
-                                    <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                        <form action="">
+                            <div class="modal-btn delete-action">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

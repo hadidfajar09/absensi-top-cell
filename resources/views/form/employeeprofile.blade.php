@@ -197,15 +197,21 @@
                                                 </li>
                                                 <li>
                                                     <div class="title">Birthday:</div>
+                                                    @if(!empty($users))
                                                     <div class="text">{{ $users->birth_date }}</div>
+                                                    @endif
                                                 </li>
                                                 <li>
                                                     <div class="title">Address:</div>
+                                                    @if(!empty($users))
                                                     <div class="text">{{ $users->address }}</div>
+                                                    @endif
                                                 </li>
                                                 <li>
                                                     <div class="title">Gender:</div>
+                                                    @if(!empty($users))
                                                     <div class="text">{{ $users->gender }}</div>
+                                                    @endif
                                                 </li>
                                                 <li>
                                                     <div class="title">Reports to:</div>
@@ -964,27 +970,35 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="profile-img-wrap edit-img">
+                                        @if(!empty($users))
                                         <img class="inline-block" src="{{ URL::to('/assets/images/'. $users->avatar) }}" alt="{{ $users->name }}">
+                                        @endif
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
                                             <input class="upload" type="file" id="image" name="images">
+                                            @if(!empty($users))
                                             <input type="hidden" name="hidden_image" id="e_image" value="{{ $users->avatar }}">
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Full Name</label>
+                                                @if(!empty($users))
                                                 <input type="text" class="form-control" id="name" name="name" value="{{ $users->name }}">
                                                 <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{ $users->rec_id }}">
                                                 <input type="hidden" class="form-control" id="email" name="email" value="{{ $users->email }}">
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Birth Date</label>
                                                 <div class="cal-icon">
+                                                    @if(!empty($users))
                                                     <input class="form-control datetimepicker" type="text" id="birthDate" name="birthDate" value="{{ $users->birth_date }}">
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -992,9 +1006,11 @@
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 <select class="select form-control" id="gender" name="gender">
+                                                    @if(!empty($users))
                                                     <option value="{{ $users->gender }}" {{ ( $users->gender == $users->gender) ? 'selected' : '' }}>{{ $users->gender }} </option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -1005,31 +1021,41 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
+                                        @if(!empty($users))
                                         <input type="text" class="form-control" id="address" name="address" value="{{ $users->address }}">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>State</label>
+                                        @if(!empty($users))
                                         <input type="text" class="form-control" id="state" name="state" value="{{ $users->state }}">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Country</label>
+                                        @if(!empty($users))
                                         <input type="text" class="form-control" id="" name="country" value="{{ $users->country }}">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Pin Code</label>
+                                        @if(!empty($users))
                                         <input type="text" class="form-control" id="pin_code" name="pin_code" value="{{ $users->pin_code }}">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone Number</label>
+                                        @if(!empty($users))
                                         <input type="text" class="form-control" id="phoneNumber" name="phone_number" value="{{ $users->phone_number }}">
+                                        @endif
                                     </div>
                                 </div>
 
@@ -1037,10 +1063,12 @@
                                     <div class="form-group">
                                         <label>Department <span class="text-danger">*</span></label>
                                         <select class="select" id="department" name="department">
+                                            @if(!empty($users))
                                             <option value="{{ $users->department }}" {{ ( $users->department == $users->department) ? 'selected' : '' }}>{{ $users->department }} </option>
                                             <option value="Web Development">Web Development</option>
                                             <option value="IT Management">IT Management</option>
                                             <option value="Marketing">Marketing</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -1048,10 +1076,12 @@
                                     <div class="form-group">
                                         <label>Designation <span class="text-danger">*</span></label>
                                         <select class="select" id="designation" name="designation">
+                                            @if(!empty($users))
                                             <option value="{{ $users->designation }}" {{ ( $users->designation == $users->designation) ? 'selected' : '' }}>{{ $users->designation }} </option>
                                             <option value="Web Designer">Web Designer</option>
                                             <option value="Web Developer">Web Developer</option>
                                             <option value="Android Developer">Android Developer</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -1059,10 +1089,12 @@
                                     <div class="form-group">
                                         <label>Reports To <span class="text-danger">*</span></label>
                                         <select class="select" id="" name="reports_to">
+                                            @if(!empty($users))
                                             <option value="{{ $users->reports_to }}" {{ ( $users->reports_to == $users->reports_to) ? 'selected' : '' }}>{{ $users->reports_to }} </option>
                                             @foreach ($user as $users )
                                             <option value="{{ $users->name }}">{{ $users->name }}</option>
                                             @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
