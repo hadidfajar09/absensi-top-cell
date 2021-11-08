@@ -391,16 +391,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('form/performance/indicator/save') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Designation</label>
                                         <select class="select">
-                                            <option value="">Select Designation</option>
-                                            <option value="">Web Designer</option>
-                                            <option value="">IOS Developer</option>
+                                            <option selected disabled>--Select Designation--</option>
+                                            @foreach ($departments as $department )
+                                            <option value="{{ $department->department }}">{{ $department->department }}</option> 
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -409,71 +410,57 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Customer Experience</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Marketing</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Management</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Administration</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Presentation Skill</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Quality Of Work</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Efficiency</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -482,71 +469,57 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Integrity</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Professionalism</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Team Work</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Critical Thinking</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Conflict Management</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Attendance</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Ability To Meet Deadline</label>
                                         <select class="select">
-                                            <option value="">None</option>
-                                            <option value="">Beginner</option>
-                                            <option value="">Intermediate</option>
-                                            <option value="">Advanced</option>
-                                            <option value="">Expert / Leader</option>
+                                            @foreach ($indicator as $indicators )
+                                            <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -554,8 +527,8 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
                                         <select class="select">
-                                            <option value="">Active</option>
-                                            <option value="">Inactive</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
