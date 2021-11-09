@@ -23,7 +23,6 @@ class CreatePerformanceIndicatorsTable extends Migration
             $table->string('')->nullable();
             $table->string('')->nullable();
             $table->string('')->nullable();
-            $table->string('')->nullable();
             $table->timestamps();
         });
     }

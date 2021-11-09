@@ -397,7 +397,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Designation</label>
-                                        <select class="select">
+                                        <select class="select" id="designation" name="designation">
                                             <option selected disabled>--Select Designation--</option>
                                             @foreach ($departments as $department )
                                             <option value="{{ $department->department }}">{{ $department->department }}</option> 
@@ -409,7 +409,7 @@
                                     <h4 class="modal-sub-title">Technical</h4>
                                     <div class="form-group">
                                         <label class="col-form-label">Customer Experience</label>
-                                        <select class="select">
+                                        <select class="select" id="customer_eperience" name="customer_eperience">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -417,7 +417,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Marketing</label>
-                                        <select class="select">
+                                        <select class="select" id="marketing" name="marketing">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -425,7 +425,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Management</label>
-                                        <select class="select">
+                                        <select class="select" id="management" name="management">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -433,7 +433,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Administration</label>
-                                        <select class="select">
+                                        <select class="select" id="administration" name="administration">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -441,7 +441,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Presentation Skill</label>
-                                        <select class="select">
+                                        <select class="select" id="presentation_skill" name="presentation_skill">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -449,7 +449,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Quality Of Work</label>
-                                        <select class="select">
+                                        <select class="select" id="quality_of_Work" name="quality_of_Work">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -457,7 +457,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Efficiency</label>
-                                        <select class="select">
+                                        <select class="select" id="efficiency" name="efficiency">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -468,7 +468,7 @@
                                     <h4 class="modal-sub-title">Organizational</h4>
                                     <div class="form-group">
                                         <label class="col-form-label">Integrity</label>
-                                        <select class="select">
+                                        <select class="select" id="integrity" name="integrity">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -476,7 +476,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Professionalism</label>
-                                        <select class="select">
+                                        <select class="select" id="professionalism" name="professionalism">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -484,7 +484,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Team Work</label>
-                                        <select class="select">
+                                        <select class="select" id="team_work" name="team_work">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -492,7 +492,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Critical Thinking</label>
-                                        <select class="select">
+                                        <select class="select" id="critical_thinking" name="critical_thinking">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -500,7 +500,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Conflict Management</label>
-                                        <select class="select">
+                                        <select class="select" id="conflict_management" name="conflict_management">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -508,7 +508,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Attendance</label>
-                                        <select class="select">
+                                        <select class="select" id="attendance" name="attendance">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -516,7 +516,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Ability To Meet Deadline</label>
-                                        <select class="select">
+                                        <select class="select" id="ability_to_meet_deadline" name="ability_to_meet_deadline">
                                             @foreach ($indicator as $indicators )
                                             <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
                                             @endforeach
@@ -526,7 +526,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
-                                        <select class="select">
+                                        <select class="select" id="status" name="status">
                                             <option value="Active">Active</option>
                                             <option value="Inactive">Inactive</option>
                                         </select>

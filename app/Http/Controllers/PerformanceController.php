@@ -53,5 +53,7 @@ class PerformanceController extends Controller
             Toastr::error('Add performance indicator fail :)','Error');
             return redirect()->back();
         }
-    }
+      }
+
+  
 }
