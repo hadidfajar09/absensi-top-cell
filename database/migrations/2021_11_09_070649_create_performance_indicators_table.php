@@ -15,14 +15,22 @@ class CreatePerformanceIndicatorsTable extends Migration
     {
         Schema::create('performance_indicators', function (Blueprint $table) {
             $table->id();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
-            $table->string('')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('customer_eperience')->nullable();
+            $table->string('marketing')->nullable();
+            $table->string('management')->nullable();
+            $table->string('administration')->nullable();
+            $table->string('presentation_skill')->nullable();
+            $table->string('quality_of_Work')->nullable();
+            $table->string('efficiency')->nullable();
+            $table->string('integrity')->nullable();
+            $table->string('professionalism')->nullable();
+            $table->string('team_work')->nullable();
+            $table->string('critical_thinking')->nullable();
+            $table->string('conflict_management')->nullable();
+            $table->string('attendance')->nullable();
+            $table->string('ability_to_meet_deadline')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
