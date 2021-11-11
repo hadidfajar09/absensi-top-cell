@@ -14,16 +14,15 @@ class PerformanceController extends Controller
     // view page
     public function index()
     {
-        $user = Auth::User();
-        Session::put('user', $user);
-        $user=Session::get('user');
-        $name = $user->name;
-        $department = $user->department;
-        $avatar = $user->avatar;
-        
+        $rec_id = Auth::User()->rec_id;
+        Session::put('rec_id', $rec_id);
+
         $indicator = DB::table('performance_indicator_lists')->get();
         $departments = DB::table('departments')->get();
-        $performance_indicators = DB::table('performance_indicators')->get();
+        $performance_indicators = DB::table('users')
+            ->join('performance_indicators', 'users.rec_id', '=', 'performance_indicators.rec_id')
+            ->select('users.*', 'performance_indicators.*')
+            ->get(); 
         return view('performance.performanceindicator',compact('indicator','departments','performance_indicators'));
     }
 
@@ -63,8 +62,9 @@ class PerformanceController extends Controller
 
         DB::beginTransaction();
         try {
-
+            
             $indicator = new performanceIndicator;
+            $indicator->rec_id             = $request->rec_id;
             $indicator->designation        = $request->designation;
             $indicator->customer_eperience = $request->customer_eperience;
             $indicator->marketing          = $request->marketing;
