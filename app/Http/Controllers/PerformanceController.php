@@ -93,4 +93,21 @@ class PerformanceController extends Controller
         }
     }
 
+    // delete record
+    public function deleteIndicator(Request $request)
+    {
+        try {
+
+            performanceIndicator::destroy($request->id);
+            Toastr::success('Performance indicator deleted successfully :)','Success');
+            return redirect()->back();
+        
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            Toastr::error('Performance indicator delete fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
 }

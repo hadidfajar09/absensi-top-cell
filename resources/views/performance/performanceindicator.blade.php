@@ -205,6 +205,7 @@
                                 @foreach ($performance_indicators as $key=>$performance)
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td hidden class="id">{{ $performance->id }}</td>
                                     <td>{{ $performance->designation }}</td>
                                     <td>{{ $performance->department }}</td>
                                     <td>
@@ -230,7 +231,7 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_indicator"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_indicator"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                <a class="dropdown-item delete_indicator" href="#" data-toggle="modal" data-target="#delete_indicator"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -607,18 +608,20 @@
                             <h3>Delete Performance Indicator List</h3>
                             <p>Are you sure want to delete?</p>
                         </div>
-                        <form action="">
-                            <div class="modal-btn delete-action">
+                        <div class="modal-btn delete-action">
+                            <form action="{{ route('form/performance/indicator/delete') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" class="e_id" value="">
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                                        <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
                                     </div>
                                     <div class="col-6">
                                         <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -626,5 +629,14 @@
         <!-- /Delete Performance Indicator Modal -->
     </div>
     <!-- /Page Wrapper -->
+
+    {{-- delete model --}}
+    <script>
+        $(document).on('click','.delete_indicator',function()
+        {
+            var _this = $(this).parents('tr');
+            $('.e_id').val(_this.find('.id').text());
+        });
+    </script>
 
 @endsection
