@@ -93,6 +93,44 @@ class PerformanceController extends Controller
         }
     }
 
+    // update record
+    public function updateIndicator(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'                        => $request->id,
+                'designation'               => $request->designation,
+                'customer_eperience'        => $request->customer_eperience,
+                'marketing'                 => $request->marketing,
+                'management'                => $request->management,
+                'administration'            => $request->administration,
+                'presentation_skill'        => $request->presentation_skill,
+                'quality_of_Work'           => $request->quality_of_Work,
+                'efficiency'                => $request->efficiency,
+                'integrity'                 => $request->integrity,
+                'professionalism'           => $request->professionalism,
+                'team_work'                 => $request->team_work,
+                'critical_thinking'         => $request->critical_thinking,
+                'conflict_management'       => $request->conflict_management,
+                'attendance'                => $request->attendance,
+                'ability_to_meet_deadline'  => $request->ability_to_meet_deadline,
+                'status'                    => $request->status,               
+            ];
+            performanceIndicator::where('id',$request->id)->update($update);
+            DB::commit();
+            
+            DB::commit();
+            Toastr::success('Performance indicator deleted successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Performance indicator fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
     // delete record
     public function deleteIndicator(Request $request)
     {
