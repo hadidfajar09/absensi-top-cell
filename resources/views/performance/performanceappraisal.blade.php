@@ -396,15 +396,19 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Employee</label>
-                                        <select class="select">
-                                            <option>Select Employee</option>
-                                            <option>John Doe</option>
-                                            <option>Mike Litorus</option>
+                                        <select class="select" id="name" name="name">
+                                            <option selected disabled> -- Select Employee -- </option>
+                                            @foreach ($users as $user )
+                                            <option value="{{ $user->name }}" data-employee_id={{ $user->rec_id }}>{{ $user->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+                                    <input class="form-control" type="hidden" id="employee_id" name="employee_id" readonly>
                                     <div class="form-group">
                                         <label>Select Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" name="date">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -444,79 +448,79 @@
                                                                       <tr>
                                                                         <td colspan="2">Customer Experience</td>
                                                                         <td colspan="2">Intermediate</td>
-                                                                        <td><select name="customer_experience" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="customer_experience" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Marketing</td>
                                                                         <td colspan="2">Advanced</td>
-                                                                        <td><select name="marketing" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="marketing" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Management</td>
                                                                         <td colspan="2">Advanced</td>
-                                                                        <td><select name="management" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="management" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Administration</td>
                                                                         <td colspan="2">Advanced</td>
-                                                                        <td><select name="administration" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="administration" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Presentation Skill</td>
                                                                         <td colspan="2">Expert / Leader</td>
-                                                                        <td><select name="presentation_skill" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="presentation_skill" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Quality Of Work</td>
                                                                         <td colspan="2">Expert / Leader</td>
-                                                                        <td><select name="quality_of_work" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="quality_of_work" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                       </tr>
                                                                       <tr>
                                                                         <td colspan="2">Efficiency</td>
                                                                         <td colspan="2">Expert / Leader</td>
-                                                                        <td><select name="efficiency" class="form-control">
-                                                                            <option value="">None</option>
-                                                                            <option value="1"> Beginner</option>
-                                                                            <option value="2"> Intermediate</option>
-                                                                            <option value="3"> Advanced</option>
-                                                                            <option value="4"> Expert / Leader</option>
-                                                                          </select></td>
+                                                                        <td>
+                                                                            <select name="efficiency" class="form-control">
+                                                                                @foreach ($indicator as $indicators )
+                                                                                <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -549,10 +553,9 @@
                                                                             <td colspan="2">Beginner</td>
                                                                             <td>
                                                                                 <select name="integrity" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -561,10 +564,9 @@
                                                                             <td colspan="2">Beginner</td>
                                                                             <td>
                                                                                 <select name="professionalism" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -573,10 +575,9 @@
                                                                             <td colspan="2">Intermediate</td>
                                                                             <td>
                                                                                 <select name="team_work" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -585,10 +586,9 @@
                                                                             <td colspan="2">Advanced</td>
                                                                             <td>
                                                                                 <select name="critical_thinking" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -597,10 +597,9 @@
                                                                             <td colspan="2">Intermediate</td>
                                                                             <td>
                                                                                 <select name="conflict_management" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -609,10 +608,9 @@
                                                                             <td colspan="2">Intermediate</td>
                                                                             <td>
                                                                                 <select name="attendance" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -621,10 +619,9 @@
                                                                             <td colspan="2">Advanced</td>
                                                                             <td>
                                                                                 <select name="ability_to_meet_deadline" class="form-control">
-                                                                                    <option value="">None</option>
-                                                                                    <option value="1"> Beginner</option>
-                                                                                    <option value="2"> Intermediate</option>
-                                                                                    <option value="3"> Advanced</option>
+                                                                                    @foreach ($indicator as $indicators )
+                                                                                    <option value="{{ $indicators->per_name_list }}">{{ $indicators->per_name_list }}</option>
+                                                                                    @endforeach
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
@@ -650,7 +647,7 @@
                             </div>
                             
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -979,5 +976,15 @@
     
     </div>
     <!-- /Page Wrapper -->
+    @section('script')
+    <script>
+        // select auto id and email
+        $('#name').on('change',function()
+        {
+            $('#employee_id').val($(this).find(':selected').data('employee_id'));
+        });
+    </script>
+    @endsection
+    
 
 @endsection

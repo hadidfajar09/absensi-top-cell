@@ -29,13 +29,16 @@ class PerformanceController extends Controller
     //performance
     public function performance()
     {
+       
         return view('performance.performance');
     }
 
     //performance appraisal view page
     public function performanceAppraisal()
     {
-        return view('performance.performanceappraisal');
+        $users = DB::table('users')->get();
+        $indicator = DB::table('performance_indicator_lists')->get();
+        return view('performance.performanceappraisal',compact('users','indicator'));
     }
 
     // save record
