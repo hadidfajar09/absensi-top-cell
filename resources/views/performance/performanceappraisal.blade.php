@@ -391,7 +391,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/performance/appraisal/save') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -403,7 +404,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input class="form-control" type="hidden" id="employee_id" name="employee_id" readonly>
+                                    <input class="form-control" type="hidden" id="employee_id" name="rec_id" readonly>
                                     <div class="form-group">
                                         <label>Select Date <span class="text-danger">*</span></label>
                                         <div class="cal-icon">
@@ -638,7 +639,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
-                                        <select class="select">
+                                        <select class="select" name="status">
                                             <option>Active</option>
                                             <option>Inactive</option>
                                         </select>

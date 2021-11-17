@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\performanceIndicator;
+use App\Models\performance_appraisal;
 use Session;
 use Auth;
 
@@ -147,6 +148,62 @@ class PerformanceController extends Controller
 
             DB::rollback();
             Toastr::error('Performance indicator delete fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    // saveRecord Appraisal
+    public function saveRecordAppraisal( Request $request)
+    {
+        $request->validate([
+            'name'               => 'required|string|max:255',
+            'designation'        => 'required|string|max:255',
+            'customer_experience' => 'required|string|max:255',
+            'marketing'          => 'required|string|max:255',
+            'management'         => 'required|string|max:255',
+            'administration'     => 'required|string|max:255',
+            'presentation_skill' => 'required|string|max:255',
+            'quality_of_Work'    => 'required|string|max:255',
+            'efficiency'         => 'required|string|max:255',
+            'integrity'          => 'required|string|max:255',
+            'professionalism'    => 'required|string|max:255',
+            'team_work'          => 'required|string|max:255',
+            'critical_thinking'  => 'required|string|max:255',
+            'conflict_management'=> 'required|string|max:255',
+            'attendance'         => 'required|string|max:255',
+            'ability_to_meet_deadline'=> 'required|string|max:255',
+            'status'             => 'required|string|max:255',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            
+            $appraisal = new performance_appraisal;
+            $appraisal->rec_id              = $request->rec_id;
+            $appraisal->name                = $request->name;
+            $appraisal->customer_experience = $request->customer_experience;
+            $appraisal->marketing           = $request->marketing;
+            $appraisal->management          = $request->management;
+            $appraisal->administration      = $request->administration;
+            $appraisal->presentation_skill  = $request->presentation_skill;
+            $appraisal->quality_of_Work     = $request->quality_of_Work;
+            $appraisal->efficiency          = $request->efficiency;
+            $appraisal->integrity           = $request->integrity;
+            $appraisal->professionalism     = $request->professionalism;
+            $appraisal->team_work           = $request->team_work;
+            $appraisal->critical_thinking   = $request->critical_thinking;
+            $appraisal->conflict_management = $request->attendance;
+            $appraisal->attendance          = $request->attendance;
+            $appraisal->ability_to_meet_deadline = $request->ability_to_meet_deadline;
+            $appraisal->status              = $request->status;
+            $appraisal->save();
+
+            DB::commit();
+            Toastr::success('Create new performance appraisal successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Add performance appraisal fail :)','Error');
             return redirect()->back();
         }
     }
