@@ -39,7 +39,11 @@ class PerformanceController extends Controller
     {
         $users = DB::table('users')->get();
         $indicator = DB::table('performance_indicator_lists')->get();
-        return view('performance.performanceappraisal',compact('users','indicator'));
+        $appraisals = DB::table('users')
+        ->join('performance_appraisals', 'users.rec_id', '=', 'performance_appraisals.rec_id')
+        ->select('users.*', 'performance_appraisals.*')
+        ->get(); 
+        return view('performance.performanceappraisal',compact('users','indicator','appraisals'));
     }
 
     // save record
@@ -155,26 +159,6 @@ class PerformanceController extends Controller
     // saveRecord Appraisal
     public function saveRecordAppraisal( Request $request)
     {
-        $request->validate([
-            'name'               => 'required|string|max:255',
-            'designation'        => 'required|string|max:255',
-            'customer_experience' => 'required|string|max:255',
-            'marketing'          => 'required|string|max:255',
-            'management'         => 'required|string|max:255',
-            'administration'     => 'required|string|max:255',
-            'presentation_skill' => 'required|string|max:255',
-            'quality_of_Work'    => 'required|string|max:255',
-            'efficiency'         => 'required|string|max:255',
-            'integrity'          => 'required|string|max:255',
-            'professionalism'    => 'required|string|max:255',
-            'team_work'          => 'required|string|max:255',
-            'critical_thinking'  => 'required|string|max:255',
-            'conflict_management'=> 'required|string|max:255',
-            'attendance'         => 'required|string|max:255',
-            'ability_to_meet_deadline'=> 'required|string|max:255',
-            'status'             => 'required|string|max:255',
-        ]);
-
         DB::beginTransaction();
         try {
             
@@ -186,7 +170,7 @@ class PerformanceController extends Controller
             $appraisal->management          = $request->management;
             $appraisal->administration      = $request->administration;
             $appraisal->presentation_skill  = $request->presentation_skill;
-            $appraisal->quality_of_Work     = $request->quality_of_Work;
+            $appraisal->quality_of_Work     = $request->quality_of_work;
             $appraisal->efficiency          = $request->efficiency;
             $appraisal->integrity           = $request->integrity;
             $appraisal->professionalism     = $request->professionalism;

@@ -194,7 +194,6 @@
                                 <tr>
                                     <th style="width: 30px;">#</th>
                                     <th>Employee</th>
-                                    <th>Designation</th>
                                     <th>Department</th>
                                     <th>Appraisal Date</th>
                                     <th>Status</th>
@@ -202,19 +201,35 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($appraisals as $key=>$appraisal)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ ++$key }}</td>
+                                    <td hidden class="id">{{ $appraisal->id }}</td>
+                                    <td hidden class="designation">{{ $appraisal->name }}</td>
+                                    <td hidden class="customer_eperience">{{ $appraisal->customer_experience }}</td>
+                                    <td hidden class="marketing">{{ $appraisal->marketing }}</td>
+                                    <td hidden class="management">{{ $appraisal->management }}</td>
+                                    <td hidden class="administration">{{ $appraisal->administration }}</td>
+                                    <td hidden class="presentation_skill">{{ $appraisal->presentation_skill }}</td>
+                                    <td hidden class="quality_of_Work">{{ $appraisal->quality_of_Work }}</td>
+                                    <td hidden class="efficiency">{{ $appraisal->efficiency }}</td>
+                                    <td hidden class="integrity">{{ $appraisal->integrity }}</td>
+                                    <td hidden class="professionalism">{{ $appraisal->professionalism }}</td>
+                                    <td hidden class="team_work">{{ $appraisal->team_work }}</td>
+                                    <td hidden class="critical_thinking">{{ $appraisal->critical_thinking }}</td>
+                                    <td hidden class="conflict_management">{{ $appraisal->conflict_management }}</td>
+                                    <td hidden class="attendance">{{ $appraisal->attendance }}</td>
+                                    <td hidden class="ability_to_meet_deadline">{{ $appraisal->ability_to_meet_deadline }}</td>
+                                    <td hidden class="status">{{ $appraisal->status }}</td>
+
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}"></a>
-                                            <a href="profile.html">John Doe </a>
+                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('/assets/images/'. $appraisal->avatar) }}" alt="{{ $appraisal->avatar }}"></a>
+                                            <a href="profile.html">{{ $appraisal->name }} </a>
                                         </h2>
                                     </td>
-                                    <td>Web Designer </td>
-                                    <td>Designing</td>
-                                    <td>
-                                        7 May 2019
-                                    </td>
+                                    <td>{{ $appraisal->department }}</td>
+                                    <td>{{date('d F, Y',strtotime($appraisal->created_at)) }}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                             <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -230,148 +245,13 @@
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                <a class="dropdown-item edit_indicator" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item delete_indicator" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}"></a>
-                                            <a href="profile.html">Mike Litorus </a>
-                                        </h2>
-                                    </td>
-                                    <td>IOS Developer </td>
-                                    <td>IOS</td>
-                                    <td>
-                                        7 May 2019
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}"></a>
-                                            <a href="profile.html">Bernardo Galaviz </a>
-                                        </h2>
-                                    </td>
-                                    <td>Web Developer </td>
-                                    <td>Designing</td>
-                                    <td>
-                                        7 May 2019
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}"></a>
-                                            <a href="profile.html">Jeffrey Warden </a>
-                                        </h2>
-                                    </td>
-                                    <td>Web Developer </td>
-                                    <td>Designing</td>
-                                    <td>
-                                        7 May 2019
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}"></a>
-                                            <a href="profile.html">Wilmer Deluna </a>
-                                        </h2>
-                                    </td>
-                                    <td>Team Leader </td>
-                                    <td>IOS</td>
-                                    <td>
-                                        7 May 2019
-                                    </td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_appraisal"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_appraisal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -640,8 +520,8 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
                                         <select class="select" name="status">
-                                            <option>Active</option>
-                                            <option>Inactive</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
