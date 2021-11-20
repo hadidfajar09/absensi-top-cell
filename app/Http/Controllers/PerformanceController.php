@@ -157,7 +157,7 @@ class PerformanceController extends Controller
     }
 
     // saveRecord Appraisal
-    public function saveRecordAppraisal( Request $request)
+    public function saveRecordAppraisal(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -188,6 +188,23 @@ class PerformanceController extends Controller
         } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Add performance appraisal fail :)','Error');
+            return redirect()->back();
+        }
+    }
+    
+    // delete record
+    public function deleteAppraisal(Request $request)
+    {
+        try {
+
+            performance_appraisal::destroy($request->id);
+            Toastr::success('Performance Appraisal deleted successfully :)','Success');
+            return redirect()->back();
+        
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            Toastr::error('Performance Appraisal delete fail :)','Error');
             return redirect()->back();
         }
     }
