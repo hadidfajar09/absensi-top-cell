@@ -16,6 +16,7 @@ class CreatePerformanceAppraisalsTable extends Migration
         Schema::create('performance_appraisals', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('date')->nullable();
             $table->string('rec_id')->nullable();
             $table->string('customer_experience')->nullable();
             $table->string('marketing')->nullable();

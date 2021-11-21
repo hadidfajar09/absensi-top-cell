@@ -164,6 +164,7 @@ class PerformanceController extends Controller
             
             $appraisal = new performance_appraisal;
             $appraisal->rec_id              = $request->rec_id;
+            $appraisal->date                = $request->date;
             $appraisal->name                = $request->name;
             $appraisal->customer_experience = $request->customer_experience;
             $appraisal->marketing           = $request->marketing;
@@ -205,6 +206,42 @@ class PerformanceController extends Controller
 
             DB::rollback();
             Toastr::error('Performance Appraisal delete fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    //updateAppraisal
+    public function updateAppraisal(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'                        => $request->id,
+                'date'                      => $request->date,
+                'customer_experience'       => $request->customer_experience,
+                'marketing'                 => $request->marketing,
+                'management'                => $request->management,
+                'administration'            => $request->administration,
+                'presentation_skill'        => $request->presentation_skill,
+                'quality_of_Work'           => $request->quality_of_work,
+                'efficiency'                => $request->efficiency,
+                'integrity'                 => $request->integrity,
+                'professionalism'           => $request->professionalism,
+                'team_work'                 => $request->team_work,
+                'critical_thinking'         => $request->critical_thinking,
+                'conflict_management'       => $request->conflict_management,
+                'attendance'                => $request->attendance,
+                'ability_to_meet_deadline'  => $request->ability_to_meet_deadline,
+                'status'                    => $request->status,               
+            ];
+            performance_appraisal::where('id',$request->id)->update($update);
+            DB::commit();
+            Toastr::success('Performance Appraisal deleted successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Performance Appraisal fail :)','Error');
             return redirect()->back();
         }
     }
