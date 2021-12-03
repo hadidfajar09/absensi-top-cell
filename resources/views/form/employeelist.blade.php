@@ -104,17 +104,10 @@
                             <li><a href="{{ route('form/performance/appraisal/page') }}"> Performance Appraisal </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"> <a href="#"><i class="la la-crosshairs"></i>
-                        <span> Goals </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                            <li><a href="goal-tracking.html"> Goal List </a></li>
-                            <li><a href="goal-type.html"> Goal Type </a></li>
-                        </ul>
-                    </li>
                     <li class="submenu"> <a href="#"><i class="la la-edit"></i>
                         <span> Training </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="training.html"> Training List </a></li>
+                            <li><a href="{{ route('form/training/list/page') }}"> Training List </a></li>
                             <li><a href="trainers.html"> Trainers</a></li>
                             <li><a href="training-type.html"> Training Type </a></li>
                         </ul>
