@@ -732,72 +732,79 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/training/save') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Type</label>
-                                        <select class="select">
-                                            <option>Node Training</option>
-                                            <option>Swift Training</option>
+                                        <select class="select" name="training_type">
+                                            <option value="Node Training">Node Training</option>
+                                            <option value="Swift Training">Swift Training</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Trainer</label>
-                                        <select class="select">
-                                            <option>Mike Litorus </option>
-                                            <option>John Doe</option>
+                                        <select class="select" name="trainer">
+                                            @foreach ($user as $items )
+                                                <option value="{{ $items->name }}">{{ $items->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Employees</label>
-                                        <select class="select">
-                                            <option>Bernardo Galaviz</option>
-                                            <option>Jeffrey Warden</option>
+                                        <select class="select" name="employees">
+                                            @foreach ($user as $items )
+                                                <option value="{{ $items->name }}">{{ $items->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Cost <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="training_cost">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Start Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" name="start_date">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>End Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" name="end_date">
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Description <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" rows="4"></textarea>
+                                        <textarea class="form-control" rows="4"name="description"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
-                                        <select class="select">
-                                            <option>Active</option>
-                                            <option>Inactive</option>
+                                        <select class="select" name="status">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                             </div>
                         </form>
                     </div>
