@@ -208,27 +208,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($training as $key=>$training )
                                 <tr>
-                                    <td>1</td>
-                                    <td>Git Training</td>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $training->training_type }}</td>
                                     <td>
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar">
-                                                <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
+                                                <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                             </a>
-                                            <a href="profile.html">John Doe </a>
+                                            <a href="profile.html">{{ $training->trainer }}</a>
                                         </h2>
                                     </td>
                                     <td>
                                         <ul class="team-members">
                                             <li>
                                                 <a href="#" title="Bernardo Galaviz" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
+                                                    <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#" title="Richard Miles" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
+                                                    <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                 </a>
                                             </li>
                                             <li class="dropdown avatar-dropdown">
@@ -236,31 +237,31 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <div class="avatar-group">
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                         <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}">
+                                                            <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                                         </a>
                                                     </div>
                                                     <div class="avatar-pagination">
@@ -285,19 +286,11 @@
                                             </li> 
                                         </ul>
                                     </td>
-                                    <td>7 May 2019 - 10 May 2019</td>
-                                    <td>Lorem ipsum dollar</td>
-                                    <td>$400</td>
+                                    <td>{{ $training->start_date }} - {{ $training->end_date }}</td>
+                                    <td>{{ $training->description }}</td>
+                                    <td>${{ $training->training_cost }}</td>
                                     <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
+                                        <i class="fa fa-dot-circle-o text-success"></i> {{ $training->status }}
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
@@ -309,410 +302,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Swift Training</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar">
-                                                <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                            </a>
-                                            <a href="profile.html">Richard Miles</a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <ul class="team-members">
-                                            <li>
-                                                <a href="#" title="John Doe" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Richard Miles" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li class="dropdown avatar-dropdown">
-                                                <a href="#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <div class="avatar-group">
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="avatar-pagination">
-                                                        <ul class="pagination">
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                    <span aria-hidden="true">«</span>
-                                                                    <span class="sr-only">Previous</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
-                                                                    <span aria-hidden="true">»</span>
-                                                                    <span class="sr-only">Next</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> 
-                                        </ul>
-                                    </td>
-                                    <td>7 May 2019 - 10 May 2019</td>
-                                    <td>Lorem ipsum dollar</td>
-                                    <td>$800</td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_training"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Node Training</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar">
-                                                <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                            </a>
-                                            <a href="profile.html">John Doe </a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <ul class="team-members">
-                                            <li>
-                                                <a href="#" title="Bernardo Galaviz" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Richard Miles" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li class="dropdown avatar-dropdown">
-                                                <a href="#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <div class="avatar-group">
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="avatar-pagination">
-                                                        <ul class="pagination">
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                    <span aria-hidden="true">«</span>
-                                                                    <span class="sr-only">Previous</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
-                                                                    <span aria-hidden="true">»</span>
-                                                                    <span class="sr-only">Next</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> 
-                                        </ul>
-                                    </td>
-                                    <td>7 May 2019 - 10 May 2019</td>
-                                    <td>Lorem ipsum dollar</td>
-                                    <td>$400</td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_training"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Angular Training</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar">
-                                                <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
-                                            </a>
-                                            <a href="profile.html">Mike Litorus </a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <ul class="team-members">
-                                            <li>
-                                                <a href="#" title="Bernardo Galaviz" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Richard Miles" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li class="dropdown avatar-dropdown">
-                                                <a href="#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <div class="avatar-group">
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="avatar-pagination">
-                                                        <ul class="pagination">
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                    <span aria-hidden="true">«</span>
-                                                                    <span class="sr-only">Previous</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
-                                                                    <span aria-hidden="true">»</span>
-                                                                    <span class="sr-only">Next</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> 
-                                        </ul>
-                                    </td>
-                                    <td>7 May 2019 - 10 May 2019</td>
-                                    <td>Lorem ipsum dollar</td>
-                                    <td>$400</td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_training"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Git Training</td>
-                                    <td>
-                                        <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar">
-                                                <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
-                                            </a>
-                                            <a href="profile.html">Wilmer Deluna </a>
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <ul class="team-members">
-                                            <li>
-                                                <a href="#" title="Bernardo Galaviz" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jp') }}g">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Richard Miles" data-toggle="tooltip">
-                                                    <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                </a>
-                                            </li>
-                                            <li class="dropdown avatar-dropdown">
-                                                <a href="#" class="all-users dropdown-toggle" data-toggle="dropdown" aria-expanded="false">+15</a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <div class="avatar-group">
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-09.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-10.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-05.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-11.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-12.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-13.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}">
-                                                        </a>
-                                                        <a class="avatar avatar-xs" href="#">
-                                                            <img alt="" src="{{ URL::to('assets/img/profiles/avatar-16.jpg') }}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="avatar-pagination">
-                                                        <ul class="pagination">
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                    <span aria-hidden="true">«</span>
-                                                                    <span class="sr-only">Previous</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
-                                                                    <span aria-hidden="true">»</span>
-                                                                    <span class="sr-only">Next</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li> 
-                                        </ul>
-                                    </td>
-                                    <td>7 May 2019 - 10 May 2019</td>
-                                    <td>Lorem ipsum dollar</td>
-                                    <td>$400</td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-success"></i> Active
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown dropdown-action">
-                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_training"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -738,7 +328,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Type</label>
-                                        <select class="select" name="training_type">
+                                        <select class="select" name="training_type" @error('training_type') is-invalid @enderror>
+                                            <option selected disabled>-- Select --</option>
                                             <option value="Node Training">Node Training</option>
                                             <option value="Swift Training">Swift Training</option>
                                         </select>
@@ -747,34 +338,38 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Trainer</label>
-                                        <select class="select" name="trainer">
+                                        <select class="select" id="trainer" name="trainer" @error('trainer') is-invalid @enderror>
                                             @foreach ($user as $items )
-                                                <option value="{{ $items->name }}">{{ $items->name }}</option>
+                                                <option selected disabled>-- Select --</option>
+                                                <option value="{{ $items->name }}" data-trainer_id={{ $items->rec_id }}>{{ $items->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="trainer_id" name="trainer_id" readonly>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Employees</label>
-                                        <select class="select" name="employees">
+                                        <select class="select" id="employees" name="employees" @error('employees') is-invalid @enderror>
                                             @foreach ($user as $items )
-                                                <option value="{{ $items->name }}">{{ $items->name }}</option>
+                                                <option selected disabled>-- Select --</option>
+                                                <option value="{{ $items->name }}" data-employees_id={{ $items->rec_id }}>{{ $items->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="employees_id" name="employees_id" readonly>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Cost <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="training_cost">
+                                        <input class="form-control" type="text" name="training_cost" @error('training_cost') is-invalid @enderror>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Start Date <span class="text-danger">*</span></label>
                                         <div class="cal-icon">
-                                            <input class="form-control datetimepicker" type="text" name="start_date">
+                                            <input class="form-control datetimepicker @error('start_date') is-invalid @enderror" type="text" name="start_date">
                                         </div>
                                     </div>
                                 </div>
@@ -782,7 +377,7 @@
                                     <div class="form-group">
                                         <label>End Date <span class="text-danger">*</span></label>
                                         <div class="cal-icon">
-                                            <input class="form-control datetimepicker" type="text" name="end_date">
+                                            <input class="form-control datetimepicker @error('end_date') is-invalid @enderror" type="text" name="end_date">
                                         </div>
                                     </div>
                                 </div>
@@ -790,13 +385,13 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Description <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" rows="4"name="description"></textarea>
+                                        <textarea class="form-control" rows="3"name="description" @error('description') is-invalid @enderror></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
-                                        <select class="select" name="status">
+                                        <select class="select" name="status" @error('status') is-invalid @enderror>
                                             <option value="Active">Active</option>
                                             <option value="Inactive">Inactive</option>
                                         </select>
@@ -926,5 +521,17 @@
     
     </div>
     <!-- /Page Wrapper -->
-
+    @section('script')
+    <script>
+        // select auto id and email
+        $('#trainer').on('change',function()
+        {
+            $('#trainer_id').val($(this).find(':selected').data('trainer_id'));
+        });
+        $('#employees').on('change',function()
+        {
+            $('#employees_id').val($(this).find(':selected').data('employees_id'));
+        });
+    </script>
+    @endsection
 @endsection

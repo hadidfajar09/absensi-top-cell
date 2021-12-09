@@ -14,24 +14,38 @@ class TrainingController extends Controller
     // index page
     public function index()
     {
+        $training = DB::table('trainings')
+                ->join('users', 'users.rec_id', '=', 'trainings.trainer_id')
+                ->select('trainings.*', 'users.*')
+                ->get();
         $user = DB::table('users')->get();
-        return view('training.traininglist',compact('user'));
+        return view('training.traininglist',compact('user','training'));
     }
     // save record training
     public function addNewTraining(Request $request)
     {
-        // $request->validate([
-        //     'leave_type'   => 'required|string|max:255',
-        // ]);
+        $request->validate([
+            'training_type'   => 'required|string|max:255',
+            'trainer'         => 'required|string|max:255',
+            'employees'       => 'required|string|max:255',
+            'training_cost'   => 'required|string|max:255',
+            'start_date'      => 'required|string|max:255',
+            'end_date'        => 'required|string|max:255',
+            'description'     => 'required|string|max:255',
+            'status'          => 'required|string|max:255',
+        ]);
 
         DB::beginTransaction();
         try {
 
             $training = new Training;
-            $training->rec_id        = $request->rec_id;
+            $training->trainer_id    = $request->trainer_id;
+            $training->employees_id  = $request->employees_id;
             $training->training_type = $request->training_type;
+            $training->trainer       = $request->trainer;
             $training->employees     = $request->employees;
             $training->training_cost = $request->training_cost;
+            $training->start_date    = $request->start_date;
             $training->end_date      = $request->end_date;
             $training->description   = $request->description;
             $training->status        = $request->status;
