@@ -16,7 +16,7 @@ class TrainingController extends Controller
     {
         $training = DB::table('trainings')
                 ->join('users', 'users.rec_id', '=', 'trainings.trainer_id')
-                ->select('trainings.*', 'users.*')
+                ->select('trainings.*', 'users.avatar','users.rec_id')
                 ->get();
         $user = DB::table('users')->get();
         return view('training.traininglist',compact('user','training'));
@@ -57,6 +57,23 @@ class TrainingController extends Controller
         } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Add Training fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    // delete record
+    public function deleteTraining(Request $request)
+    {
+        try {
+
+            Training::destroy($request->id);
+            Toastr::success('Training deleted successfully :)','Success');
+            return redirect()->back();
+        
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            Toastr::error('Training delete fail :)','Error');
             return redirect()->back();
         }
     }
