@@ -212,7 +212,7 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td hidden class="id">{{ $training->id }}</td>
-                                    <td>{{ $training->training_type }}</td>
+                                    <td class="training_type">{{ $training->training_type }}</td>
                                     <td>
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar">
@@ -221,6 +221,9 @@
                                             <a href="profile.html">{{ $training->trainer }}</a>
                                         </h2>
                                     </td>
+                                    <td hidden class="trainer">{{ $training->trainer }}</td>
+                                    <td hidden class="employees">{{ $training->employees }}</td>
+                                    <td hidden class="description">{{ $training->description }}</td>
                                     <td>
                                         <ul class="team-members">
                                             <li>
@@ -287,17 +290,21 @@
                                             </li> 
                                         </ul>
                                     </td>
-                                    <td>{{ $training->start_date }} - {{ $training->end_date }}</td>
+                                    <td >{{ $training->start_date }} - {{ $training->end_date }}</td>
+                                    <td hidden class="start_date">{{ $training->start_date }}</td>
+                                    <td hidden class="end_date">{{ $training->end_date }}</td>
                                     <td>{{ $training->description }}</td>
                                     <td>${{ $training->training_cost }}</td>
+                                    <td hidden class="training_cost">${{ $training->training_cost }}</td>
                                     <td>
                                         <i class="fa fa-dot-circle-o text-success"></i> {{ $training->status }}
                                     </td>
+                                    <td hidden class="status">{{ $training->status }}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item edit_training" href="#" data-toggle="modal" data-target="#edit_training"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 <a class="dropdown-item delete_training" href="#" data-toggle="modal" data-target="#delete_training"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
@@ -420,73 +427,85 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('form/training/update') }}" method="POST">
+                            @csrf
+                            <input type="hidden" class="form-control" id="e_id" name="id" value="">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Type</label>
-                                        <select class="select">
-                                            <option selected>Node Training</option>
-                                            <option>Swift Training</option>
-                                            <option>Git Training</option>
+                                        <select class="select" id="e_training_type" name="training_type">
+                                            <option selected disabled>-- Select --</option>
+                                            <option value="Node Training">Node Training</option>
+                                            <option value="Swift Training">Swift Training</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Trainer</label>
-                                        <select class="select">
-                                            <option>Mike Litorus </option>
-                                            <option selected>John Doe</option>
+                                        <select class="select" id="e_trainer" name="trainer">
+                                            @foreach ($user as $items )
+                                                <option selected disabled>-- Select --</option>
+                                                <option value="{{ $items->name }}" data-e_trainer_id={{ $items->rec_id }}>{{ $items->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="e_trainer_id" name="trainer_id" readonly>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Employees</label>
-                                        <select class="select">
-                                            <option>Bernardo Galaviz</option>
-                                            <option selected>Jeffrey Warden</option>
+                                        <select class="select" id="e_employees" name="employees">
+                                            @foreach ($user as $items )
+                                                <option selected disabled>-- Select --</option>
+                                                <option value="{{ $items->name }}" data-e_employees_id={{ $items->rec_id }}>{{ $items->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" id="e_employees_id" name="employees_id" readonly>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Training Cost <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" value="$400">
+                                        <input class="form-control" type="text" id="e_training_cost" name="training_cost" value="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Start Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" value="07-08-2019" type="text"></div>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" id="e_start_date" name="start_date" value="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>End Date <span class="text-danger">*</span></label>
-                                        <div class="cal-icon"><input class="form-control datetimepicker" value="10-08-2019" type="text"></div>
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" type="text" id="e_end_date" name="end_date" value="">
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Description <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" rows="4">Lorem ipsum ismap</textarea>
+                                        <textarea class="form-control" rows="3" id="e_description" name="description"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="col-form-label">Status</label>
-                                        <select class="select">
-                                            <option selected>Active</option>
-                                            <option>Inactive</option>
+                                        <select class="select" id="e_status" name="status">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn">Submit</button>
+                                <button type="submit" class="btn btn-primary submit-btn">Update</button>
                             </div>
                         </form>
                     </div>
@@ -538,6 +557,51 @@
             $('#employees_id').val($(this).find(':selected').data('employees_id'));
         });
     </script>
+    <script>
+        // select auto id and email
+        $('#e_trainer').on('change',function()
+        {
+            $('#e_trainer_id').val($(this).find(':selected').data('e_trainer_id'));
+        });
+        $('#e_employees').on('change',function()
+        {
+            $('#e_employees_id').val($(this).find(':selected').data('e_employees_id'));
+        });
+    </script>
+
+    {{-- update js --}}
+    <script>
+        $(document).on('click','.edit_training',function()
+        {
+            var _this = $(this).parents('tr');
+            $('#e_id').val(_this.find('.id').text());
+            $('#e_training_cost').val(_this.find('.training_cost').text());
+            $('#e_start_date').val(_this.find('.start_date').text());  
+            $('#e_end_date').val(_this.find('.end_date').text());  
+            $('#e_description').val(_this.find('.description').text());
+
+            // training_type
+            var training_type = (_this.find(".training_type").text());
+            var _option = '<option selected value="' +training_type+ '">' + _this.find('.training_type').text() + '</option>'
+            $( _option).appendTo("#e_training_type");
+
+            // trainer
+            var trainer = (_this.find(".trainer").text());
+            var _option = '<option selected value="' +trainer+ '">' + _this.find('.trainer').text() + '</option>'
+            $( _option).appendTo("#e_trainer");
+
+            // employees
+            var employees = (_this.find(".employees").text());
+            var _option = '<option selected value="' +employees+ '">' + _this.find('.employees').text() + '</option>'
+            $( _option).appendTo("#e_employees");
+
+            // status
+            var status = (_this.find(".status").text());
+            var _option = '<option selected value="' +status+ '">' + _this.find('.status').text() + '</option>'
+            $( _option).appendTo("#e_status");
+        });
+    </script>
+
     {{-- delete model --}}
     <script>
         $(document).on('click','.delete_training',function()

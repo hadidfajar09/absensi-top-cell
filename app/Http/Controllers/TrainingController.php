@@ -77,4 +77,9 @@ class TrainingController extends Controller
             return redirect()->back();
         }
     }
+    // update record
+    public function updateTraining()
+    {
+        
+    }
 }
