@@ -211,6 +211,9 @@
                                 @foreach ($training as $key=>$training )
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td hidden class="e_id">{{ $training->id }}</td>
+                                    <td hidden class="trainer_id">{{ $training->trainer_id }}</td>
+                                    <td hidden class="employees_id">{{ $training->employees_id }}</td>
                                     <td hidden class="id">{{ $training->id }}</td>
                                     <td class="training_type">{{ $training->training_type }}</td>
                                     <td>
@@ -295,7 +298,7 @@
                                     <td hidden class="end_date">{{ $training->end_date }}</td>
                                     <td>{{ $training->description }}</td>
                                     <td>${{ $training->training_cost }}</td>
-                                    <td hidden class="training_cost">${{ $training->training_cost }}</td>
+                                    <td hidden class="training_cost">{{ $training->training_cost }}</td>
                                     <td>
                                         <i class="fa fa-dot-circle-o text-success"></i> {{ $training->status }}
                                     </td>
@@ -574,7 +577,9 @@
         $(document).on('click','.edit_training',function()
         {
             var _this = $(this).parents('tr');
-            $('#e_id').val(_this.find('.id').text());
+            $('#e_id').val(_this.find('.e_id').text());
+            $('#e_trainer_id').val(_this.find('.trainer_id').text());
+            $('#e_employees_id').val(_this.find('.employees_id').text());
             $('#e_training_cost').val(_this.find('.training_cost').text());
             $('#e_start_date').val(_this.find('.start_date').text());  
             $('#e_end_date').val(_this.find('.end_date').text());  

@@ -78,8 +78,33 @@ class TrainingController extends Controller
         }
     }
     // update record
-    public function updateTraining()
+    public function updateTraining(Request $request)
     {
-        
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'            => $request->id,
+                'trainer_id'    => $request->trainer_id,
+                'employees_id'  => $request->employees_id,
+                'training_type' => $request->training_type,
+                'trainer'       => $request->trainer,
+                'employees'     => $request->employees,
+                'training_cost' => $request->training_cost,
+                'start_date'    => $request->start_date,
+                'end_date'      => $request->end_date,
+                'description'   => $request->description,
+                'status'        => $request->status,
+            ];
+            
+            Training::where('id',$request->id)->update($update);
+            DB::commit();
+            Toastr::success('Updated Training successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Update Training fail :)','Error');
+            return redirect()->back();
+        }
     }
 }
