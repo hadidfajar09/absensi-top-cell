@@ -129,7 +129,7 @@
                         </a>
                         <ul style="display: none;">
                             <li><a class="active" href="{{ route('form/training/list/page') }}"> Training List </a></li>
-                            <li><a href="trainers.html"> Trainers</a></li>
+                            <li><a href="{{ route('form/trainers/list/page') }}"> Trainers</a></li>
                             <li><a href="training-type.html"> Training Type </a></li>
                         </ul>
                     </li>
