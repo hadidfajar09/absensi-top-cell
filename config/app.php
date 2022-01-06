@@ -233,7 +233,6 @@ return [
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        
 
     ],
 
