@@ -215,10 +215,10 @@
                                     <td class="training_type">{{ $training->training_type }}</td>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar">
+                                            <a href="{{ url('employee/profile/'.$training->rec_id) }}" class="avatar">
                                                 <img alt="" src="{{ URL::to('/assets/images/'. $training->avatar) }}">
                                             </a>
-                                            <a href="profile.html">{{ $training->trainer }}</a>
+                                            <a href="{{ url('employee/profile/'.$training->rec_id) }}">{{ $training->trainer }}</a>
                                         </h2>
                                     </td>
                                     <td hidden class="trainer">{{ $training->trainer }}</td>

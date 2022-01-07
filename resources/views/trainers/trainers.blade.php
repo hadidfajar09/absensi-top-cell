@@ -202,21 +202,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($trainers as $key=>$trainer )
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ ++$key }}</td>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="{{ URL::to('assets/img/profiles/avatar-02.jpg') }}"></a>
-                                            <a href="profile.html">John Doe </a>
+                                            <a href="{{ url('employee/profile/'.$trainer->rec_id) }}" class="avatar">
+                                                <img alt="" src="{{ URL::to('/assets/images/'. $trainer->avatar) }}">
+                                            </a>
+                                            <a href="{{ url('employee/profile/'.$trainer->rec_id) }}">{{ $trainer->full_name }}</a>
                                         </h2>
                                     </td>
-                                    <td>9876543210</td>
-                                    <td>johndoe@example.com</td>
-                                    <td>Lorem ipsum dollar</td>
+                                    <td>{{ $trainer->phone }}</td>
+                                    <td>{{ $trainer->email }}</td>
+                                    <td>{{ $trainer->description }}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                             <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                <i class="fa fa-dot-circle-o text-success"></i>{{ $trainer->status }}
                                             </a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
@@ -234,6 +237,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -260,8 +264,8 @@
                                     <div class="form-group">
                                         <label class="col-form-label">Full Name<span class="text-danger">*</span></label>
                                         <select class="select @error('full_name') is-invalid @enderror" id="trainer" name="full_name">
+                                            <option selected disabled>-- Select --</option>
                                             @foreach ($user as $key=>$items )
-                                                <option selected disabled>-- Select --</option>
                                                 <option value="{{ $items->name }} {{ old('full_name') == $items->name ? 'selected' : '' }}" data-trainer_id={{ $items->rec_id }} data-email={{ $items->email }}>{{ $items->name }}</option>
                                             @endforeach
                                         </select>

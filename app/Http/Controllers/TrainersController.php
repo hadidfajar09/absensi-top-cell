@@ -15,8 +15,12 @@ class TrainersController extends Controller
     // index page
     public function index()
     {
+        $trainers = DB::table('trainers')
+                    ->join('users', 'users.rec_id', '=', 'trainers.trainer_id')
+                    ->select('trainers.*', 'users.avatar','users.rec_id')
+                    ->get();
         $user = DB::table('users')->get();
-        return view('trainers.trainers',compact('user'));
+        return view('trainers.trainers',compact('user','trainers'));
     }
 
     /** save record trainers */
