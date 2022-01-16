@@ -57,4 +57,44 @@ class TrainersController extends Controller
             return redirect()->back();
         }
     }
+
+    /** update record trainers */
+    public function updateRecord(Request $request) 
+    {
+        DB::beginTransaction();
+        try {
+            if(!empty($request->trainer_id))
+            {
+                $update = [
+                    'id'            => $request->id,
+                    'full_name'     => $request->full_name,
+                    'trainer_id'    => $request->trainer_id,
+                    'role'          => $request->role,
+                    'email'         => $request->email,
+                    'phone'         => $request->phone,
+                    'status'        => $request->status,
+                    'description'   => $request->description,
+                ];
+            } else {
+                $update = [
+                    'id'            => $request->id,
+                    'full_name'     => $request->full_name,
+                    'role'          => $request->role,
+                    'email'         => $request->email,
+                    'phone'         => $request->phone,
+                    'status'        => $request->status,
+                    'description'   => $request->description,
+                ];
+            }
+           
+            Trainer::where('id',$request->id)->update($update);
+            DB::commit();
+            Toastr::success('Updated Trainer successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Update Trainer fail :)','Error');
+            return redirect()->back();
+        }
+    }
 }
