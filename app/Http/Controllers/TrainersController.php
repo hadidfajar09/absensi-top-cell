@@ -45,7 +45,6 @@ class TrainersController extends Controller
             $trainer->phone        = $request->phone;
             $trainer->status       = $request->status;
             $trainer->description  = $request->description;
-            // dd($trainer);
             $trainer->save();
             
             DB::commit();
@@ -94,6 +93,23 @@ class TrainersController extends Controller
         } catch(\Exception $e) {
             DB::rollback();
             Toastr::error('Update Trainer fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    /** delete record trainers */
+    public function deleteRecord(Request $request)
+    {
+        try {
+
+            Trainer::destroy($request->id);
+            Toastr::success('Trainers deleted successfully :)','Success');
+            return redirect()->back();
+        
+        } catch(\Exception $e) {
+
+            DB::rollback();
+            Toastr::error('Trainers delete fail :)','Error');
             return redirect()->back();
         }
     }
