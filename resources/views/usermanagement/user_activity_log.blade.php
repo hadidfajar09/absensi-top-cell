@@ -113,7 +113,7 @@
                         <ul style="display: none;">
                             <li><a href="{{ route('form/training/list/page') }}"> Training List </a></li>
                             <li><a href="{{ route('form/trainers/list/page') }}"> Trainers</a></li>
-                            <li><a href="training-type.html"> Training Type </a></li>
+                            <li><a href="{{ route('form/training/type/list/page') }}"> Training Type </a></li>
                         </ul>
                     </li>
                     <li> <a href="assets.html"><i class="la la-object-ungroup">
