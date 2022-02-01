@@ -244,24 +244,25 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="{{ route('form/training/type/save') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" id="type" name="type">
                                 </div>
                                 <div class="form-group">
                                     <label>Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea class="form-control" rows="2" id="description" name="description"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Status</label>
-                                    <select class="select">
-                                        <option>Active</option>
-                                        <option>Inactive</option>
+                                    <select class="select" id="status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="submit-section">
-                                    <button class="btn btn-primary submit-btn">Submit</button>
+                                    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                                 </div>
                             </form>
                         </div>
