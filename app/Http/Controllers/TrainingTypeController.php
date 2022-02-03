@@ -14,7 +14,8 @@ class TrainingTypeController extends Controller
     /** index page training type */
     public function index() 
     {
-        return view('trainingtype.trainingtype');
+        $show = DB::table('training_types')->get();
+        return view('trainingtype.trainingtype',compact('show'));
     }
 
     /** save record */

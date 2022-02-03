@@ -201,14 +201,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($show as $key => $items)
+                                    
                                 <tr>
-                                    <td>1</td>
-                                    <td>Node Training</td>
-                                    <td>Lorem ipsum dollar</td>
+                                    <td>{{ ++$key }}</td>
+                                    <td class="type">{{ $items->type }}</td>
+                                    <td class="description">{{ $items->description }}</td>
+                                    <td hidden class="status">{{ $items->status }}</td>
+                                    @if($items->status =='Active')
                                     <td>
                                         <div class="dropdown action-label">
                                             <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa fa-dot-circle-o text-danger"></i> Inactive
+                                                <i class="fa fa-dot-circle-o text-success"></i>{{ $items->status }}
                                             </a>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
@@ -216,6 +220,20 @@
                                             </div>
                                         </div>
                                     </td>
+                                    @endif
+                                    @if($items->status =='Inactive')
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-dot-circle-o text-danger"></i>{{ $items->status }}
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                                <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    @endif
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -226,7 +244,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                               
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
