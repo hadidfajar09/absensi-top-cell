@@ -206,6 +206,7 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="type">{{ $items->type }}</td>
+                                    <td hidden class="e_id">{{ $items->id }}</td>
                                     <td class="description">{{ $items->description }}</td>
                                     <td hidden class="status">{{ $items->status }}</td>
                                     @if($items->status =='Active')
@@ -238,7 +239,7 @@
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_type"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item edit_type " href="#" data-toggle="modal" data-target="#edit_type"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_type"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
@@ -300,24 +301,26 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="{{ route('form//training/type/update') }}" method="POST">
+                                @csrf
+                                <input type="hidden" class="form-control" id="e_id" name="id" value="">
                                 <div class="form-group">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" value="Node Training">
+                                    <input class="form-control" type="text" id="e_type" name="type" value="">
                                 </div>
                                 <div class="form-group">
                                     <label>Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" rows="4">Lorem ipsum ismap</textarea>
+                                    <textarea class="form-control" rows="2" id="e_description" name="description"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Status</label>
-                                    <select class="select">
-                                        <option>Active</option>
-                                        <option>Inactive</option>
+                                    <select class="select" id="e_status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="submit-section">
-                                    <button class="btn btn-primary submit-btn">Save</button>
+                                    <button type="submit" class="btn btn-primary submit-btn">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -355,6 +358,20 @@
     </div>
     <!-- /Page Wrapper -->
     @section('script')
-    
+        <script>
+            $(document).on('click','.edit_type',function()
+            {
+                var _this = $(this).parents('tr');
+                $('#e_id').val(_this.find('.e_id').text());
+                $('#e_type').val(_this.find('.type').text());
+                $('#e_description').val(_this.find('.description').text());
+                
+                // status
+                var status = (_this.find(".status").text());
+                var _option = '<option selected value="' +status+ '">' + _this.find('.status').text() + '</option>'
+                $( _option).appendTo("#e_status");
+            });
+            
+        </script>
     @endsection
 @endsection

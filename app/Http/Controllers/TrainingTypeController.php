@@ -46,4 +46,29 @@ class TrainingTypeController extends Controller
         }
     }
 
+    /** update record trainers */
+    public function updateRecord(Request $request) 
+    {
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'          => $request->id,
+                'type'        => $request->type,
+                'description' => $request->description,
+                'status'      => $request->status,
+            ];
+            
+            TrainingType::where('id',$request->id)->update($update);
+            DB::commit();
+            Toastr::success('Updated Training Type successfully :)','Success');
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('Update Training Type fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+
 }
